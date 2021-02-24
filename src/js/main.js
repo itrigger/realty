@@ -1,22 +1,39 @@
-// Импортируем jQuery
-//= ../../node_modules/jquery/dist/jquery.js
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// Импортируем Popper
-//= ../../node_modules/popper.js/dist/umd/popper.js
+ScrollTrigger.defaults({
+    toggleActions: "restart pause resume pause"
+});
 
-// Импортируем необходимые js-файлы Bootstrap 4
-//= ../../node_modules/bootstrap/js/dist/util.js
-//= ../../node_modules/bootstrap/js/dist/alert.js
-//= ../../node_modules/bootstrap/js/dist/button.js
-//= ../../node_modules/bootstrap/js/dist/carousel.js
-//= ../../node_modules/bootstrap/js/dist/collapse.js
-//= ../../node_modules/bootstrap/js/dist/dropdown.js
-//= ../../node_modules/bootstrap/js/dist/modal.js
-//= ../../node_modules/bootstrap/js/dist/tooltip.js
-//= ../../node_modules/bootstrap/js/dist/popover.js
-//= ../../node_modules/bootstrap/js/dist/scrollspy.js
-//= ../../node_modules/bootstrap/js/dist/tab.js
-//= ../../node_modules/bootstrap/js/dist/toast.js
 
-// Импортируем другие js-файлы
-//= my.js
+
+/* Panels */
+/*const panels = gsap.utils.toArray("#panels-container .panel");
+gsap.to(panels, {
+    xPercent: -100 * ( panels.length - 1 ),
+    ease: "none",
+    scrollTrigger: {
+        trigger: "#panels-container",
+        pin: true,
+        start: "top top",
+        scrub: 1,
+        snap: {
+            snapTo: 1 / ( panels.length - 1 ),
+            duration: {min: 0.1, max: 0.1}
+        },
+        end: () => "+=" + (panelsContainer.offsetWidth - innerWidth)
+    }
+});*/
+
+gsap.to(".box", {
+    scrollTrigger: ".box", // start the animation when ".box" enters the viewport (once)
+    x: 500,
+    stagger: 0.1
+});
+gsap.to(".box2", {
+    scrollTrigger: ".box2", // start the animation when ".box" enters the viewport (once)
+    x: 500
+});
+gsap.to(".box3", {
+    scrollTrigger: ".box3", // start the animation when ".box" enters the viewport (once)
+    x: 500
+});
