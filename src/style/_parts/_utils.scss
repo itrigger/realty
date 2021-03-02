@@ -1,0 +1,57 @@
+
+.w_100{
+  width: 100%;
+}
+.h_100{
+  height: 100%;
+}
+.h_100vh{
+  height: 100vh;
+}
+.pos_r{
+  position: relative;
+}
+.to_ct {
+  transform-origin: center top;
+}
+.bgs_con, .bgs_cov {
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+.bgs_cov {
+  background-size: cover;
+}
+.sc_105 {
+  transform: scale(1.05);
+}
+.to_rb {
+  transform-origin: right bottom;
+}
+.h_100vh{
+  height: 100vh;
+}
+
+section,
+footer {
+  display: flex;
+  width:  100%;
+}
+.left-col, .middle-col, .right-col, .full-col{
+  height: 100vh;
+  margin: 0;
+}
+.width-0{
+  width: 0;
+}
+.width-33{
+  width: 33.33%;
+}
+.width-66{
+  width: 66.66%;
+}
+.width-100{
+  width: 100%;
+}
+.oh-wrap{
+  overflow: hidden;
+}

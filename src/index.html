@@ -4,24 +4,36 @@
     //= template/head.html
 </head>
 <body>
+<header id="header" class="header">
+    <div class="slogan">Все важное в квадрате</div>
+</header>
+<aside id="top-menu" class="top-menu">
+    <a href="tel:" class="top-square tel"><span class="ico ico-tel"></span></a>
+    <a href="#" class="top-square msg"><span class="ico ico-msg"></span></a>
+</aside>
 <div id="primary" class="content-area">
     <aside id="main-menu" class="main-menu">
-        <ul>
-            <li><a href="#homePage" data-anchor="#homePage">Расположение</a></li>
-            <li><a href="#locPage" data-anchor="#locPage">Уникальность</a></li>
-            <li><a href="#uniqPage" data-anchor="#uniqPage">Как купить</a></li>
-            <li><a href="#howtoPage" data-anchor="#howtoPage">Квартиры</a></li>
-            <li><a href="#contactPage" data-anchor="#contactPage">Контакты</a></li>
-        </ul>
+        <div class="menu-items">
+            <ul>
+                <li class="menu-item"><a href="#homePage" data-anchor="#homePage">Расположение</a></li>
+                <li class="menu-item"><a href="#locPage" data-anchor="#locPage">Уникальность</a></li>
+                <li class="menu-item"><a href="#uniqPage" data-anchor="#uniqPage">Как купить</a></li>
+                <li class="menu-item"><a href="#howtoPage" data-anchor="#howtoPage">Квартиры</a></li>
+                <li class="menu-item"><a href="#contactPage" data-anchor="#contactPage">Контакты</a></li>
+            </ul>
+        </div>
     </aside>
     <main id="main" class="site-main" role="main">
-        <section id="landing-page" class="hero-story hero hero1 h_100vh">
-            <div class="w_100 h_100 pos_r to_ct | j_parallaxEl" >
-                <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('https://veren-next.ru/bitrix/templates/shuvalovsky/i/r/hp_top.jpg?2'); transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+        <div class="oh-wrap">
+            <div class="w_100 h_100vh">
+            <section id="landing-page" class="hero-story hero hero1 h_100vh">
+
+
+                    //= template/slider.html
+
+            </section>
             </div>
-
-        </section>
-
+        </div>
         <section id="rooms" class="hero-story hero second-hero hero2">
             <div class="left-col width-33">
                 <h2>Des chambres pour vous</h2>

@@ -1,0 +1,26 @@
+
+#leftArrow {
+  left: 12px;
+}
+
+#rightArrow {
+  right: 12px;
+}
+
+.arrow {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  cursor: pointer;
+  opacity: 0.75;
+  width: 40px;
+  height: 40px;
+  stroke-width: 8px;
+  stroke: white;
+  fill: transparent;
+}
+
+.slide{
+  width: 100vw;
+  height: 100vh;
+}

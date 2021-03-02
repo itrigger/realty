@@ -17,23 +17,62 @@ jQuery(document).ready(function ($) {
 
     /*my*/
 
-    gsap.from('#main-menu', {duration: 1, x: '-100%', ease: 'expo'});
+    gsap.from('.main-menu', {
+        duration: 1, x: '-100%', ease: 'expo',
+        onStart: () => {
+            if(!($('body').hasClass('leftMenuThin'))) {
+                $('.main-menu').addClass('active');
+            }
+        }
+    });
+
     gsap.fromTo('.j_parallaxEl',
         {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
         {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
     );
 
+    let menuItemTween = gsap.from(".menu-item", {
+        x: -100,
+        stagger: { // wrap advanced options in an object
+            each: 0.1,
+            ease: "power2.inOut",
+        }
+    });
+
+
+
     $("#main-menu").hover(function () {
-        $(this).removeClass("active");
+        if($('body').hasClass('leftMenuThin')){
+            menuItemTween.restart();
+        }
+        $(this).addClass("active");
 
     }, function () {
-        $(this).addClass("active");
+        if($('body').hasClass('leftMenuThin')){
+            $(this).removeClass("active");
+            menuItemTween.reverse();
+        }
     });
 
     ScrollTrigger.create({
         start: 'top -80',
         end: 99999,
-        toggleClass: {className: 'active', targets: '.main-menu'}
+        onEnter: () => {
+            $('body').addClass('leftMenuThin');
+            $('.main-menu').removeClass('active');
+            menuItemTween.reverse();
+            },
+        onLeaveBack: () => {
+            $('body').removeClass('leftMenuThin');
+            $('.main-menu').addClass('active');
+            menuItemTween.play();
+        }
+    });
+
+    ScrollTrigger.create({
+        start: 'top -80',
+        end: 99999,
+        toggleClass: {className: 'visible', targets: '.top-menu'},
     });
 
     gsap.fromTo('.j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
@@ -51,21 +90,42 @@ jQuery(document).ready(function ($) {
         },
         scale: 1.12,
         delay: 1
-
     })
 
 
-    ScrollTrigger.create({
+    let bannerSwiper = new Swiper('#panelWrap .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        navigation: {
+            nextEl: '#rightArrow',
+            prevEl: '#leftArrow',
+        },
+    })
+
+
+
+
+
+
+
+
+
+
+
+  /*  ScrollTrigger.create({
         trigger: ".sticky-today",
         start: "top bottom-=150",
         endTrigger: ".today-content",
         end: "bottom bottom-=75",
         pin: true,
         pinSpacing: false
-    });
+    });*/
 
 
-    sections.forEach(section => {
+  /*  sections.forEach(section => {
         const intoAnim = gsap.timeline({paused: true})
             .from(section.querySelector(".right-col"), {yPercent: 50, duration: 1})
 
@@ -79,9 +139,9 @@ jQuery(document).ready(function ($) {
             start: "bottom bottom",
             onEnterBack: () => goToSection(section),
         });
-    });
+    });*/
 
-    ScrollTrigger.create({
+  /*  ScrollTrigger.create({
         trigger: ".sticky-today",
         start: "top bottom-=150",
         endTrigger: ".today-content",
@@ -120,7 +180,7 @@ jQuery(document).ready(function ($) {
         end: "bottom bottom",
         pin: true,
         pinSpacing: false
-    });
+    });*/
 
 
     // ⚰️ STORE SOME VARIABLES

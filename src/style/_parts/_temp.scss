@@ -1,0 +1,126 @@
+
+#rooms .left-col{
+  background-color: red;
+}
+#rooms .right-col{
+  background-color: pink;
+}
+#you .middle-col{
+  background-color: green;
+}
+#you .left-col,
+#you .right-col{
+  background-color: palegreen;
+}
+#near .right-col{
+  background-color: blue;
+}
+#near .left-col{
+  background-color: lightblue;
+}
+
+
+#masthead,
+#colophon {
+  position: relative;
+  z-index: 1;
+  background: rgba(0,0,0,0.2);
+}
+
+.section {
+  /*height: calc(100vh - 136px);*/
+  background: #29335C;
+}
+
+/* Wrappers */
+.wrapper-content {
+  position: relative;
+  z-index: 2;
+  top: calc(-136px / 2); /*the menu height/2 */
+  width: 60%;
+  max-height: 100%;
+  border: 1px solid transparent;
+
+  margin: 0 auto;
+  background: transparent;
+  text-align: center;
+  overflow: visible;
+}
+
+
+/*--------------------------------------------------------------
+✍️ EACH SECTION
+--------------------------------------------------------------*/
+/*COMMON*/
+/*circles*/
+.circles {
+  position: absolute;
+  display: block;
+  margin: 0 auto;
+  top: calc(50% - 68px); /*the menu height/2 */
+  transform: translate(-50%,-50%);
+  left: 50%;
+}
+
+/*SECTION #1*/
+/*circles*/
+.circles-intro {
+  height: 0;
+  mix-blend-mode: difference;
+}
+
+/* SECTION 2️⃣ */
+/*circles*/
+#circle-left,
+#circle-right {
+  mix-blend-mode: difference;
+  /*     transition: all 0.3s ease-in-out; */
+}
+
+/* hover 🚀 */
+/* #section-2 .fp-tableCell:hover #circle-left {
+    left: 5% !important;
+    transform: translate(0, -50%);
+}
+
+#section-2 .fp-tableCell:hover #circle-right {
+    left: -5% !important;
+    transform: translate(0, -50%);
+} */
+
+/* SECTION #3 */
+#circle-grow {
+  width: 0;
+  height: 0;
+}
+
+/* SECTION #4 */
+/* #circle-border {
+    width: 50%;
+    height: 50%;
+    fill: #F3A712;
+    stroke: #F0CEA0;
+    stroke-width : 5;
+} */
+
+.piechart {
+  width: 50%;
+  height: 50%;
+}
+
+#circle-piechart {
+  /*     width: 50%; */
+  /*     height: 50%; */
+  fill: transparent;
+  stroke-width:31.8309886184;
+  stroke-dasharray: 0,0,0,99;
+  stroke-dashoffset: 25;
+  stroke:red;
+}
+
+/* SECTION #5 */
+.circles-radar {
+  width: 50%;
+  height: 50%;
+  fill: transparent;
+}
