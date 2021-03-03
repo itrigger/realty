@@ -2,7 +2,8 @@ html,
 body {
   margin: 0;
   height: 100%;
-  font-weight: 300;
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif;
 }
 *{
   box-sizing: border-box;
@@ -15,4 +16,5 @@ a {
 h1,
 h2 {
   text-align: center;
+  font-weight: 700;
 }

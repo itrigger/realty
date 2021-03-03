@@ -321,7 +321,8 @@ html,
 body {
   margin: 0;
   height: 100%;
-  font-weight: 300; }
+  font-weight: 400;
+  font-family: 'Montserrat', sans-serif; }
 
 * {
   box-sizing: border-box; }
@@ -331,7 +332,8 @@ a {
 
 h1,
 h2 {
-  text-align: center; }
+  text-align: center;
+  font-weight: 700; }
 
 .w_100 {
   width: 100%; }
@@ -366,6 +368,19 @@ h2 {
 
 .h_100vh {
   height: 100vh; }
+
+.pos_a, .pos_f {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  position: absolute; }
+
+.cw {
+  color: #fff; }
+
+.pl_250 {
+  padding-left: 250px; }
 
 section,
 footer {
@@ -441,7 +456,12 @@ footer {
 
 .slide {
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
+  .slide h1 {
+    margin-top: 115px;
+    font-size: 46px;
+    text-align: left; }
 
 #rooms .left-col {
   background-color: red; }

@@ -30,6 +30,19 @@
 .h_100vh{
   height: 100vh;
 }
+.pos_a, .pos_f {
+  top: 0;
+  right: auto;
+  bottom: auto;
+  left: 0;
+  position: absolute;
+}
+.cw{
+  color: #fff;
+}
+.pl_250{
+  padding-left: 250px;
+}
 
 section,
 footer {
