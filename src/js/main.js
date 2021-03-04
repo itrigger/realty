@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
 
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(CSSRulePlugin);
     const sections = document.querySelectorAll("section");
 
     function goToSection(section, anim) {
@@ -49,11 +50,25 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    let menuLogoTween = gsap.from(".logo", {
+        x: -200,
+        duration: 2,
+        ease: "expo",
+    });
+
+    let rule = CSSRulePlugin.getRule(".logo-w::after");
+    let menuBgTween = gsap.from(rule, {
+        backgroundPosition: "-100px 0px",
+        ease: Linear.easeNone,
+        duration: 1
+    });
 
 
     $("#main-menu").hover(function () {
         if($('body').hasClass('leftMenuThin')){
             menuItemTween.restart();
+            menuLogoTween.restart();
+            menuBgTween.restart();
         }
         $(this).addClass("active");
 
@@ -61,6 +76,8 @@ jQuery(document).ready(function ($) {
         if($('body').hasClass('leftMenuThin')){
             $(this).removeClass("active");
             menuItemTween.reverse();
+            menuLogoTween.reverse();
+            menuBgTween.reverse();
         }
     });
 
@@ -72,11 +89,15 @@ jQuery(document).ready(function ($) {
             $('body').addClass('leftMenuThin');
             $('.main-menu').removeClass('active');
             menuItemTween.reverse();
+            menuLogoTween.reverse();
+            menuBgTween.reverse();
             },
         onLeaveBack: () => {
             $('body').removeClass('leftMenuThin');
             $('.main-menu').addClass('active');
             menuItemTween.play();
+            menuLogoTween.play();
+            menuBgTween.play();
         }
     });
 
@@ -103,6 +124,43 @@ jQuery(document).ready(function ($) {
         delay: 1
     })
 
+    function zoomImage(sliderDOM) {
+        const slideActive = sliderDOM.find('.swiper-slide-active, .swiper-slide-duplicate-active');
+        const imageSlide = slideActive.find('.j_parallaxEl');
+
+        gsap.fromTo(imageSlide,
+            {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
+            {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
+        );
+    }
+
+    function moveDownText(sliderDOM) {
+        const slideActive = sliderDOM.find('.swiper-slide-active');
+        const slideCaption = slideActive.find('.slider-square');
+
+        const oldActive = sliderDOM.find('.swiper-slide-active');
+        const oldCaption = oldActive.find('h1');
+
+
+        gsap.set(slideCaption, { autoAlpha: 0 });
+        gsap.to(slideCaption, { duration: 3, ease: Power4.easeOut, startAt: {autoAlpha: 0, y: "-100%" }, autoAlpha: 1, y: "4%", display: "flex"});
+
+        gsap.set(oldCaption, { autoAlpha: 0 });
+        gsap.to(oldCaption, { duration: 3, ease: Power4.easeOut, startAt: {autoAlpha: 0, y: "-100%" }, autoAlpha: 1, y: "4%", display: "block"});
+
+
+        let tl = gsap.timeline(),
+            mySplitText = new SplitText(oldCaption, {type:"words,chars"}),
+            chars = mySplitText.chars; //an array of all the divs that wrap each character
+
+        gsap.set(oldCaption, {perspective: 400});
+
+        tl.from(chars, {duration: 2, opacity:0, scale:0, y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"expo", stagger: 0.01}, "+=0");
+
+    }
+
+
+
 
     let bannerSwiper = new Swiper('#panelWrap .swiper-container', {
         slidesPerView: 1,
@@ -116,6 +174,21 @@ jQuery(document).ready(function ($) {
             nextEl: '#rightArrow',
             prevEl: '#leftArrow',
         },
+        runCallbacksOnInit: true,
+        on: {
+            init: function () {
+                zoomImage(this.$el);
+                moveDownText(this.$el);
+            },
+            slideNextTransitionStart: function () {
+                zoomImage(this.$el);
+                moveDownText(this.$el);
+            },
+            slidePrevTransitionStart: function () {
+                zoomImage(this.$el);
+                moveDownText(this.$el);
+            }
+        }
     })
 
 
