@@ -21,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../libs/swiper-bundle.min.css">
     <link href="css/main.css" rel="stylesheet" />
@@ -34,41 +34,56 @@
 </head>
 <body>
 <header id="header" class="header">
-    <div class="slogan">Все важное в квадрате</div>
+    <div class="d_f pl30 ai_c h_100">
+        <div class="slogan">Все важное в квадрате!</div>
+        <a href="#" class="top_tel ml_a c_w d_f ai_c"><span class="ico ico-left ico-tel-w"></span>+995-557 545 589</a>
+        <a href="#" class="top_contact c_w d_f ai_c"><span class="ico ico-left ico-chat-w"></span>Оставить заявку</a>
+        <div class="top_lang c_w">Ru</div>
+    </div>
 </header>
 <aside id="top-menu" class="top-menu">
     <a href="tel:" class="top-square tel"><span class="ico ico-tel"></span></a>
     <a href="#" class="top-square msg"><span class="ico ico-msg"></span></a>
 </aside>
-<div id="primary" class="content-area">
-    <aside id="main-menu" class="main-menu">
-        <div class="menu-items">
-            <ul>
-                <li class="menu-item"><a href="#homePage" data-anchor="#homePage">Расположение</a></li>
-                <li class="menu-item"><a href="#locPage" data-anchor="#locPage">Уникальность</a></li>
-                <li class="menu-item"><a href="#uniqPage" data-anchor="#uniqPage">Как купить</a></li>
-                <li class="menu-item"><a href="#howtoPage" data-anchor="#howtoPage">Квартиры</a></li>
-                <li class="menu-item"><a href="#contactPage" data-anchor="#contactPage">Контакты</a></li>
-            </ul>
+<aside id="main-menu" class="main-menu">
+    <div class="logo-w w_100 d_f ai_c jc_c">
+        <a href="/" class="logo"></a>
+    </div>
+    <div class="menu-items">
+        <ul>
+            <li class="menu-item"><a href="#homePage" data-anchor="#homePage">Расположение</a></li>
+            <li class="menu-item"><a href="#locPage" data-anchor="#locPage">Уникальность</a></li>
+            <li class="menu-item"><a href="#uniqPage" data-anchor="#uniqPage">Как купить</a></li>
+            <li class="menu-item"><a href="#howtoPage" data-anchor="#howtoPage">Квартиры</a></li>
+            <li class="menu-item"><a href="#contactPage" data-anchor="#contactPage">Контакты</a></li>
+        </ul>
+    </div>
+    <div class="leftmenu--footer">
+        <div class="d_f ai_c | social-btns leftmenu--footer-social">
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-wt-w"></span></a>
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-tg-w"></span></a>
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-ig-w"></span></a>
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-fb-w"></span></a>
         </div>
-    </aside>
+        <div class="copyright c_w">
+            © 2021, LEON
+        </div>
+        <div class="f-slogan c_w">Официальный сайт дома</div>
+    </div>
+</aside>
+<div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
         <div class="oh-wrap">
             <div class="w_100 h_100vh">
-            <section id="landing-page" class="hero-story hero hero1 h_100vh">
-
-
-                    <svg id="leftArrow" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <g stroke-linejoin="round" stroke-linecap="round">
-                            <circle r="46" cx="50" cy="50"/>
-                            <polyline points="60 25, 30 50, 60 75"></polyline>
-                        </g>
+            <section id="home_screen" class="h_100vh">
+                    <svg id="leftArrow" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                        <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"/>
                     </svg>
-                    <svg id="rightArrow" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <g stroke-linejoin="round" stroke-linecap="round">
-                            <circle r="46" cx="50" cy="50"/>
-                            <polyline points="40 25, 70 50, 40 75"></polyline>
-                        </g>
+                    
+                    <svg id="rightArrow" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                        <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"/>
                     </svg>
                     
                     
@@ -80,30 +95,36 @@
                                             <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
                                         </div>
                                         <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
-                                            <h1 class="cw">Беспроцентная рассрочка
-                                                на 36 месяцев</h1>
+                                            <h1 class="c_w">Беспроцентная рассрочка <span>на 36 месяцев</span></h1>
+                                        </div>
+                                        <div class="pos_a slider-square d_f f_c jc_c ai_c">
+                                            <div class="title d_f jc_c ai_s c_w">0<span>%</span></div>
+                                            <div class="desc">до конца строительства</div>
                                         </div>
                                     </div>
                                     <div class="slide swiper-slide">
                                         <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
-                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby2.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
                                         </div>
                                         <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
-                                            <h1 class="cw">Гибкая система скидок</h1>
+                                            <h1 class="c_w">Первый дом с коворкингом
+                                                <span>в Батуми</span></h1>
                                         </div>
                                     </div>
-                                    <div class="slide swiper-slide"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/314556/clock.png"
-                                                                         width="75"
-                                                                         alt="clock">
-                                        <h3>Bottom dot animation</h3>
-                                        <p>See that animation on the bottom with the navigation dots and rotating slide titles? Its time is
-                                            based on the position of the draggable element. Keep an eye on it as you drag or the slides
-                                            animate.</p>
+                                    <div class="slide swiper-slide">
+                                        <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby3.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                        </div>
+                                        <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
+                                                <h1 class="c_w">Bottom dot animation</h1>
+                                                <p>See that animation on the bottom with the navigation dots and rotating slide titles? Its time is
+                                                    based on the position of the draggable element. Keep an eye on it as you drag or the slides
+                                                    animate.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
             </section>
             </div>
         </div>
@@ -159,35 +180,6 @@
                 <p>Today content</p>
                 <p>Today content</p>
                 <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-
             </div>
         </section>
 
@@ -198,31 +190,6 @@
             </div>
 
             <div class="tomorrow-content purple">
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
                 <p>Tomorrow content</p>
                 <p>Tomorrow content</p>
                 <p>Tomorrow content</p>
