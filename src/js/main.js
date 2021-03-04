@@ -26,6 +26,16 @@ jQuery(document).ready(function ($) {
         }
     });
 
+    gsap.from('.arrow', {
+        duration: 2,
+        y: -50,
+        ease: 'expo',
+        stagger: { // wrap advanced options in an object
+            each: 0.1,
+            ease: "power2.inOut",
+        }
+    });
+
     gsap.fromTo('.j_parallaxEl',
         {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
         {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
@@ -53,6 +63,7 @@ jQuery(document).ready(function ($) {
             menuItemTween.reverse();
         }
     });
+
 
     ScrollTrigger.create({
         start: 'top -80',
@@ -99,6 +110,8 @@ jQuery(document).ready(function ($) {
         slidesOffsetAfter: 0,
         slideToClickedSlide: true,
         watchOverflow: true,
+        loop: true,
+        speed: 1000,
         navigation: {
             nextEl: '#rightArrow',
             prevEl: '#leftArrow',
@@ -528,8 +541,6 @@ jQuery(document).ready(function ($) {
     // console.log('tl_section4 duration is: ' + tl_section4.totalDuration());
     // console.log('tl_section5 duration is: ' + tl_section5.totalDuration());
 
-    $(".main-menu").click(function () {
-        $(".main-menu").hasClass("active") ? $(".main-menu").removeClass("active") : $(".main-menu").addClass("active");
-    });
+
 
 }); // end of jQuery

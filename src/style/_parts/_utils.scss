@@ -1,4 +1,9 @@
-
+.d_f{
+  display: flex;
+}
+.f_c{
+  flex-direction: column;
+}
 .w_100{
   width: 100%;
 }
@@ -37,11 +42,20 @@
   left: 0;
   position: absolute;
 }
-.cw{
+.c_w{
   color: #fff;
+}
+.ai_c{align-items: center;}
+.ai_s{align-items: flex-start;}
+
+.jc_c{
+  justify-content: center;
 }
 .pl_250{
   padding-left: 250px;
+}
+.ml_a{
+  margin-left: auto;
 }
 
 section,
@@ -67,4 +81,11 @@ footer {
 }
 .oh-wrap{
   overflow: hidden;
+}
+
+.j_parlxContent{
+  padding-left: 30px;
+}
+.pl30{
+  padding-left: 30px;
 }

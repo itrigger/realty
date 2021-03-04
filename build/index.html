@@ -1,21 +1,109 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    //= template/head.html
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="../libs/gsap.min.js"></script>
+    <script src="../libs/ScrollTrigger.min.js"></script>
+    <script src="../libs/ScrollToPlugin.min.js"></script>
+    <script src="../libs/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    
+    
+    <meta charset="UTF-8">
+    
+    <!-- Useful meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow, noodp">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <meta name="format-detection" content="telephone=no">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../libs/swiper-bundle.min.css">
+    <link href="css/main.css" rel="stylesheet" />
+    
+    
+    
+    
+    
+    <title>Home</title>
 </head>
 <body>
-//= template/header.html
+<header id="header" class="header">
+    <div class="slogan">Все важное в квадрате</div>
+</header>
 <aside id="top-menu" class="top-menu">
     <a href="tel:" class="top-square tel"><span class="ico ico-tel"></span></a>
     <a href="#" class="top-square msg"><span class="ico ico-msg"></span></a>
 </aside>
-//= template/leftside.html
 <div id="primary" class="content-area">
+    <aside id="main-menu" class="main-menu">
+        <div class="menu-items">
+            <ul>
+                <li class="menu-item"><a href="#homePage" data-anchor="#homePage">Расположение</a></li>
+                <li class="menu-item"><a href="#locPage" data-anchor="#locPage">Уникальность</a></li>
+                <li class="menu-item"><a href="#uniqPage" data-anchor="#uniqPage">Как купить</a></li>
+                <li class="menu-item"><a href="#howtoPage" data-anchor="#howtoPage">Квартиры</a></li>
+                <li class="menu-item"><a href="#contactPage" data-anchor="#contactPage">Контакты</a></li>
+            </ul>
+        </div>
+    </aside>
     <main id="main" class="site-main" role="main">
         <div class="oh-wrap">
             <div class="w_100 h_100vh">
-            <section id="home_screen" class="h_100vh">
-                    //= template/slider.html
+            <section id="landing-page" class="hero-story hero hero1 h_100vh">
+
+
+                    <svg id="leftArrow" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <g stroke-linejoin="round" stroke-linecap="round">
+                            <circle r="46" cx="50" cy="50"/>
+                            <polyline points="60 25, 30 50, 60 75"></polyline>
+                        </g>
+                    </svg>
+                    <svg id="rightArrow" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <g stroke-linejoin="round" stroke-linecap="round">
+                            <circle r="46" cx="50" cy="50"/>
+                            <polyline points="40 25, 70 50, 40 75"></polyline>
+                        </g>
+                    </svg>
+                    
+                    
+                        <div class="w_100 h_100 pos_r" id="panelWrap">
+                            <div class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    <div class="slide swiper-slide">
+                                        <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                        </div>
+                                        <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
+                                            <h1 class="cw">Беспроцентная рассрочка
+                                                на 36 месяцев</h1>
+                                        </div>
+                                    </div>
+                                    <div class="slide swiper-slide">
+                                        <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                        </div>
+                                        <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
+                                            <h1 class="cw">Гибкая система скидок</h1>
+                                        </div>
+                                    </div>
+                                    <div class="slide swiper-slide"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/314556/clock.png"
+                                                                         width="75"
+                                                                         alt="clock">
+                                        <h3>Bottom dot animation</h3>
+                                        <p>See that animation on the bottom with the navigation dots and rotating slide titles? Its time is
+                                            based on the position of the draggable element. Keep an eye on it as you drag or the slides
+                                            animate.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
             </section>
             </div>
         </div>
@@ -71,6 +159,35 @@
                 <p>Today content</p>
                 <p>Today content</p>
                 <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+                <p>Today content</p>
+
             </div>
         </section>
 
@@ -81,6 +198,31 @@
             </div>
 
             <div class="tomorrow-content purple">
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
+                <p>Tomorrow content</p>
                 <p>Tomorrow content</p>
                 <p>Tomorrow content</p>
                 <p>Tomorrow content</p>
@@ -277,6 +419,6 @@
 </div><!-- #primary -->
 
 
-//= template/footer.html
+<script src="js/main.js"></script>
 </body>
 </html>
