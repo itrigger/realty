@@ -29,6 +29,9 @@
   background-position: 50%;
   background-repeat: no-repeat;
 }
+.bgs_con{
+  background-size: contain;
+}
 .bgs_cov {
   background-size: cover;
 }
@@ -98,7 +101,9 @@
 .pl_250{
   padding-left: 250px;
 }
-
+.pt45p{
+  padding-top: 45%;
+}
 .bg_brown{
   background-color: $brown;
 }

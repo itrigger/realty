@@ -2,6 +2,8 @@ jQuery(document).ready(function ($) {
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(CSSRulePlugin);
+
+
     const sections = document.querySelectorAll("section");
 
     function goToSection(section, anim) {
@@ -170,8 +172,6 @@ jQuery(document).ready(function ($) {
         tl.from(chars, {duration: 2, opacity:0,  y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"expo",}, "+=0");
 
     }
-
-
 
 
     let bannerSwiper = new Swiper('#panelWrap .swiper-container', {

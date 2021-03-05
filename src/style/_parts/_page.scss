@@ -96,3 +96,18 @@
   right: auto;
   bottom: auto;
 }
+
+.map-logo{
+  background: url('../img/logo-map.svg') 0 0 no-repeat;
+  width: 90px;
+  height: 90px;
+  position: absolute;
+}
+.map-point{
+  cursor: pointer;
+  &:hover{
+    svg .bg{
+      fill: #649B50;
+    }
+  }
+}
