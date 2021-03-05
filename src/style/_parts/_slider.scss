@@ -7,13 +7,17 @@
   height: 44px;
 
 }
-#leftArrow {
+#leftArrow,
+#leftArrow2
+{
   right: 0;
   top: calc(50% - 23px);
   transform: rotate(180deg);
 }
 
-#rightArrow {
+#rightArrow,
+#rightArrow2
+{
   right: 0;
   top: calc(50% + 23px);
 }
@@ -23,11 +27,50 @@
   overflow: hidden;
   h1{
     margin-top: 115px;
-    font-size: 46px;
+    font-size: 4vmax;
     text-align: left;
+    line-height: 4.5vmax;
   }
   .j_parlxContent{
     padding-left: 281px;
+    .desc{
+      margin-top: 30px;
+      font-size: 25px;
+      line-height: 30px;
+    }
+  }
+  &.slide2{
+      .slider-square{
+        .title{
+          font-size: 60px;
+          span{
+            position: absolute;
+            right: -27px;
+            top: 2px;
+            font-size: 23px;
+          }
+        }
+        .desc{
+          margin-top: 15px;
+        }
+      }
+  }
+  &.slide3{
+    .slider-square{
+      .title{
+        font-size: 43px;
+        span{
+          position: absolute;
+          right: -27px;
+          top: 2px;
+          font-size: 23px;
+        }
+      }
+      .desc{
+        margin-top: 15px;
+      }
+    }
+
   }
 }
 
@@ -47,6 +90,16 @@
       right: -24px;
       top: 5px;
       font-size: 31px;
+    }
+    b{
+      position: absolute;
+      left: -24px;
+      top: 5px;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 15px;
+      color: #362633;
+
     }
   }
   .desc{

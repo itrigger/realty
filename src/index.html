@@ -5,45 +5,103 @@
 </head>
 <body>
 //= template/header.html
-<aside id="top-menu" class="top-menu">
-    <a href="tel:" class="top-square tel"><span class="ico ico-tel"></span></a>
-    <a href="#" class="top-square msg"><span class="ico ico-msg"></span></a>
+<aside id="top-menu" class="top-menu d_f">
+    <a href="tel:" class="top-square tel d_f ai_c jc_c"><span class="ico ico-tel-w"></span></a>
+    <a href="#" class="top-square msg d_f ai_c jc_c"><span class="ico ico-chat-w"></span></a>
 </aside>
 //= template/leftside.html
 <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
         <div class="oh-wrap">
             <div class="w_100 h_100vh">
-                <section id="home_screen" class="h_100vh">
+                <section id="home_screen" class="h_100vh pos_r">
                     //= template/slider.html
-                    <div class="main-btn-next">Далее</div>
+                    <a href="#section2" class="a_scrollto main-btn-next">Далее</a>
                 </section>
             </div>
         </div>
-        <section id="rooms" class="hero-story hero second-hero hero2">
-            <div class="left-col width-33">
-                <h2>Des chambres pour vous</h2>
+
+        <section id="section2" class="h_100vh pos_r">
+            <div class="oh-wrap d_f w_100 pl90">
+                <div class="left-col width-66">
+                    <div class="swiper-container h_75">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                    <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/sl2-1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                    <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/sl2-2.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                    <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/sl2-3.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                </div>
+                            </div>
+                        </div>
+                        <svg id="leftArrow2" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                            <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+
+                        <svg id="rightArrow2" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                            <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+                    </div>
+                    <div class="section--bottom bg_brown h_25 d_f jc_sb ai_c">
+                        <div class="mini-sec color-2">
+                            <div class="title d_f f_c jc_end">Высота <span>потолков</span></div>
+                            <div class="number">3<sup>м</sup></div>
+                        </div>
+                        <div class="mini-sec ms--b-left color-2">
+                            <div class="title d_f f_c jc_end">Вариантов <span>планировок</span></div>
+                            <div class="number">20</div>
+                        </div>
+                        <div class="mini-sec ms--b-left color-2">
+                            <div class="title d_f f_c jc_end">Площадь квартир</span></div>
+                            <div class="number">30 − 137<sup>м<sup>2</sup></sup></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-col width-33 delayed">
+                    <div class="section--top h_25 d_f jc_sb ai_c">
+                        <div class="mini-sec color-1">
+                            <div class="title">Клубных <span>домов</span></div>
+                            <div class="number">2</div>
+                        </div>
+                        <div class="mini-sec ms--b-left color-1">
+                            <div class="title">Этажей</div>
+                            <div class="number">16, 24</div>
+                        </div>
+                    </div>
+                    <div class="h_75">
+                        <div class="w_100 h_100 pos_r to_ct | ">
+                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/sec2.jpg'); transform-origin: 100% 100%; transform: translate(0px, 0px);"> </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="right-col width-66 delayed">
-                <h2>Contenu pour les chambres</h2>
-            </div>
-            <div class="main-btn-next">Далее</div>
         </section>
 
-        <section id="you" class="hero-story hero second-hero hero3">
-            <div class="left-col width-33 delayed">
-                <h2>Contenu gauche pour proche de vous</h2>
+        <section id="location" class="">
+            <div class="oh-wrap d_f w_100 pl90">
+                <div class="left-col w_100 pos_r">
+                    <div class="panomap panomap1 w_100 h_100">
+                        <img src="/img/full/pano.jpg" alt="" title="" />
+                    </div>
+                    <div class="panomap panomap2 w_100 h_100">
+                        <img src="/img/full/map.jpg" alt="" title="" />
+                    </div>
+
+                </div>
             </div>
-            <div class="middle-col width-33">
-                <h2>Proche de vous</h2>
-            </div>
-            <div class="right-col width-33 delayed">
-                <h2>Contenu droite pour proche de vous</h2>
-            </div>
-            <div class="main-btn-next">Далее</div>
         </section>
 
-        <section id="near" class="hero-story hero second-hero hero4">
+        <section id="howtoPage" class="hero-story hero second-hero hero4">
             <div class="left-col width-66 delayed">
                 <h2>Contenu pour proche de tout</h2>
             </div>

@@ -10,15 +10,16 @@
 @import "_parts/_leftside";
 @import "_parts/_page";
 
-@import "_parts/_temp";
 
 
 .slogan{
   color: #fff;
 }
 
-.top-menu{
-
+sup {
+  font-size: 50%;
+  line-height: 0;
+  vertical-align: super;
 }
 
 .j_parallaxEl{
