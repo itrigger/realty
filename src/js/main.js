@@ -251,10 +251,122 @@ jQuery(document).ready(function ($) {
             }
         }
     })
-    $(function () {
-        // Paver
-        $('div.panorama').paver();
+
+    $('.map--legend li').hover(function (){
+        let $dataPoint = $(this).attr('data-point');
+        let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find($dataPoint).addClass('active');
+        $('.panomap').find($linePoint).addClass('active');
+    }, function (){
+        let $dataPoint = $(this).attr('data-point');
+        let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find($dataPoint).removeClass('active');
+        $('.panomap').find($linePoint).removeClass('active');
+    });
+
+    $('.map-point').hover(function (){
+        let $dataPoint = $(this).attr('data-point');
+        console.log($dataPoint);
+        let $linePoint = $(this).attr('data-point') + '-line';
+        $('.map--legend').find('li[data-point="'+$dataPoint+'"]').addClass('active');
+        $('.panomap').find($linePoint).addClass('active');
+    }, function (){
+        let $dataPoint = $(this).attr('data-point');
+        let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find($linePoint).removeClass('active');
+        $('.map--legend').find('li[data-point="'+$dataPoint+'"]').removeClass('active');
     });
 
 
+
+
+        const filterScroll = function () {
+            $('.j-filter-scrollbar-wrapper .scrollbar-inner').scrollbar({
+                //autoScrollSize:!1,
+                autoUpdate: true,
+                disableBodyScroll: false
+            });
+        };
+        /*запускаем кастом скролл при загрузке документа*/
+        filterScroll();
+
+
+});
+
+
+function Line(){
+
+    let wrap = $('.panomap');
+
+    let item1 = wrap.find('.map-point1'),
+        num1 = wrap.find('.map-logo'),
+        num1X = num1.position().left+num1.width()/2,
+        num1Y = num1.position().top+num1.height()/2,
+        item1X = item1.position().left+item1.width()/2,
+        item1Y = item1.position().top+item1.height()/2;
+
+    let item2 = wrap.find('.map-point2'),
+        num2 = wrap.find('.map-logo'),
+        num2X = num2.position().left+num2.width()/2,
+        num2Y = num2.position().top+num2.height()/2,
+        item2X = item2.position().left+item2.width()/2,
+        item2Y = item2.position().top+item2.height()/2;
+
+    let item3 = wrap.find('.map-point3'),
+        num3 = wrap.find('.map-logo'),
+        num3X = num3.position().left+num3.width()/2,
+        num3Y = num3.position().top+num3.height()/2,
+        item3X = item3.position().left+item3.width()/2,
+        item3Y = item3.position().top+item3.height()/2;
+
+    let item4 = wrap.find('.map-point4'),
+        num4 = wrap.find('.map-logo'),
+        num4X = num4.position().left+num4.width()/2,
+        num4Y = num4.position().top+num4.height()/2,
+        item4X = item4.position().left+item4.width()/2,
+        item4Y = item4.position().top+item4.height()/2;
+
+    let item5 = wrap.find('.map-point5'),
+        num5 = wrap.find('.map-logo'),
+        num5X = num5.position().left+num5.width()/2,
+        num5Y = num5.position().top+num5.height()/2,
+        item5X = item5.position().left+item5.width()/2,
+        item5Y = item5.position().top+item5.height()/2;
+
+    let item6 = wrap.find('.map-point6'),
+        num6 = wrap.find('.map-logo'),
+        num6X = num6.position().left+num6.width()/2,
+        num6Y = num6.position().top+num6.height()/2,
+        item6X = item6.position().left+item6.width()/2,
+        item6Y = item6.position().top+item6.height()/2;
+
+    let item7 = wrap.find('.map-point7'),
+        num7 = wrap.find('.map-logo'),
+        num7X = num7.position().left+num7.width()/2,
+        num7Y = num7.position().top+num7.height()/2,
+        item7X = item7.position().left+item7.width()/2,
+        item7Y = item7.position().top+item7.height()/2;
+
+
+    let svg = $('#svg-line');
+
+    let line1 = svg.find('.line-1'),
+        line2 = svg.find('.line-2'),
+        line3 = svg.find('.line-3'),
+        line4 = svg.find('.line-4'),
+        line5 = svg.find('.line-5'),
+        line6 = svg.find('.line-6'),
+        line7 = svg.find('.line-7');
+
+    line1.attr({'x1': num1X, 'y1': num1Y, 'x2': item1X, 'y2': item1Y});
+    line2.attr({'x1': num2X, 'y1': num2Y, 'x2': item2X, 'y2': item2Y});
+    line3.attr({'x1': num3X, 'y1': num3Y, 'x2': item3X, 'y2': item3Y});
+    line4.attr({'x1': num4X, 'y1': num4Y, 'x2': item4X, 'y2': item4Y});
+    line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
+    line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
+    line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
+}
+
+$(window).on('load resize', function () {
+    Line();
 });

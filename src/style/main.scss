@@ -1,6 +1,7 @@
 
 // Подключение своих SCSS файлов
 @import "_parts/_reset";
+@import "../libs/jqueryui";
 @import "_parts/_vars";
 @import "_parts/_grid";
 @import "_parts/_utils";
