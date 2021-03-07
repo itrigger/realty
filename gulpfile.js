@@ -40,6 +40,7 @@ var path = {
         css: 'src/style/**/*.scss',
         img: 'src/img/**/*.*',
         fonts: 'src/fonts/**/*.*',
+        libs: 'src/libs/**/*.*',
         css_build: 'build/css/*.css',
         js_build: 'build/js/*.js'
     },
@@ -131,7 +132,7 @@ gulp.task('js:build', function () {
         .pipe(plumber())                            // для отслеживания ошибок
         //.pipe(rigger())                             // импортируем все указанные файлы в main.js
         .pipe(webpack({
-            mode: 'production',
+            mode: 'development',
             output: {filename: 'main.js'}
         }))
         .pipe(sourcemaps.init())
@@ -209,7 +210,7 @@ gulp.task('watch', function () {
     gulp.watch(path.watch.js, gulp.series('js:build'));
     gulp.watch(path.watch.img, gulp.series('image:build'));
     gulp.watch(path.watch.fonts, gulp.series('fonts:build'));
-    gulp.watch(path.watch.fonts, gulp.series('libs:build'));
+    gulp.watch(path.watch.libs, gulp.series('libs:build'));
     gulp.watch(path.watch.css_build).on('change', webserver.reload);
     gulp.watch(path.watch.js_build).on('change', webserver.reload);
 });

@@ -23,7 +23,7 @@ jQuery(document).ready(function ($) {
     gsap.from('.main-menu', {
         duration: 1, x: '-100%', ease: 'expo',
         onStart: () => {
-            if(!($('body').hasClass('leftMenuThin'))) {
+            if (!($('body').hasClass('leftMenuThin'))) {
                 $('.main-menu').addClass('active');
             }
         }
@@ -77,7 +77,7 @@ jQuery(document).ready(function ($) {
 
 
     $("#main-menu").hover(function () {
-        if($('body').hasClass('leftMenuThin')){
+        if ($('body').hasClass('leftMenuThin')) {
             menuItemTween.restart();
             menuLogoTween.restart();
             menuBgTween.restart();
@@ -86,7 +86,7 @@ jQuery(document).ready(function ($) {
         $(this).addClass("active");
 
     }, function () {
-        if($('body').hasClass('leftMenuThin')){
+        if ($('body').hasClass('leftMenuThin')) {
             $(this).removeClass("active");
             menuItemTween.reverse();
             menuLogoTween.reverse();
@@ -106,7 +106,7 @@ jQuery(document).ready(function ($) {
             menuLogoTween.reverse();
             menuBgTween.reverse();
             menuLogo2Tween.play();
-            },
+        },
         onLeaveBack: () => {
             $('body').removeClass('leftMenuThin');
             $('.main-menu').addClass('active');
@@ -156,20 +156,52 @@ jQuery(document).ready(function ($) {
         const slideCaption = slideActive.find('h1');
         const slideDesc = slideActive.find('.j_parlxContent .desc');
 
-        gsap.set(slideSquare, { autoAlpha: 0 });
-        gsap.to(slideSquare, { duration: 3, delay: 0.5, ease: Power4.easeOut, startAt: {autoAlpha: 0, y: "50%", rotationX:-90, }, autoAlpha: 1, y: "4%", rotationX:0, display: "flex"});
+        gsap.set(slideSquare, {autoAlpha: 0});
+        gsap.to(slideSquare, {
+            duration: 3,
+            delay: 0.5,
+            ease: Power4.easeOut,
+            startAt: {autoAlpha: 0, y: "50%", rotationX: -90,},
+            autoAlpha: 1,
+            y: "4%",
+            rotationX: 0,
+            display: "flex"
+        });
 
-        gsap.set(slideCaption, { autoAlpha: 0 });
-        gsap.to(slideCaption, { duration: 3, ease: Power4.easeOut, startAt: {autoAlpha: 0, y: "-100%" }, autoAlpha: 1, y: "4%", display: "block"});
+        gsap.set(slideCaption, {autoAlpha: 0});
+        gsap.to(slideCaption, {
+            duration: 3,
+            ease: Power4.easeOut,
+            startAt: {autoAlpha: 0, y: "-100%"},
+            autoAlpha: 1,
+            y: "4%",
+            display: "block"
+        });
 
-        gsap.set(slideDesc, { autoAlpha: 0 });
-        gsap.to(slideDesc, { duration: 3, delay: 0.5, ease: Power4.easeOut, startAt: {autoAlpha: 0, y: "-50%", rotationX:-90, }, autoAlpha: 1, y: "4%", rotationX:0, display: "flex"});
+        gsap.set(slideDesc, {autoAlpha: 0});
+        gsap.to(slideDesc, {
+            duration: 3,
+            delay: 0.5,
+            ease: Power4.easeOut,
+            startAt: {autoAlpha: 0, y: "-50%", rotationX: -90,},
+            autoAlpha: 1,
+            y: "4%",
+            rotationX: 0,
+            display: "flex"
+        });
 
         let tl = gsap.timeline(),
-            mySplitText = new SplitText(slideCaption, {type:"words,chars"}),
+            mySplitText = new SplitText(slideCaption, {type: "words,chars"}),
             chars = mySplitText.chars;
 
-        tl.from(chars, {duration: 2, opacity:0,  y:80, rotationX:180, transformOrigin:"0% 50% -50",  ease:"expo",}, "+=0");
+        tl.from(chars, {
+            duration: 2,
+            opacity: 0,
+            y: 80,
+            rotationX: 180,
+            transformOrigin: "0% 50% -50",
+            ease: "expo",
+        }, "+=0");
 
     }
 
@@ -190,9 +222,9 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-       /* autoplay: {
-            delay: 5000,
-        },*/
+        /* autoplay: {
+             delay: 5000,
+         },*/
         runCallbacksOnInit: true,
         on: {
             init: function () {
@@ -210,13 +242,13 @@ jQuery(document).ready(function ($) {
         }
     })
 
-    $(".a_scrollto").click(function (e){
+    $(".a_scrollto").click(function (e) {
         e.preventDefault();
         let $anchor = $(this).attr('href');
         let offset = $($anchor).offset().top;
         console.log($anchor);
         console.log(offset);
-        TweenLite.to(window, 1, {scrollTo:{y:offset}});
+        TweenLite.to(window, 1, {scrollTo: {y: offset}});
     })
 
     let locationSwiper = new Swiper('#section2 .swiper-container', {
@@ -252,100 +284,136 @@ jQuery(document).ready(function ($) {
         }
     })
 
-    $('.map--legend li').hover(function (){
+    $('.map--legend li').hover(function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.panomap').find($dataPoint).addClass('active');
         $('.panomap').find($linePoint).addClass('active');
-    }, function (){
+    }, function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.panomap').find($dataPoint).removeClass('active');
         $('.panomap').find($linePoint).removeClass('active');
     });
 
-    $('.map-point').hover(function (){
+    $('.map-point').hover(function () {
         let $dataPoint = $(this).attr('data-point');
         console.log($dataPoint);
         let $linePoint = $(this).attr('data-point') + '-line';
-        $('.map--legend').find('li[data-point="'+$dataPoint+'"]').addClass('active');
+        $('.map--legend').find('li[data-point="' + $dataPoint + '"]').addClass('active');
         $('.panomap').find($linePoint).addClass('active');
-    }, function (){
+    }, function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.panomap').find($linePoint).removeClass('active');
-        $('.map--legend').find('li[data-point="'+$dataPoint+'"]').removeClass('active');
+        $('.map--legend').find('li[data-point="' + $dataPoint + '"]').removeClass('active');
     });
 
 
+    const filterScroll = function () {
+        $('.j-filter-scrollbar-wrapper .scrollbar-inner').scrollbar({
+            //autoScrollSize:!1,
+            autoUpdate: true,
+            disableBodyScroll: false
+        });
+    };
+    /*запускаем кастом скролл при загрузке документа*/
+    filterScroll();
 
+    let panomapTween1 = gsap.from(".panomap1", {
+        scale: 1.12,
+        duration: 0.75,
+        ease: Linear.easeNone,
+        onComplete: ()=>{
+            Line();
+            $("#svg-line").addClass('active');
+        }
+    });
+    panomapTween1.play();
 
-        const filterScroll = function () {
-            $('.j-filter-scrollbar-wrapper .scrollbar-inner').scrollbar({
-                //autoScrollSize:!1,
-                autoUpdate: true,
-                disableBodyScroll: false
-            });
-        };
-        /*запускаем кастом скролл при загрузке документа*/
-        filterScroll();
+    let panomapTween2 = gsap.from(".panomap2", {
+        scale: 1.12,
+        duration: 0.75,
+        ease: Linear.easeNone,
+        onComplete: ()=>{
+            $("#svg-line").removeClass('active');
+        }
+    });
+    panomapTween2.pause();
 
+    $('.switcher').click(function () {
+        if ($(this).hasClass('left')) {
+            $(this).removeClass('left');
+            $('.panomap1, .switcher-w .left').removeClass('active');
+            $('.panomap2, .switcher-w .right').addClass('active');
+            panomapTween1.reverse();
+            panomapTween2.restart();
+            Line();
+        } else {
+            $(this).addClass('left');
+            $('.panomap1, .switcher-w .left').addClass('active');
+            $('.panomap2, .switcher-w .right').removeClass('active');
+            panomapTween2.reverse();
+            panomapTween1.restart();
+            Line();
+        }
+    });
 
 });
 
 
-function Line(){
+function Line() {
 
     let wrap = $('.panomap');
 
     let item1 = wrap.find('.map-point1'),
         num1 = wrap.find('.map-logo'),
-        num1X = num1.position().left+num1.width()/2,
-        num1Y = num1.position().top+num1.height()/2,
-        item1X = item1.position().left+item1.width()/2,
-        item1Y = item1.position().top+item1.height()/2;
+        num1X = num1.position().left + num1.width() / 2,
+        num1Y = num1.position().top + num1.height() / 2,
+        item1X = item1.position().left + item1.width() / 2,
+        item1Y = item1.position().top + item1.height() / 2;
 
     let item2 = wrap.find('.map-point2'),
         num2 = wrap.find('.map-logo'),
-        num2X = num2.position().left+num2.width()/2,
-        num2Y = num2.position().top+num2.height()/2,
-        item2X = item2.position().left+item2.width()/2,
-        item2Y = item2.position().top+item2.height()/2;
+        num2X = num2.position().left + num2.width() / 2,
+        num2Y = num2.position().top + num2.height() / 2,
+        item2X = item2.position().left + item2.width() / 2,
+        item2Y = item2.position().top + item2.height() / 2;
 
     let item3 = wrap.find('.map-point3'),
         num3 = wrap.find('.map-logo'),
-        num3X = num3.position().left+num3.width()/2,
-        num3Y = num3.position().top+num3.height()/2,
-        item3X = item3.position().left+item3.width()/2,
-        item3Y = item3.position().top+item3.height()/2;
+        num3X = num3.position().left + num3.width() / 2,
+        num3Y = num3.position().top + num3.height() / 2,
+        item3X = item3.position().left + item3.width() / 2,
+        item3Y = item3.position().top + item3.height() / 2;
 
     let item4 = wrap.find('.map-point4'),
         num4 = wrap.find('.map-logo'),
-        num4X = num4.position().left+num4.width()/2,
-        num4Y = num4.position().top+num4.height()/2,
-        item4X = item4.position().left+item4.width()/2,
-        item4Y = item4.position().top+item4.height()/2;
+        num4X = num4.position().left + num4.width() / 2,
+        num4Y = num4.position().top + num4.height() / 2,
+        item4X = item4.position().left + item4.width() / 2,
+        item4Y = item4.position().top + item4.height() / 2;
 
     let item5 = wrap.find('.map-point5'),
         num5 = wrap.find('.map-logo'),
-        num5X = num5.position().left+num5.width()/2,
-        num5Y = num5.position().top+num5.height()/2,
-        item5X = item5.position().left+item5.width()/2,
-        item5Y = item5.position().top+item5.height()/2;
+        num5X = num5.position().left + num5.width() / 2,
+        num5Y = num5.position().top + num5.height() / 2,
+        item5X = item5.position().left + item5.width() / 2,
+        item5Y = item5.position().top + item5.height() / 2;
 
     let item6 = wrap.find('.map-point6'),
         num6 = wrap.find('.map-logo'),
-        num6X = num6.position().left+num6.width()/2,
-        num6Y = num6.position().top+num6.height()/2,
-        item6X = item6.position().left+item6.width()/2,
-        item6Y = item6.position().top+item6.height()/2;
+        num6X = num6.position().left + num6.width() / 2,
+        num6Y = num6.position().top + num6.height() / 2,
+        item6X = item6.position().left + item6.width() / 2,
+        item6Y = item6.position().top + item6.height() / 2;
 
     let item7 = wrap.find('.map-point7'),
         num7 = wrap.find('.map-logo'),
-        num7X = num7.position().left+num7.width()/2,
-        num7Y = num7.position().top+num7.height()/2,
-        item7X = item7.position().left+item7.width()/2,
-        item7Y = item7.position().top+item7.height()/2;
+        num7X = num7.position().left + num7.width() / 2,
+        num7Y = num7.position().top + num7.height() / 2,
+        item7X = item7.position().left + item7.width() / 2,
+        item7Y = item7.position().top + item7.height() / 2;
 
 
     let svg = $('#svg-line');

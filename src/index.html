@@ -97,14 +97,8 @@
 
         <section id="location" class="pos_r">
             <div class="oh-wrap d_f w_100 pl90 pos_r">
-
-                  <div class="panomap panomap1 w_100 h_100 pos_a">
-                      <div class="w_100 h_100 bgs_con pos_r"
-                           style="background-image: url('/img/full/pano.jpg'); background-position: center bottom;"></div>
-                  </div>
-
                 <div class="pos_r w_100" style="padding-top: 53.3%">
-                    <div class="panomap panomap2 w_100 h_100">
+                    <div class="panomap panomap1 w_100 h_100 active">
                         <div class="w_100 h_100 bgs_con pos_r"
                              style="background-image: url('/img/full/map.jpg'); background-position: center bottom;">
                             <svg id="svg-line">
@@ -384,8 +378,278 @@
 
                         </div>
                     </div>
-                </div>
+                    <div class="panomap panomap2 w_100 h_100">
+                        <div class="w_100 h_100 bgs_con pos_r"
+                             style="background-image: url('/img/full/pano.jpg'); background-position: center bottom;">
 
+                            <div class="map-logo pos_r" style="left:25%;top:25%;"></div>
+                            <div class="map-point map-point1 pos_a" style="left: 56%;top: 26%;" data-point=".map-point1">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="45" height="44" viewBox="0 0 45 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point2 pos_a" style="left: 91%;top: 51%;"
+                                 data-point=".map-point2">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M21.8111 35.022C29.1073 35.022 35.0221 29.1072 35.0221 21.811C35.0221 14.5147 29.1073 8.59998 21.8111 8.59998C14.5149 8.59998 8.6001 14.5147 8.6001 21.811C8.6001 29.1072 14.5149 35.022 21.8111 35.022Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M23.3931 16.15V20.229H27.4721V23.391H23.3931V27.47H20.2311V23.391H16.1521V20.229H20.2311V16.15H23.3931ZM25.3931 14.15H23.3931H20.2311H18.2311V16.15V18.229H16.1521H14.1521V20.229V23.391V25.391H16.1521H18.2311V27.47V29.47H20.2311H23.3931H25.3931V27.47V25.391H27.4721H29.4721V23.391V20.229V18.229H27.4721H25.3931V16.15V14.15Z"
+                                          fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point3 pos_a" style="left: 69.7%;top: 38%;"
+                                 data-point=".map-point3">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z"  fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M6.69287 10.287H11.6779L17.2888 27.937L32.6139 25.857L34.7569 14.952H13.1159"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M17.2888 27.937V31.278H33.1188" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M17.9029 36.915C18.8368 36.915 19.5939 36.1579 19.5939 35.224C19.5939 34.29 18.8368 33.533 17.9029 33.533C16.969 33.533 16.2119 34.29 16.2119 35.224C16.2119 36.1579 16.969 36.915 17.9029 36.915Z"
+                                          fill="white"/>
+                                    <path d="M31.4268 36.915C32.3607 36.915 33.1179 36.1579 33.1179 35.224C33.1179 34.29 32.3607 33.533 31.4268 33.533C30.4929 33.533 29.7358 34.29 29.7358 35.224C29.7358 36.1579 30.4929 36.915 31.4268 36.915Z"
+                                          fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point4 pos_a" style="left: 49.7%;top: 64%;"
+                                 data-point=".map-point4">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z"  fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M32.9419 16.039C32.9419 20.013 32.0859 22.612 28.1969 22.612C24.6189 22.612 23.4519 20.013 23.4519 16.039C23.4519 12.065 25.5769 8.22101 28.1969 8.22101C30.8169 8.22101 32.9419 12.065 32.9419 16.039Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M10.6799 8.22101C10.6799 8.22101 10.6799 12.065 10.6799 16.039C10.6799 20.013 11.8469 22.612 15.4249 22.612C19.3149 22.612 20.1699 20.013 20.1699 16.039C20.1699 12.065 20.1699 8.22101 20.1699 8.22101"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"
+                                          stroke-linejoin="round"/>
+                                    <path d="M13.8618 8.22101V15.416" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10" stroke-linejoin="round"/>
+                                    <path d="M16.989 8.22101V15.416" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10" stroke-linejoin="round"/>
+                                    <path d="M15.4248 22.612V36.776" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M28.1968 22.612V36.776" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point7 pos_a" style="left: 14%;top: 57%;"
+                                 data-point=".map-point7">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z"  fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M31.8879 19.53C31.8879 25.834 31.8879 30.944 21.8109 30.944C11.7339 30.944 11.7339 25.834 11.7339 19.53C11.7339 13.226 16.2459 8.11597 21.8109 8.11597C27.3759 8.11597 31.8879 13.226 31.8879 19.53Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M26.8269 15.74C24.3629 18.248 21.8119 15.74 21.8119 15.74C19.3479 18.248 16.7969 15.74 16.7969 15.74"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.3338 22.318C26.8698 24.826 24.3188 22.318 24.3188 22.318C21.8548 24.826 19.3038 22.318 19.3038 22.318C16.8398 24.826 14.2888 22.318 14.2888 22.318"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M21.811 30.944V35.678" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M15.002 35.678H28.621" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+
+                            <div class="section--pre pos_a">Расположение</div>
+                            <div class="section--header pos_a">Все нужное рядом</div>
+
+                        </div>
+                    </div>
+                    <div class="switcher-w d_f ai_c jc_c">
+                        <div class="left active">НА КАРТЕ</div>
+                        <div class="switcher left"></div>
+                        <div class="right">ПАНОРАМА</div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -404,171 +668,7 @@
         </footer>
 
 
-        <!-- Barba wrapper -->
-        <!-- <div id="barba-wrapper">
-             <div class="barba-container">
 
-                 <div id="fullpage">
-
-                     &lt;!&ndash; SECTION 1️⃣ &ndash;&gt;
-                     <section id="section-1" class="section">
-                         &lt;!&ndash; circles &ndash;&gt;
-                         <svg id="circle-intro-1" class="circles circles-intro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         <svg id="circle-intro-2" class="circles circles-intro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         <svg id="circle-intro-3" class="circles circles-intro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         &lt;!&ndash; content wrapper &ndash;&gt;
-                         <div class="wrappers wrapper-content">
-                             &lt;!&ndash; title &ndash;&gt;
-                             <h2 id="title-1" class="wrapper-content__title">Section 1</h2>
-                             &lt;!&ndash; paragraph &ndash;&gt;
-                             <div class="container-txt">
-                                 <div class="container-txt__line">
-                                     <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">earum ratione, provident vel.</span>
-                                 </div>
-                             </div>
-                         </div>
-                     </section>
-
-                     &lt;!&ndash; SECTION 2️⃣ &ndash;&gt;
-                     <section id="section-2" class="section">
-                         &lt;!&ndash; circles &ndash;&gt;
-                         <svg id="circle-left" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         <svg id="circle-right" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         &lt;!&ndash; content wrapper &ndash;&gt;
-                         <div id="wrapper-content-2" class="wrappers wrapper-content">
-                             &lt;!&ndash; title &ndash;&gt;
-                             <h2 class="wrapper-content__title hover-2">Section 2</h2>
-                             &lt;!&ndash; paragraph &ndash;&gt;
-                             <div class="container-txt hover-2">
-                                 <div class="container-txt__line">
-                                     <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">earum ratione, provident vel.</span>
-                                 </div>
-                             </div>
-                         </div>
-                     </section>
-
-                     &lt;!&ndash; SECTION 3️⃣ &ndash;&gt;
-                     <section id="section-3" class="section">
-                         &lt;!&ndash; circles &ndash;&gt;
-                         <svg id="circle-grow" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         &lt;!&ndash; content wrapper &ndash;&gt;
-                         <div id="wrapper-content-3"  class="wrappers wrapper-content">
-                             &lt;!&ndash; title &ndash;&gt;
-                             <h2 class="wrapper-content__title hover-3">Section 3</h2>
-                             &lt;!&ndash; paragraph &ndash;&gt;
-                             <div class="container-txt hover-3">
-                                 <div class="container-txt__line">
-                                     <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">earum ratione, provident vel.</span>
-                                 </div>
-                             </div>
-                         </div>
-                     </section>
-
-                     &lt;!&ndash; SECTION 4️⃣ &ndash;&gt;
-                     <section id="section-4" class="section">
-                         &lt;!&ndash; circles &ndash;&gt;
-                         &lt;!&ndash;                         <svg id="circle-border" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                                                     <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                                                 </svg> &ndash;&gt;
-                         <svg class="circles piechart" viewBox="0 0 63.6619772368 63.6619772368">
-                             <circle id="circle-piechart" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
-                         </svg>
-                         &lt;!&ndash; content wrapper &ndash;&gt;
-                         <div id="wrapper-content-4" class="wrappers wrapper-content">
-                             &lt;!&ndash; title &ndash;&gt;
-                             <h2 class="wrapper-content__title">Section 4</h2>
-                             &lt;!&ndash; paragraph &ndash;&gt;
-                             <div class="container-txt">
-                                 <div class="container-txt__line">
-                                     <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">earum ratione, provident vel.</span>
-                                 </div>
-                             </div>
-                         </div>
-                     </section>
-
-                     &lt;!&ndash; SECTION 5️⃣ &ndash;&gt;
-                     <section id="section-5" class="section">
-                         &lt;!&ndash; circles &ndash;&gt;
-                         <svg id="circle-radar-1" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         <svg id="circle-radar-2" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         <svg id="circle-radar-3" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         <svg id="circle-radar-4" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                             <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                         </svg>
-                         &lt;!&ndash; content wrapper &ndash;&gt;
-                         <div id="wrapper-content-5" class="wrappers wrapper-content">
-                             &lt;!&ndash; title &ndash;&gt;
-                             <h2 class="wrapper-content__title">Section 5</h2>
-                             &lt;!&ndash; paragraph &ndash;&gt;
-                             <div class="container-txt">
-                                 <div class="container-txt__line">
-                                     <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">adipisicing elit. <a href=#>Ab cumque</a>, recusandae</span>
-                                 </div>
-
-                                 <div class="container-txt__line">
-                                     <span class="p-content">earum ratione, provident vel.</span>
-                                 </div>
-                             </div>
-                         </div>
-                     </section>
-                 </div>
-
-             </div> &lt;!&ndash; .barba-container &ndash;&gt;
-         </div>  #barba-wrapper -->
     </main><!-- #main -->
 </div><!-- #primary -->
 
