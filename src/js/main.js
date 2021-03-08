@@ -2,6 +2,7 @@ jQuery(document).ready(function ($) {
 
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(CSSRulePlugin);
+    gsap.registerPlugin(MorphSVGPlugin);
 
 
     const sections = document.querySelectorAll("section");
@@ -16,6 +17,7 @@ jQuery(document).ready(function ($) {
             anim.restart();
         }
     }
+
 
 
     /*my*/
@@ -246,8 +248,6 @@ jQuery(document).ready(function ($) {
         e.preventDefault();
         let $anchor = $(this).attr('href');
         let offset = $($anchor).offset().top;
-        console.log($anchor);
-        console.log(offset);
         TweenLite.to(window, 1, {scrollTo: {y: offset}});
     })
 
@@ -282,6 +282,78 @@ jQuery(document).ready(function ($) {
                 zoomImage(this.$el);
             }
         }
+    })
+
+
+    let card2Swiper = new Swiper('.card2 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: true,
+        speed: 1000,
+        navigation: {
+            nextEl: '#rightArrow3',
+            prevEl: '#leftArrow3',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+    })
+    let card3Swiper = new Swiper('.card3 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: true,
+        speed: 1000,
+        navigation: {
+            nextEl: '#rightArrow4',
+            prevEl: '#leftArrow4',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+    })
+
+    let card4Swiper = new Swiper('.card4 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: true,
+        speed: 1000,
+        navigation: {
+            nextEl: '#rightArrow5',
+            prevEl: '#leftArrow5',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+    })
+
+    let card5Swiper = new Swiper('.card5 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: true,
+        speed: 1000,
+        navigation: {
+            nextEl: '#rightArrow6',
+            prevEl: '#leftArrow6',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
     })
 
     $('.map--legend li').hover(function () {
@@ -358,6 +430,76 @@ jQuery(document).ready(function ($) {
             Line();
         }
     });
+
+
+
+
+    let action1 = new TimelineMax({})
+        .staggerTo("#step00",1,{morphSVG:{shape:"#step10", type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
+
+    let action2 = new TimelineMax({})
+        .staggerTo("#step01",1,{morphSVG:{shape:"#step11", type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
+
+
+
+  /*  const cards = gsap.utils.toArray('.cards:not(:last-child)')
+    const height = 100 * (cards.length - 1)
+
+
+    let tl = gsap.timeline({
+        duration: cards.length,
+        scrollTrigger: {
+            trigger: "#uniqPage",
+            start: "top top",
+            end: "+=300%",
+            scrub: true,
+            pin: true
+        }
+    })
+
+    console.log(cards);
+    cards.forEach(function (elem, i) {
+        tl.to(elem,{
+            yPercent: -100,
+            ease: "power1.inOut",
+            stagger: 0.5,
+            onEnter: ()=>{
+                let x = i;
+                let action = new TimelineMax().staggerTo(`#step0${x}`,1,{morphSVG:{shape:`#step1${x}`, type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
+            },
+        }, i)
+    })*/
+
+    let cardsAnim = gsap.to(".cards:not(:last-child)", {
+        yPercent: -100,
+        ease: "power1.inOut",
+        stagger: 0.5,
+        scrollTrigger: {
+            trigger: "#uniqPage",
+            start: "top top",
+            end: "+=300%",
+            scrub: true,
+            pin: true
+        }
+    });
+
+/*
+
+    ScrollTrigger.create({
+        trigger: "#card2",
+        start: "top+=100px bottom",
+        end: "+=500",
+        onToggle: self => action.play()
+    });
+    ScrollTrigger.create({
+        trigger: "#card3",
+        start: "top+=100px bottom",
+        end: "+=500",
+        onToggle: self => action2.play()
+    });
+*/
+
+
 
 });
 
