@@ -3,6 +3,7 @@ jQuery(document).ready(function ($) {
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(CSSRulePlugin);
     gsap.registerPlugin(MorphSVGPlugin);
+    gsap.registerPlugin(DrawSVGPlugin);
 
 
     const sections = document.querySelectorAll("section");
@@ -146,6 +147,15 @@ jQuery(document).ready(function ($) {
         const slideActive = sliderDOM.find('.swiper-slide-active, .swiper-slide-duplicate-active');
         const imageSlide = slideActive.find('.j_parallaxEl');
 
+        gsap.fromTo(imageSlide,
+            {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
+            {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
+        );
+    }
+
+    function zoomImage2(sectionDOM) {
+        const imageSlide = sectionDOM.find('.j_parallaxEl');
+        console.log(imageSlide);
         gsap.fromTo(imageSlide,
             {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
             {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
@@ -437,38 +447,77 @@ jQuery(document).ready(function ($) {
     let action1 = new TimelineMax({})
         .staggerTo("#step00",1,{morphSVG:{shape:"#step10", type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
 
+/*
     let action2 = new TimelineMax({})
         .staggerTo("#step01",1,{morphSVG:{shape:"#step11", type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
+*/
+
+    /*let action3 = new TimelineMax({paused: false})
+        .staggerTo("#anim-desk00",1,{morphSVG:{shape:"#anim-desk01"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
+*/
+
+    let shapes3 = "#anim-desk path, #anim-desk rect",
+        tl3 = gsap.timeline({
+            repeat:1,
+            yoyo:true,
+            scrollTrigger:  {
+                trigger: "#section5",
+                start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                end: "+=100%", // end after scrolling 500px beyond the start
+                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+            }
+        });
+
+    tl3.fromTo(shapes3, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+
+    let shapes = "#anim-cleaning path, #anim-cleaning rect",
+        tl = gsap.timeline({
+            repeat:1,
+            yoyo:true,
+            scrollTrigger:  {
+                trigger: "#section5",
+                start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                end: "bottom bottom", // end after scrolling 500px beyond the start
+                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+            }
+        });
+
+    tl.to(shapes, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+
+    let shapes2 = "#anim-video path, #anim-video rect",
+        tl2 = gsap.timeline({
+            repeat:1,
+            yoyo:true,
+            scrollTrigger:  {
+                trigger: "#section5",
+                start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                end: "bottom bottom", // end after scrolling 500px beyond the start
+                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+            }
+        });
+
+    tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
 
 
+    let shapes4 = "#anim-kind path",
+        tl4 = gsap.timeline({
+            repeat:1,
+            yoyo:true,
+            scrollTrigger:  {
+                trigger: "#card2",
+                start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                end: "bottom bottom", // end after scrolling 500px beyond the start
+                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 
-  /*  const cards = gsap.utils.toArray('.cards:not(:last-child)')
-    const height = 100 * (cards.length - 1)
+            }
+        });
+
+    tl4.to(shapes4, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
 
 
-    let tl = gsap.timeline({
-        duration: cards.length,
-        scrollTrigger: {
-            trigger: "#uniqPage",
-            start: "top top",
-            end: "+=300%",
-            scrub: true,
-            pin: true
-        }
-    })
-
-    console.log(cards);
-    cards.forEach(function (elem, i) {
-        tl.to(elem,{
-            yPercent: -100,
-            ease: "power1.inOut",
-            stagger: 0.5,
-            onEnter: ()=>{
-                let x = i;
-                let action = new TimelineMax().staggerTo(`#step0${x}`,1,{morphSVG:{shape:`#step1${x}`, type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
-            },
-        }, i)
-    })*/
 
     let cardsAnim = gsap.to(".cards:not(:last-child)", {
         yPercent: -100,
@@ -483,22 +532,38 @@ jQuery(document).ready(function ($) {
         }
     });
 
-/*
-
-    ScrollTrigger.create({
-        trigger: "#card2",
-        start: "top+=100px bottom",
-        end: "+=500",
-        onToggle: self => action.play()
+    gsap.fromTo('#section6 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+        scrollTrigger: {
+            trigger: '#section6',
+            start: "-=70%", // when the top of the trigger hits the top of the viewport
+            end: "+=130%", // end after scrolling 500px beyond the start
+            scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        },
+        scale: 1.12,
+        delay: 1
     });
-    ScrollTrigger.create({
-        trigger: "#card3",
-        start: "top+=100px bottom",
-        end: "+=500",
-        onToggle: self => action2.play()
-    });
-*/
 
+    gsap.fromTo('#section7 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+        scrollTrigger: {
+            trigger: '#section7',
+            start: "-=70%", // when the top of the trigger hits the top of the viewport
+            end: "+=130%", // end after scrolling 500px beyond the start
+            scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        },
+        scale: 1.12,
+        delay: 1
+    });
+
+    gsap.fromTo('#section8 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+        scrollTrigger: {
+            trigger: '#section8',
+            start: "-=70%", // when the top of the trigger hits the top of the viewport
+            end: "+=130%", // end after scrolling 500px beyond the start
+            scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+        },
+        scale: 1.12,
+        delay: 1
+    });
 
 
 });

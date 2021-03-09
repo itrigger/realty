@@ -85,8 +85,14 @@
 .width-45{
   width: 45%;
 }
+.width-47{
+  width: 47%;
+}
 .width-50{
   width: 50%;
+}
+.width-53{
+  width: 53%;
 }
 .width-55{
   width: 55%;
@@ -116,6 +122,9 @@
 .pl_250{
   padding-left: 250px;
 }
+.pt5vmax{
+  padding-top: 5vmax;
+}
 .pt45p{
   padding-top: 45%;
 }
@@ -133,7 +142,11 @@
 .hidden{
   visibility: hidden;
 }
-
+.btn-w{
+  a:first-child{
+    margin-right: 25px;
+  }
+}
 .btn{
   padding: 0 12px;
   display: inline-flex;
@@ -175,6 +188,23 @@
     color: #454545;
     border: 2px solid #a7a7a7;
     cursor: default;
+    &:hover{
+      &:before{
+        display: none;
+      }
+    }
+  }
+  &.btn-fill{
+    background: $orange;
+    transition: .3s background-color;
+    color: #fff;
+    &:hover{
+      background: rgba($orange,0.8);
+      transition: 0.3s background-color;
+      &:before{
+        display: none;
+      }
+    }
   }
 }
 
@@ -184,5 +214,54 @@
   }
   100%{
     background-position-x: 100%;
+  }
+}
+
+.mask--brown{
+  position: relative;
+  &:before{
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(#362633, .9);
+  }
+  &>*{
+    position: relative;
+  }
+}
+.mask--orange{
+  position: relative;
+  &:before{
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(#E24B33, .85);
+  }
+  &>*{
+    position: relative;
+  }
+}
+.mask--gray{
+  position: relative;
+  &:before{
+    display: block;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(#BAA9A8, .8);
+  }
+  &>*{
+    position: relative;
   }
 }
