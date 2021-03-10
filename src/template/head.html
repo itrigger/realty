@@ -18,12 +18,47 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 
+<!-- https://www.createjs.com/preloadjs -->
+<script src="../libs/preloadjs.min.js"></script>
+
+<script>
+    var queue = new createjs.LoadQueue(true);
+    queue.loadFile({src:"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/gsap.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/ScrollTrigger.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/ScrollToPlugin.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/SplitText.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/DrawSVGPlugin.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/scrollbar.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/js/main.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.css", type:createjs.Types.CSS});
+    queue.loadFile({src:"http://localhost:3000/css/main.css", type:createjs.Types.CSS});
+    queue.on("complete", handleComplete);
+    queue.on("error", handleError);
+
+
+    function handleComplete(event){
+        var element = document.getElementById("preloader");
+        element.parentNode.removeChild(element);
+    }
+
+    // A file failed to load.
+    function handleError(event) {
+        var item = event.data;
+        var div = document.getElementById(item.id);
+        if (div != null) {
+            div.innerHTML = "<label>Error " + (item.id == "NoFileHere.png"?":)":":(")+"</label>";
+            div.className = "gridBox error";
+        }
+    }
+</script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="../libs/swiper-bundle.min.css">
-<link href="css/main.css" rel="stylesheet" />
+<link href="../css/main.css" rel="stylesheet" />
 
 
 

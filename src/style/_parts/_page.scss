@@ -351,6 +351,9 @@
   line-height: 3.5vmax;
   font-weight: 800;
 }
+.page-img{
+  margin: 2.5vmax 0;
+}
 .page-title{
   color: #E24B33;
   text-transform: uppercase;
@@ -585,6 +588,142 @@
     }
     span{
       display: block;
+    }
+  }
+}
+
+.swiper-process-bottom{
+  background: #fff;
+  height: 80px;
+  position: absolute;
+  z-index: 99;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+}
+  #leftArrow9{
+    position: relative;
+    margin-left: 26px;
+    margin-top: 23px;
+    cursor: pointer;
+    &.swiper-button-disabled{
+      opacity: .4;
+    }
+  }
+  #rightArrow9{
+    position: relative;
+    margin-right: 26px;
+    margin-top: 23px;
+    cursor: pointer;
+    &.swiper-button-disabled{
+      opacity: .4;
+    }
+  }
+  .slide-desc{
+    .title{
+      color: #858585;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    ul li{
+      text-transform: uppercase;
+      font-size: 16px;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 1px;
+      display: none;
+      &.active{
+        display: inherit;
+      }
+    }
+  }
+
+.apart-switcher-wrap{
+  ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    li{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      width: 68px;
+      height: 68px;
+      margin-right: 1px;
+      background: #BAA9A8;
+      transition: .5s all;
+      font-size: 11px;
+      line-height: 1.1;
+      cursor: pointer;
+      span{
+        font-size: 20px;
+        font-weight: 500;
+      }
+      &.active{
+        background: #649B50;
+        &:hover{
+          background: rgba(#649B50,.8);
+          transition: .5s all;
+        }
+      }
+      &:hover{
+        background: rgba(#BAA9A8,.8);
+        transition: .5s all;
+      }
+    }
+  }
+}
+
+.plan-nums{
+  margin-top: 45px;
+  .num{
+    font-size: 45px;
+    font-weight: 600;
+  }
+  .pre{
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1;
+    color: #362633;
+    position: relative;
+    margin-right: 9px;
+  }
+  .pre-w-line{
+    padding-left: 60px;
+    &:before{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 30px;
+      width: 1px;
+      height: 44px;
+      background: #BAA9A8;
+      top: -5px;
+    }
+    span{
+      display: block;
+    }
+  }
+}
+
+.plan-rooms{
+  margin-top: 45px;
+  .ico-w{
+    width: 30px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    li{
+      flex-basis: 50%;
+      margin-bottom: 15px;
     }
   }
 }

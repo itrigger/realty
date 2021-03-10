@@ -1,8 +1,8 @@
 jQuery(document).ready(function ($) {
 
     gsap.registerPlugin(ScrollTrigger);
-    gsap.registerPlugin(CSSRulePlugin);
-    gsap.registerPlugin(MorphSVGPlugin);
+    //gsap.registerPlugin(CSSRulePlugin);
+    //gsap.registerPlugin(MorphSVGPlugin);
     gsap.registerPlugin(DrawSVGPlugin);
 
 
@@ -69,22 +69,22 @@ jQuery(document).ready(function ($) {
         duration: 0.75,
         ease: Linear.easeNone,
     });
-    menuLogo2Tween.pause();
+   // menuLogo2Tween.pause();
 
-    let rule = CSSRulePlugin.getRule(".logo-w::after");
+  /*  let rule = CSSRulePlugin.getRule(".logo-w::after");
     let menuBgTween = gsap.from(rule, {
         backgroundPosition: "-100% 0px",
         ease: Linear.easeNone,
         duration: 1
-    });
+    });*/
 
 
     $("#main-menu").hover(function () {
         if ($('body').hasClass('leftMenuThin')) {
             menuItemTween.restart();
-            menuLogoTween.restart();
-            menuBgTween.restart();
-            menuLogo2Tween.reverse();
+          //  menuLogoTween.restart();
+            //menuBgTween.restart();
+          //  menuLogo2Tween.reverse();
         }
         $(this).addClass("active");
 
@@ -92,9 +92,9 @@ jQuery(document).ready(function ($) {
         if ($('body').hasClass('leftMenuThin')) {
             $(this).removeClass("active");
             menuItemTween.reverse();
-            menuLogoTween.reverse();
-            menuBgTween.reverse();
-            menuLogo2Tween.restart();
+          //  menuLogoTween.reverse();
+           // menuBgTween.reverse();
+          //  menuLogo2Tween.restart();
         }
     });
 
@@ -106,17 +106,17 @@ jQuery(document).ready(function ($) {
             $('body').addClass('leftMenuThin');
             $('.main-menu').removeClass('active');
             menuItemTween.reverse();
-            menuLogoTween.reverse();
-            menuBgTween.reverse();
-            menuLogo2Tween.play();
+           // menuLogoTween.reverse();
+           // menuBgTween.reverse();
+           // menuLogo2Tween.play();
         },
         onLeaveBack: () => {
             $('body').removeClass('leftMenuThin');
             $('.main-menu').addClass('active');
             menuItemTween.play();
-            menuLogoTween.play();
-            menuBgTween.play();
-            menuLogo2Tween.reverse();
+           // menuLogoTween.play();
+           // menuBgTween.play();
+           // menuLogo2Tween.reverse();
         }
     });
 
@@ -132,12 +132,7 @@ jQuery(document).ready(function ($) {
             start: "top top", // when the top of the trigger hits the top of the viewport
             end: "+=100%", // end after scrolling 500px beyond the start
             scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-            snap: {
-                snapTo: 0.1, // snap to the closest label in the timeline
-                duration: {min: 0.2, max: 3}, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
-                delay: 0.5, // wait 0.2 seconds from the last scroll event before doing the snapping
-                ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
-            }
+
         },
         scale: 1.12,
         delay: 1
@@ -147,15 +142,6 @@ jQuery(document).ready(function ($) {
         const slideActive = sliderDOM.find('.swiper-slide-active, .swiper-slide-duplicate-active');
         const imageSlide = slideActive.find('.j_parallaxEl');
 
-        gsap.fromTo(imageSlide,
-            {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
-            {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
-        );
-    }
-
-    function zoomImage2(sectionDOM) {
-        const imageSlide = sectionDOM.find('.j_parallaxEl');
-        console.log(imageSlide);
         gsap.fromTo(imageSlide,
             {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
             {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
@@ -225,6 +211,10 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
         speed: 1000,
         navigation: {
             nextEl: '#rightArrow',
@@ -234,9 +224,9 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-        /* autoplay: {
+         autoplay: {
              delay: 5000,
-         },*/
+         },
         runCallbacksOnInit: true,
         on: {
             init: function () {
@@ -268,6 +258,10 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
         speed: 1000,
         navigation: {
             nextEl: '#rightArrow2',
@@ -302,6 +296,10 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
         speed: 1000,
         navigation: {
             nextEl: '#rightArrow3',
@@ -319,6 +317,10 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
         speed: 1000,
         navigation: {
             nextEl: '#rightArrow4',
@@ -337,6 +339,10 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
         speed: 1000,
         navigation: {
             nextEl: '#rightArrow5',
@@ -355,6 +361,10 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
         speed: 1000,
         navigation: {
             nextEl: '#rightArrow6',
@@ -364,7 +374,40 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-    })
+    });
+
+    let sec9Swiper = new Swiper('#section9 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: false,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
+        speed: 1000,
+        navigation: {
+            nextEl: '#rightArrow9',
+            prevEl: '#leftArrow9',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        runCallbacksOnInit: true,
+        on: {
+            slideNextTransitionStart: function () {
+                $('#section9 .slide-desc ul li').removeClass('active');
+                $('#section9 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+            },
+            slidePrevTransitionStart: function () {
+                $('#section9 .slide-desc ul li').removeClass('active');
+                $('#section9 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+            }
+        }
+    });
 
     $('.map--legend li').hover(function () {
         let $dataPoint = $(this).attr('data-point');
@@ -423,8 +466,10 @@ jQuery(document).ready(function ($) {
     });
     panomapTween2.pause();
 
-    $('.switcher').click(function () {
+    $('.switcher').click(function (e) {
+        e.preventDefault();
         if ($(this).hasClass('left')) {
+            console.log('has left');
             $(this).removeClass('left');
             $('.panomap1, .switcher-w .left').removeClass('active');
             $('.panomap2, .switcher-w .right').addClass('active');
@@ -432,6 +477,7 @@ jQuery(document).ready(function ($) {
             panomapTween2.restart();
             Line();
         } else {
+            console.log('has not left');
             $(this).addClass('left');
             $('.panomap1, .switcher-w .left').addClass('active');
             $('.panomap2, .switcher-w .right').removeClass('active');
@@ -444,19 +490,7 @@ jQuery(document).ready(function ($) {
 
 
 
-    let action1 = new TimelineMax({})
-        .staggerTo("#step00",1,{morphSVG:{shape:"#step10", type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
-
-/*
-    let action2 = new TimelineMax({})
-        .staggerTo("#step01",1,{morphSVG:{shape:"#step11", type:"rotational"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
-*/
-
-    /*let action3 = new TimelineMax({paused: false})
-        .staggerTo("#anim-desk00",1,{morphSVG:{shape:"#anim-desk01"}, opacity:1, visibility: "visible", ease: Power0.easeNone});
-*/
-
-    let shapes3 = "#anim-desk path, #anim-desk rect",
+    let shapes3 = "#anim-desk path, #anim-desk rect, #anim-cleaning path, #anim-cleaning rect, #anim-video path, #anim-video rect",
         tl3 = gsap.timeline({
             repeat:1,
             yoyo:true,
@@ -469,9 +503,9 @@ jQuery(document).ready(function ($) {
             }
         });
 
-    tl3.fromTo(shapes3, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+    tl3.fromTo(shapes3, {drawSVG:"0 0"}, {duration: 2, drawSVG:"100%"});
 
-    let shapes = "#anim-cleaning path, #anim-cleaning rect",
+/*    let shapes = "#anim-cleaning path, #anim-cleaning rect",
         tl = gsap.timeline({
             repeat:1,
             yoyo:true,
@@ -499,7 +533,7 @@ jQuery(document).ready(function ($) {
             }
         });
 
-    tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+    tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});*/
 
 
     let shapes4 = "#anim-kind path",

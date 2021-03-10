@@ -79,8 +79,14 @@
 .width-33{
   width: 33.33%;
 }
+.width-38{
+  width: 38%;
+}
 .width-66{
   width: 66.66%;
+}
+.width-40{
+  width: 40%;
 }
 .width-45{
   width: 45%;
@@ -96,6 +102,12 @@
 }
 .width-55{
   width: 55%;
+}
+.width-60{
+  width: 60%;
+}
+.width-62{
+  width: 62%;
 }
 .width-100{
   width: 100%;
@@ -131,6 +143,9 @@
 .bg_brown{
   background-color: $brown;
 }
+.bg_lighgray{
+  background-color: #D8CBCB;
+}
 
 .color-1{
   color: #000;
@@ -163,6 +178,9 @@
   position: relative;
   overflow: hidden;
   transition: 1s color;
+  &>*{
+    position: relative;
+  }
   &:before{
     content: '';
     display: block;
@@ -174,7 +192,7 @@
     background: url('../img/btnwave.svg');
     animation: btnBg 0.75s linear infinite;
     transition: 1s top;
-    z-index: -1;
+
   }
   &:hover{
     color: #fff;
