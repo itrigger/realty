@@ -36,6 +36,32 @@
   }
 }
 
+#main-menu .main-btn-next{
+  opacity: 0;
+  pointer-events: none;
+  left: 210px;
+}
+
+body.leftMenuThin{
+  #home_screen{
+    .main-btn-next{
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s;
+    }
+  }
+  #main-menu .main-btn-next{
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 1s;
+  }
+  #main-menu.active .main-btn-next{
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s;
+  }
+}
+
 @keyframes btnnext-1 {
   0%{top: -35px;}
   50%{top: -40px;}
@@ -673,6 +699,13 @@
         transition: .5s all;
       }
     }
+  }
+}
+
+.plan-desc, .plan-img{
+  display: none;
+  &.active{
+    display: block;
   }
 }
 

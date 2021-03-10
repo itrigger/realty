@@ -189,9 +189,9 @@
     left: 0;
     width: 100%;
     height: 76px;
-    background: url('../img/btnwave.svg');
-    animation: btnBg 0.75s linear infinite;
-    transition: 1s top;
+    background-image: url('../img/btnwave.svg');
+    background-position: 0% 0%;
+    transition: 1s all;
 
   }
   &:hover{
@@ -199,7 +199,8 @@
     transition: 1s color;
     &:before{
       top: -19px;
-      transition: 1s top;
+      transition: 1s all;
+      background-position: 100% 0%;
     }
   }
   &.btn-disabled{

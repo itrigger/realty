@@ -20,7 +20,8 @@
   width: 130px;
   height: 130px;
   opacity: 0;
-  transition: opacity .3s;
+  transition: .3s all;
+  transform: scale(0.8);
 }
 .logo-s{
   opacity: 1;
@@ -106,9 +107,10 @@
     left: 0;
     background-color: #362631;
     transition: 0.75s left ease-out;
-    .log{
+    .logo{
+      transform: scale(1);
       opacity: 1;
-      transition: opacity .3s;
+      transition: .9s all;
     }
     .logo-w{
       background: url("../img/pat--leftmenu-wave.svg") 0 0 repeat-y #BAA9A8;

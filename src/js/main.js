@@ -50,25 +50,26 @@ jQuery(document).ready(function ($) {
     let menuItemTween = gsap.from(".menu-item", {
         autoAlpha: 0,
         x: -100,
+        duration: .5,
         stagger: { // wrap advanced options in an object
             each: 0.1,
             ease: Linear.easeNone,
         }
     });
 
-    let menuLogoTween = gsap.from(".logo", {
+   /* let menuLogoTween = gsap.from(".logo", {
         autoAlpha: 0,
         x: -100,
         duration: 1,
         ease: Linear.easeNone,
-    });
+    });*/
 
-    let menuLogo2Tween = gsap.from(".logo-s", {
+/*    let menuLogo2Tween = gsap.from(".logo-s", {
         autoAlpha: 0,
         y: -100,
         duration: 0.75,
         ease: Linear.easeNone,
-    });
+    });*/
    // menuLogo2Tween.pause();
 
   /*  let rule = CSSRulePlugin.getRule(".logo-w::after");
@@ -91,7 +92,7 @@ jQuery(document).ready(function ($) {
     }, function () {
         if ($('body').hasClass('leftMenuThin')) {
             $(this).removeClass("active");
-            menuItemTween.reverse();
+            menuItemTween.reverse().duration(0.3);
           //  menuLogoTween.reverse();
            // menuBgTween.reverse();
           //  menuLogo2Tween.restart();
@@ -600,6 +601,15 @@ jQuery(document).ready(function ($) {
     });
 
 
+    $(".apart-switcher-wrap li").click(function (){
+       let dataPlan = $(this).data("plan");
+       $(".plan-img").removeClass("active");
+       $(".plan-desc").removeClass("active");
+       $(".apart-switcher-wrap li").removeClass("active");
+       $(".plan-img[data-plan="+dataPlan+"]").addClass("active");
+       $(".plan-desc[data-plan="+dataPlan+"]").addClass("active");
+       $(this).addClass("active");
+    });
 
 
 });
