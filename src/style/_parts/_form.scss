@@ -1,0 +1,98 @@
+.form{
+  label{
+    color: #D2CDCC;
+    font-size: 12px;
+  }
+  input[type=submit]{
+    background: transparent;
+    width: 210px;
+    font-weight: 800;
+  }
+  .form-control{
+    margin-bottom: 20px;
+  }
+}
+
+.form-control{
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(#D2CDCC, .5);
+  font-size: 14px;
+  line-height: 1;
+  color: #D2CDCC;
+  width: 100%;
+  height: 40px;
+  font-family: inherit;
+  padding: 0;
+}
+textarea.form-control{
+  padding-top: 10px;
+}
+
+.cb{
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  input[type=checkbox]{
+    opacity: 0;
+  }
+  span{
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    border: 2px solid #D2CDCC;
+    position: relative;
+  }
+  &:hover{
+    span{
+      opacity: 0.9;
+    }
+  }
+  input[type=checkbox]:checked+span{
+    &:before{
+      display: block;
+      position: absolute;
+      content: '×';
+      font-size: 26px;
+      line-height: 1;
+      color: #d2cdcc;
+      left: 1px;
+      top: -4px;
+    }
+  }
+}
+
+.fancy-form{
+  background: #493648;
+  padding: 35px;
+  max-width: 640px;
+  h2{
+    color: #fff;
+    font-size: 45px;
+    font-weight: 800;
+    margin-bottom: 25px;
+  }
+  label{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .btn-w{
+    .btn:first-child{
+      margin-right: 15px;
+    }
+  }
+}
+
+.fancybox-close-small{
+  width: 43px;
+  height: 42px;
+  background: url('../img/fancy-close.svg') 0 0 no-repeat;
+  svg{
+    display: none;
+  }
+}
+.fancybox-slide--html .fancybox-close-small{
+  right: 20px;
+  top: 20px;
+}

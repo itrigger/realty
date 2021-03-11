@@ -24,6 +24,7 @@
 <script>
     var queue = new createjs.LoadQueue(true);
     queue.loadFile({src:"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/gsap.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/ScrollTrigger.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/ScrollToPlugin.min.js", type:createjs.Types.JAVASCRIPT});
@@ -32,6 +33,7 @@
     queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/scrollbar.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/js/main.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", type:createjs.Types.CSS});
     queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.css", type:createjs.Types.CSS});
     queue.loadFile({src:"http://localhost:3000/css/main.css", type:createjs.Types.CSS});
     queue.on("complete", handleComplete);
@@ -62,4 +64,4 @@
 
 
 
-<title>Home</title>
+<title>Жилой комплекс LEON</title>
