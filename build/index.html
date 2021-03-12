@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="../libs/gsap.min.js"></script>
-    <script src="../libs/ScrollTrigger.min.js"></script>
-    <script src="../libs/ScrollToPlugin.min.js"></script>
-    <script src="../libs/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
-    
-    
     <meta charset="UTF-8">
     
     <!-- Useful meta tags -->
@@ -19,56 +11,139 @@
     <meta name="googlebot" content="index, follow">
     <meta name="google" content="notranslate">
     <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <!--<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">-->
+    <!--<link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">-->
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- https://www.createjs.com/preloadjs -->
+    <script src="../libs/preloadjs.min.js"></script>
+    
+    <script>
+        var queue = new createjs.LoadQueue(true);
+        queue.loadFile({src:"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/gsap.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/ScrollTrigger.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/ScrollToPlugin.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/SplitText.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/DrawSVGPlugin.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/scrollbar.min.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/js/main.js", type:createjs.Types.JAVASCRIPT});
+        queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.css", type:createjs.Types.CSS});
+        queue.loadFile({src:"http://localhost:3000/css/main.css", type:createjs.Types.CSS});
+        queue.on("complete", handleComplete);
+        queue.on("error", handleError);
+    
+    
+        function handleComplete(event){
+            var element = document.getElementById("preloader");
+            element.parentNode.removeChild(element);
+        }
+    
+        // A file failed to load.
+        function handleError(event) {
+            var item = event.data;
+            var div = document.getElementById(item.id);
+            if (div != null) {
+                div.innerHTML = "<label>Error " + (item.id == "NoFileHere.png"?":)":":(")+"</label>";
+                div.className = "gridBox error";
+            }
+        }
+    </script>
     
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../libs/swiper-bundle.min.css">
-    <link href="css/main.css" rel="stylesheet" />
-    
-    
+    <link href="../css/main.css" rel="stylesheet" />
     
     
     
     <title>Home</title>
 </head>
 <body>
+<div id="preloader" style="display: flex; align-items: center; justify-content: center; background: #362631; position:fixed; left: 0; top: 0; right: 0; bottom: 0; z-index: 10000; color: #fff;">
+    <div class="preloader" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M57.2619 1.09802H1.0979V57.262H57.2619V1.09802Z" fill="#BAA9A8"/>
+            <path d="M58.36 58.36H0V0H58.36V58.36ZM2.197 56.162H56.164V2.197H2.197V56.162Z" fill="white"/>
+            <path d="M39.239 33.294C41.539 30.914 42.949 27.674 42.949 24.104C42.949 16.774 36.979 10.814 29.649 10.814C22.319 10.814 16.359 16.774 16.359 24.104C16.359 28.794 18.799 32.924 22.489 35.294C19.959 35.454 17.219 35.254 13.959 34.284V37.474C16.569 38.174 18.879 38.424 21.009 38.424C24.109 38.424 26.819 37.884 29.479 37.364C30.199 37.214 30.919 37.074 31.639 36.944C32.098 36.858 32.566 36.782 33.035 36.705C33.348 36.66 33.655 36.61 33.974 36.573C34.612 36.493 35.251 36.423 35.909 36.383C36.159 36.363 36.409 36.353 36.669 36.343C39.169 36.253 41.909 36.513 45.169 37.453V34.263C43.009 33.694 41.049 33.404 39.239 33.294ZM19.429 24.104C19.429 18.464 24.019 13.884 29.649 13.884C35.289 13.884 39.869 18.464 39.869 24.104C39.869 28.324 37.299 31.954 33.639 33.514H33.629C32.039 33.714 30.539 34.014 29.049 34.304C23.699 33.994 19.429 29.534 19.429 24.104Z" fill="white"/>
+            <path d="M45.169 41.554V44.744C38.599 42.844 34.169 43.714 29.479 44.654C26.819 45.174 24.109 45.714 21.009 45.714C18.879 45.714 16.569 45.464 13.959 44.764V41.574C20.069 43.384 24.349 42.524 28.879 41.634C33.529 40.704 38.339 39.754 45.169 41.554Z" fill="white"/>
+        </svg>
+        <div style="margin-top: 15px;">Loading...</div>
+    </div>
+</div>
+<style>
+    .preloader{
+        transition: 1s all;
+        animation: preloader 1s infinite;
+    }
+    @keyframes preloader {
+        0%{transform: scale(1);}
+        70%{transform: scale(1.15);}
+        100%{transform: scale(1);}
+    }
+</style>
 <header id="header" class="header">
-    <div class="slogan">Все важное в квадрате</div>
+    <div class="d_f pl30 ai_c h_100">
+        <div class="slogan">Все важное в квадрате!</div>
+        <a href="#" class="top_tel ml_a c_w d_f ai_c"><span class="ico ico-left ico-tel-w"></span>+995-557 545 589</a>
+        <a href="#" class="top_contact c_w d_f ai_c"><span class="ico ico-left ico-chat-w"></span>Оставить заявку</a>
+        <div class="top_lang c_w">Ru</div>
+    </div>
 </header>
-<aside id="top-menu" class="top-menu">
-    <a href="tel:" class="top-square tel"><span class="ico ico-tel"></span></a>
-    <a href="#" class="top-square msg"><span class="ico ico-msg"></span></a>
+<aside id="top-menu" class="top-menu d_f">
+    <a href="tel:" class="top-square tel d_f ai_c jc_c"><span class="ico ico-tel-w"></span></a>
+    <a href="#" class="top-square msg d_f ai_c jc_c"><span class="ico ico-chat-w"></span></a>
+</aside>
+<aside id="main-menu" class="main-menu">
+    <div class="logo-w w_100 d_f ai_c jc_c">
+        <a href="/" class="logo"></a>
+        <a href="/" class="logo-s"></a>
+    </div>
+    <div class="menu-items">
+        <ul>
+            <li class="menu-item"><a href="#locpage" data-anchor="#locpage" class="a_scrollto">Расположение</a></li>
+            <li class="menu-item"><a href="#uniqPage" data-anchor="#uniqPage" class="a_scrollto">Уникальность</a></li>
+            <li class="menu-item"><a href="#howtoPage" data-anchor="#howtoPage" class="a_scrollto">Как купить</a></li>
+            <li class="menu-item"><a href="#apartments" data-anchor="#apartments" class="a_scrollto">Квартиры</a></li>
+            <li class="menu-item"><a href="#contactPage" data-anchor="#contactPage" class="a_scrollto">Контакты</a></li>
+        </ul>
+    </div>
+    <div class="leftmenu--footer">
+        <div class="d_f ai_c | social-btns leftmenu--footer-social">
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-wt-w"></span></a>
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-tg-w"></span></a>
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-ig-w"></span></a>
+            <a href="#" class="d_f ai_c jc_c"><span class="ico ico-fb-w"></span></a>
+        </div>
+        <div class="copyright c_w">
+            © 2021, LEON
+        </div>
+        <div class="f-slogan c_w">Официальный сайт дома</div>
+    </div>
+    <div class="menu-text">Меню</div>
+    <div class="main-btn-next"></div>
 </aside>
 <div id="primary" class="content-area">
-    <aside id="main-menu" class="main-menu">
-        <div class="menu-items">
-            <ul>
-                <li class="menu-item"><a href="#homePage" data-anchor="#homePage">Расположение</a></li>
-                <li class="menu-item"><a href="#locPage" data-anchor="#locPage">Уникальность</a></li>
-                <li class="menu-item"><a href="#uniqPage" data-anchor="#uniqPage">Как купить</a></li>
-                <li class="menu-item"><a href="#howtoPage" data-anchor="#howtoPage">Квартиры</a></li>
-                <li class="menu-item"><a href="#contactPage" data-anchor="#contactPage">Контакты</a></li>
-            </ul>
-        </div>
-    </aside>
     <main id="main" class="site-main" role="main">
         <div class="oh-wrap">
             <div class="w_100 h_100vh">
-            <section id="landing-page" class="hero-story hero hero1 h_100vh">
-
-
-                    <svg id="leftArrow" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <g stroke-linejoin="round" stroke-linecap="round">
-                            <circle r="46" cx="50" cy="50"/>
-                            <polyline points="60 25, 30 50, 60 75"></polyline>
-                        </g>
+                <section id="home_screen" class="h_100vh pos_r">
+                    <svg id="leftArrow" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                        <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"/>
                     </svg>
-                    <svg id="rightArrow" class="arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-                        <g stroke-linejoin="round" stroke-linecap="round">
-                            <circle r="46" cx="50" cy="50"/>
-                            <polyline points="40 25, 70 50, 40 75"></polyline>
-                        </g>
+                    
+                    <svg id="rightArrow" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                        <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"/>
                     </svg>
                     
                     
@@ -77,348 +152,1510 @@
                                 <div class="swiper-wrapper">
                                     <div class="slide swiper-slide">
                                         <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
-                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage swiper-lazy" data-background="/img/full/lobby1.jpg" style=" transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
                                         </div>
                                         <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
-                                            <h1 class="cw">Беспроцентная рассрочка
-                                                на 36 месяцев</h1>
+                                            <h1 class="c_w">Беспроцентная рассрочка <span>на 36 месяцев</span></h1>
+                                            <div class="desc c_w">Независимо от первоначального взноса</div>
                                         </div>
+                                        <div class="pos_a slider-square d_f f_c jc_c ai_c">
+                                            <div class="title d_f jc_c ai_s c_w">0<span>%</span></div>
+                                            <div class="desc">до конца строительства</div>
+                                        </div>
+                                        <div class="swiper-lazy-preloader"></div>
                                     </div>
-                                    <div class="slide swiper-slide">
+                                    <div class="slide slide2 swiper-slide swiper-lazy">
                                         <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
-                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage" style="background-image: url('/img/full/lobby1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage swiper-lazy" data-background="/img/full/lobby2.jpg" style="transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
                                         </div>
                                         <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
-                                            <h1 class="cw">Гибкая система скидок</h1>
+                                            <h1 class="c_w">Первый дом с коворкингом
+                                                <span>в Батуми</span></h1>
+                                            <div class="desc c_w">Живи, работай, отдыхай в одном доме</div>
                                         </div>
+                                        <div class="pos_a slider-square d_f f_c jc_c ai_c">
+                                            <div class="title d_f jc_c ai_s c_w">500<span>м<sup>2</sup></span></div>
+                                            <div class="desc">коворкинг в доме</div>
+                                        </div>
+                                        <div class="swiper-lazy-preloader"></div>
                                     </div>
-                                    <div class="slide swiper-slide"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/314556/clock.png"
-                                                                         width="75"
-                                                                         alt="clock">
-                                        <h3>Bottom dot animation</h3>
-                                        <p>See that animation on the bottom with the navigation dots and rotating slide titles? Its time is
-                                            based on the position of the draggable element. Keep an eye on it as you drag or the slides
-                                            animate.</p>
+                                    <div class="slide slide3 swiper-slide swiper-lazy">
+                                        <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage swiper-lazy" data-background="/img/full/lobby3.jpg" style="transform-origin: 60% 90%; transform: translate(0px, 0px);"> </div>
+                                        </div>
+                                        <div class="w_100 h_100 pos_a pl_250 | j_parlxContent">
+                                                <h1 class="c_w">И, конечно же, море</h1>
+                                                <div class="desc c_w">В 10 минутах пешком</div>
+                                        </div>
+                                        <div class="pos_a slider-square d_f f_c jc_c ai_c">
+                                            <div class="title d_f jc_c ai_s c_w"><b>ОТ</b> $480<span>м<sup>2</sup></span></div>
+                                            <div class="desc">на старте</div>
+                                        </div>
+                                        <div class="swiper-lazy-preloader"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-            </section>
+                    <a href="#section2" class="a_scrollto main-btn-next">Далее</a>
+                </section>
             </div>
         </div>
-        <section id="rooms" class="hero-story hero second-hero hero2">
-            <div class="left-col width-33">
-                <h2>Des chambres pour vous</h2>
-            </div>
-            <div class="right-col width-66 delayed">
-                <h2>Contenu pour les chambres</h2>
-            </div>
-        </section>
-
-        <section id="you" class="hero-story hero second-hero hero3">
-            <div class="left-col width-33 delayed">
-                <h2>Contenu gauche pour proche de vous</h2>
-            </div>
-            <div class="middle-col width-33">
-                <h2>Proche de vous</h2>
-            </div>
-            <div class="right-col width-33 delayed">
-                <h2>Contenu droite pour proche de vous</h2>
-            </div>
-        </section>
-
-        <section id="near" class="hero-story hero second-hero hero4">
-            <div class="left-col width-66 delayed">
-                <h2>Contenu pour proche de tout</h2>
-            </div>
-            <div class="right-col width-33">
-                <h2>Proche de tout</h2>
-            </div>
-        </section>
 
 
-        <section class="today-page">
-            <div class="today-header green sticky-today">
-                <h2>Today header</h2>
-            </div>
-
-            <div class="today-content green">
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-                <p>Today content</p>
-
+        <section id="section2" class="h_100vh pos_r">
+            <div class="oh-wrap d_f w_100 pl90">
+                <div class="left-col width-66">
+                    <div class="swiper-container h_75">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                    <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage swiper-lazy" data-background="/img/full/sl2-1.jpg"
+                                         style="transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                    <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage swiper-lazy" data-background="/img/full/sl2-2.jpg"
+                                         style="transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                                    <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage swiper-lazy" data-background="/img/full/sl2-3.jpg"
+                                         style="transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <svg id="leftArrow2" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                            <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                  stroke-miterlimit="10"/>
+                        </svg>
+        
+                        <svg id="rightArrow2" class="arrow" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                            <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                  stroke-miterlimit="10"/>
+                        </svg>
+                    </div>
+                    <div class="section--bottom bg_brown h_25 d_f jc_sb ai_c">
+                        <div class="mini-sec color-2">
+                            <div class="title d_f f_c jc_end">Высота <span>потолков</span></div>
+                            <div class="number">3<sup>м</sup></div>
+                        </div>
+                        <div class="mini-sec ms--b-left color-2">
+                            <div class="title d_f f_c jc_end">Вариантов <span>планировок</span></div>
+                            <div class="number">20</div>
+                        </div>
+                        <div class="mini-sec ms--b-left color-2">
+                            <div class="title d_f f_c jc_end">Площадь квартир</span></div>
+                            <div class="number">30 − 137<sup>м<sup>2</sup></sup></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-col width-33 delayed">
+                    <div class="section--top h_25 d_f jc_sb ai_c">
+                        <div class="mini-sec color-1">
+                            <div class="title">Клубных <span>домов</span></div>
+                            <div class="number">2</div>
+                        </div>
+                        <div class="mini-sec ms--b-left color-1">
+                            <div class="title">Этажей</div>
+                            <div class="number">16, 24</div>
+                        </div>
+                    </div>
+                    <div class="h_75">
+                        <div class="w_100 h_100 pos_r to_ct | ">
+                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage"
+                                 style="background-image: url('/img/full/sec2.jpg'); transform-origin: 100% 100%; transform: translate(0px, 0px);"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-
-        <section class="tomorrow-page">
-            <div class="tomorrow-header purple sticky-tomorrow">
-                <h2>Tomorrow header</h2>
+        <section id="locpage" class="pos_r">
+            <div class="oh-wrap d_f w_100 pl90 pos_r">
+                <div class="pos_r w_100" style="padding-top: 53.3%">
+                    <div class="panomap panomap1 w_100 h_100 active">
+                        <div class="w_100 h_100 bgs_con pos_r"
+                             style="background-image: url('/img/full/map.jpg'); background-position: center bottom;">
+                            <svg id="svg-line">
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-1 map-point1-line"/>
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-2 map-point2-line"/>
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-3 map-point3-line"/>
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-4 map-point4-line"/>
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-5 map-point5-line"/>
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-6 map-point6-line"/>
+                                <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                      class="line line-7 map-point7-line"/>
+                            </svg>
+                            <div class="map-logo pos_r" style="left:71%;top:38%;"></div>
+                            <div class="map-point map-point1 pos_a" style="left: 64%;top: 21%;"
+                                 data-point=".map-point1">
+                                <svg width="45" height="44" viewBox="0 0 45 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#BAA9A8"/>
+                                    <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point2 pos_a" style="left: 59%;top: 42%;"
+                                 data-point=".map-point2">
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
+                                    <path d="M21.8111 35.022C29.1073 35.022 35.0221 29.1072 35.0221 21.811C35.0221 14.5147 29.1073 8.59998 21.8111 8.59998C14.5149 8.59998 8.6001 14.5147 8.6001 21.811C8.6001 29.1072 14.5149 35.022 21.8111 35.022Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M23.3931 16.15V20.229H27.4721V23.391H23.3931V27.47H20.2311V23.391H16.1521V20.229H20.2311V16.15H23.3931ZM25.3931 14.15H23.3931H20.2311H18.2311V16.15V18.229H16.1521H14.1521V20.229V23.391V25.391H16.1521H18.2311V27.47V29.47H20.2311H23.3931H25.3931V27.47V25.391H27.4721H29.4721V23.391V20.229V18.229H27.4721H25.3931V16.15V14.15Z"
+                                          fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point3 pos_a" style="left: 83%;top: 18%;"
+                                 data-point=".map-point3">
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
+                                    <path d="M6.69287 10.287H11.6779L17.2888 27.937L32.6139 25.857L34.7569 14.952H13.1159"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M17.2888 27.937V31.278H33.1188" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M17.9029 36.915C18.8368 36.915 19.5939 36.1579 19.5939 35.224C19.5939 34.29 18.8368 33.533 17.9029 33.533C16.969 33.533 16.2119 34.29 16.2119 35.224C16.2119 36.1579 16.969 36.915 17.9029 36.915Z"
+                                          fill="white"/>
+                                    <path d="M31.4268 36.915C32.3607 36.915 33.1179 36.1579 33.1179 35.224C33.1179 34.29 32.3607 33.533 31.4268 33.533C30.4929 33.533 29.7358 34.29 29.7358 35.224C29.7358 36.1579 30.4929 36.915 31.4268 36.915Z"
+                                          fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point4 pos_a" style="left: 90.5%;top: 48%;"
+                                 data-point=".map-point4">
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
+                                    <path d="M32.9419 16.039C32.9419 20.013 32.0859 22.612 28.1969 22.612C24.6189 22.612 23.4519 20.013 23.4519 16.039C23.4519 12.065 25.5769 8.22101 28.1969 8.22101C30.8169 8.22101 32.9419 12.065 32.9419 16.039Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M10.6799 8.22101C10.6799 8.22101 10.6799 12.065 10.6799 16.039C10.6799 20.013 11.8469 22.612 15.4249 22.612C19.3149 22.612 20.1699 20.013 20.1699 16.039C20.1699 12.065 20.1699 8.22101 20.1699 8.22101"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"
+                                          stroke-linejoin="round"/>
+                                    <path d="M13.8618 8.22101V15.416" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10" stroke-linejoin="round"/>
+                                    <path d="M16.989 8.22101V15.416" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10" stroke-linejoin="round"/>
+                                    <path d="M15.4248 22.612V36.776" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M28.1968 22.612V36.776" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point5 pos_a" style="left: 78.5%;top: 70%;"
+                                 data-point=".map-point5">
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
+                                    <path d="M31.8879 19.53C31.8879 25.834 31.8879 30.944 21.8109 30.944C11.7339 30.944 11.7339 25.834 11.7339 19.53C11.7339 13.226 16.2459 8.11597 21.8109 8.11597C27.3759 8.11597 31.8879 13.226 31.8879 19.53Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M26.8269 15.74C24.3629 18.248 21.8119 15.74 21.8119 15.74C19.3479 18.248 16.7969 15.74 16.7969 15.74"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.3338 22.318C26.8698 24.826 24.3188 22.318 24.3188 22.318C21.8548 24.826 19.3038 22.318 19.3038 22.318C16.8398 24.826 14.2888 22.318 14.2888 22.318"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M21.811 30.944V35.678" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M15.002 35.678H28.621" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point6 pos_a" style="left: 49.5%;top: 81%;"
+                                 data-point=".map-point6">
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
+                                    <path d="M37.0181 23.059C38.4771 22.51 39.2151 20.882 38.6661 19.422C38.1171 17.962 36.4891 17.225 35.0291 17.774L28.4931 20.233L20.5141 15.694L16.2031 17.316L21.8441 22.814L15.5861 25.169L11.8621 23.077L7.13306 24.856L14.5581 31.509L37.0181 23.059Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point7 pos_a" style="left: 45.5%;top: 64%;"
+                                 data-point=".map-point7">
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
+                                    <path d="M31.8879 19.53C31.8879 25.834 31.8879 30.944 21.8109 30.944C11.7339 30.944 11.7339 25.834 11.7339 19.53C11.7339 13.226 16.2459 8.11597 21.8109 8.11597C27.3759 8.11597 31.8879 13.226 31.8879 19.53Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M26.8269 15.74C24.3629 18.248 21.8119 15.74 21.8119 15.74C19.3479 18.248 16.7969 15.74 16.7969 15.74"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.3338 22.318C26.8698 24.826 24.3188 22.318 24.3188 22.318C21.8548 24.826 19.3038 22.318 19.3038 22.318C16.8398 24.826 14.2888 22.318 14.2888 22.318"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M21.811 30.944V35.678" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M15.002 35.678H28.621" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+        
+                            <div class="section--pre pos_a">Расположение</div>
+                            <div class="section--header pos_a">Все нужное рядом</div>
+        
+                            <div class="map--legend">
+                                <div class="scrolled_block">
+                                    <div class="j-filter-scrollbar-wrapper">
+                                        <div class="scrollbar-inner">
+                                            <ul>
+                                                <li data-point=".map-point1">
+                                                    <div class="title">Lech and Maria Kachinsky park</div>
+                                                    <div class="desc-w d_f ">
+                                                        <div class="ico-w">
+                                                            <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">15</div>
+                                                        <div class="desc">минут<br/>пешком</div>
+                                                    </div>
+                                                </li>
+                                                <li data-point=".map-point2">
+                                                    <div class="title">Аэропорт</div>
+                                                    <div class="desc-w d_f">
+                                                        <div class="ico-w">
+                                                            <svg width="26" height="19" viewBox="0 0 26 19" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M25.91 3.90405V5.31405C25.91 5.31405 25.55 5.89405 23.93 6.00405L23.07 4.34405L23 3.90405H25.91Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M12.937 16.148H6.37399V18.058H2.83199V15.106C2.83199 15.106 1.85999 13.995 1.85999 10.8C1.85999 7.605 7.31199 0 7.31199 0H12.938H12.973H18.599C18.599 0 24.051 7.605 24.051 10.8C24.051 13.995 23.079 15.106 23.079 15.106V18.058H19.537V16.148H12.974H12.937ZM16.827 10.051H8.80499V11.946H16.827V10.051V10.051ZM20.508 8.96C19.683 8.96 19.015 9.629 19.015 10.453C19.015 11.277 19.684 11.946 20.508 11.946C21.333 11.946 22.001 11.277 22.001 10.453C22.001 9.629 21.333 8.96 20.508 8.96ZM12.972 6.286C16.861 6.286 19.917 5.696 19.917 5.696C19.604 4.515 17.833 1.529 17.833 1.529H12.971H12.936H8.07599C8.07599 1.529 6.30499 4.516 5.99199 5.696C5.99199 5.696 9.04799 6.286 12.937 6.286H12.972ZM3.90799 10.453C3.90799 11.278 4.57699 11.946 5.40099 11.946C6.22499 11.946 6.89399 11.277 6.89399 10.453C6.89399 9.629 6.22599 8.96 5.40199 8.96C4.57799 8.96 3.90799 9.628 3.90799 10.453Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M2.91 3.90405L2.89 4.01405L1.87 5.99405C0.34 5.86405 0 5.31405 0 5.31405V3.90405H2.91Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">5</div>
+                                                        <div class="desc">минут <br>на машине</div>
+                                                    </div>
+                                                </li>
+                                                <li data-point=".map-point3">
+                                                    <div class="title">ТЦ MetroCity</div>
+                                                    <div class="desc-w d_f ai_c">
+                                                        <div class="ico-w">
+                                                            <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">5</div>
+                                                        <div class="desc">минут <br>пешком</div>
+                                                    </div>
+                                                </li>
+                                                <li data-point=".map-point4">
+                                                    <div class="title">Аэропорт</div>
+                                                    <div class="desc-w d_f">
+                                                        <div class="ico-w">
+                                                            <svg width="26" height="19" viewBox="0 0 26 19" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M25.91 3.90405V5.31405C25.91 5.31405 25.55 5.89405 23.93 6.00405L23.07 4.34405L23 3.90405H25.91Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M12.937 16.148H6.37399V18.058H2.83199V15.106C2.83199 15.106 1.85999 13.995 1.85999 10.8C1.85999 7.605 7.31199 0 7.31199 0H12.938H12.973H18.599C18.599 0 24.051 7.605 24.051 10.8C24.051 13.995 23.079 15.106 23.079 15.106V18.058H19.537V16.148H12.974H12.937ZM16.827 10.051H8.80499V11.946H16.827V10.051V10.051ZM20.508 8.96C19.683 8.96 19.015 9.629 19.015 10.453C19.015 11.277 19.684 11.946 20.508 11.946C21.333 11.946 22.001 11.277 22.001 10.453C22.001 9.629 21.333 8.96 20.508 8.96ZM12.972 6.286C16.861 6.286 19.917 5.696 19.917 5.696C19.604 4.515 17.833 1.529 17.833 1.529H12.971H12.936H8.07599C8.07599 1.529 6.30499 4.516 5.99199 5.696C5.99199 5.696 9.04799 6.286 12.937 6.286H12.972ZM3.90799 10.453C3.90799 11.278 4.57699 11.946 5.40099 11.946C6.22499 11.946 6.89399 11.277 6.89399 10.453C6.89399 9.629 6.22599 8.96 5.40199 8.96C4.57799 8.96 3.90799 9.628 3.90799 10.453Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M2.91 3.90405L2.89 4.01405L1.87 5.99405C0.34 5.86405 0 5.31405 0 5.31405V3.90405H2.91Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">5</div>
+                                                        <div class="desc">минут <br>на машине</div>
+                                                    </div>
+                                                </li>
+                                                <li data-point=".map-point5">
+                                                    <div class="title">ТЦ MetroCity</div>
+                                                    <div class="desc-w d_f ai_c">
+                                                        <div class="ico-w">
+                                                            <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">5</div>
+                                                        <div class="desc">минут <br>пешком</div>
+                                                    </div>
+                                                </li>
+                                                <li data-point=".map-point6">
+                                                    <div class="title">Аэропорт</div>
+                                                    <div class="desc-w d_f">
+                                                        <div class="ico-w">
+                                                            <svg width="26" height="19" viewBox="0 0 26 19" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M25.91 3.90405V5.31405C25.91 5.31405 25.55 5.89405 23.93 6.00405L23.07 4.34405L23 3.90405H25.91Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M12.937 16.148H6.37399V18.058H2.83199V15.106C2.83199 15.106 1.85999 13.995 1.85999 10.8C1.85999 7.605 7.31199 0 7.31199 0H12.938H12.973H18.599C18.599 0 24.051 7.605 24.051 10.8C24.051 13.995 23.079 15.106 23.079 15.106V18.058H19.537V16.148H12.974H12.937ZM16.827 10.051H8.80499V11.946H16.827V10.051V10.051ZM20.508 8.96C19.683 8.96 19.015 9.629 19.015 10.453C19.015 11.277 19.684 11.946 20.508 11.946C21.333 11.946 22.001 11.277 22.001 10.453C22.001 9.629 21.333 8.96 20.508 8.96ZM12.972 6.286C16.861 6.286 19.917 5.696 19.917 5.696C19.604 4.515 17.833 1.529 17.833 1.529H12.971H12.936H8.07599C8.07599 1.529 6.30499 4.516 5.99199 5.696C5.99199 5.696 9.04799 6.286 12.937 6.286H12.972ZM3.90799 10.453C3.90799 11.278 4.57699 11.946 5.40099 11.946C6.22499 11.946 6.89399 11.277 6.89399 10.453C6.89399 9.629 6.22599 8.96 5.40199 8.96C4.57799 8.96 3.90799 9.628 3.90799 10.453Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M2.91 3.90405L2.89 4.01405L1.87 5.99405C0.34 5.86405 0 5.31405 0 5.31405V3.90405H2.91Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">5</div>
+                                                        <div class="desc">минут <br>на машине</div>
+                                                    </div>
+                                                </li>
+                                                <li data-point=".map-point7">
+                                                    <div class="title">ТЦ MetroCity</div>
+                                                    <div class="desc-w d_f ai_c">
+                                                        <div class="ico-w">
+                                                            <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                                      fill="#A59B9A"/>
+                                                                <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                                      fill="#A59B9A"/>
+                                                            </svg>
+        
+                                                        </div>
+                                                        <div class="time">5</div>
+                                                        <div class="desc">минут <br>пешком</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        
+                        </div>
+                    </div>
+                    <div class="panomap panomap2 w_100 h_100">
+                        <div class="w_100 h_100 bgs_con pos_r"
+                             style="background-image: url('/img/full/pano.jpg'); background-position: center bottom;">
+        
+                            <div class="map-logo pos_r" style="left:25%;top:25%;"></div>
+                            <div class="map-point map-point1 pos_a" style="left: 56%;top: 26%;" data-point=".map-point1">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+        
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="45" height="44" viewBox="0 0 45 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point2 pos_a" style="left: 91%;top: 51%;"
+                                 data-point=".map-point2">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+        
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M21.8111 35.022C29.1073 35.022 35.0221 29.1072 35.0221 21.811C35.0221 14.5147 29.1073 8.59998 21.8111 8.59998C14.5149 8.59998 8.6001 14.5147 8.6001 21.811C8.6001 29.1072 14.5149 35.022 21.8111 35.022Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M23.3931 16.15V20.229H27.4721V23.391H23.3931V27.47H20.2311V23.391H16.1521V20.229H20.2311V16.15H23.3931ZM25.3931 14.15H23.3931H20.2311H18.2311V16.15V18.229H16.1521H14.1521V20.229V23.391V25.391H16.1521H18.2311V27.47V29.47H20.2311H23.3931H25.3931V27.47V25.391H27.4721H29.4721V23.391V20.229V18.229H27.4721H25.3931V16.15V14.15Z"
+                                          fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point3 pos_a" style="left: 69.7%;top: 38%;"
+                                 data-point=".map-point3">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+        
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z"  fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M6.69287 10.287H11.6779L17.2888 27.937L32.6139 25.857L34.7569 14.952H13.1159"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M17.2888 27.937V31.278H33.1188" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M17.9029 36.915C18.8368 36.915 19.5939 36.1579 19.5939 35.224C19.5939 34.29 18.8368 33.533 17.9029 33.533C16.969 33.533 16.2119 34.29 16.2119 35.224C16.2119 36.1579 16.969 36.915 17.9029 36.915Z"
+                                          fill="white"/>
+                                    <path d="M31.4268 36.915C32.3607 36.915 33.1179 36.1579 33.1179 35.224C33.1179 34.29 32.3607 33.533 31.4268 33.533C30.4929 33.533 29.7358 34.29 29.7358 35.224C29.7358 36.1579 30.4929 36.915 31.4268 36.915Z"
+                                          fill="white"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point4 pos_a" style="left: 49.7%;top: 64%;"
+                                 data-point=".map-point4">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+        
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z"  fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M32.9419 16.039C32.9419 20.013 32.0859 22.612 28.1969 22.612C24.6189 22.612 23.4519 20.013 23.4519 16.039C23.4519 12.065 25.5769 8.22101 28.1969 8.22101C30.8169 8.22101 32.9419 12.065 32.9419 16.039Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M10.6799 8.22101C10.6799 8.22101 10.6799 12.065 10.6799 16.039C10.6799 20.013 11.8469 22.612 15.4249 22.612C19.3149 22.612 20.1699 20.013 20.1699 16.039C20.1699 12.065 20.1699 8.22101 20.1699 8.22101"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"
+                                          stroke-linejoin="round"/>
+                                    <path d="M13.8618 8.22101V15.416" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10" stroke-linejoin="round"/>
+                                    <path d="M16.989 8.22101V15.416" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10" stroke-linejoin="round"/>
+                                    <path d="M15.4248 22.612V36.776" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M28.1968 22.612V36.776" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+                            <div class="map-point map-point7 pos_a" style="left: 14%;top: 57%;"
+                                 data-point=".map-point7">
+                                <div class="popup-info">
+                                    <div class="d_f">
+                                        <div class="ico">
+                                            <svg width="45" height="44" viewBox="0 0 45 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path class="bg" d="M44.1779 0H0.555908V43.622H44.1779V0Z" fill="#649B50"/>
+                                                <path d="M15.7129 14.769C15.7129 11.094 18.6919 8.11499 22.3669 8.11499C26.0419 8.11499 29.0209 11.094 29.0209 14.769"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M29.0209 18.621C29.0209 22.296 26.0419 25.275 22.3669 25.275C18.6919 25.275 15.7129 22.296 15.7129 18.621"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                                <path d="M34.2929 35.551H10.4409L11.5629 15.185H33.1709L34.2929 35.551Z"
+                                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                            </svg>
+                                        </div>
+                                        <div class="content">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+        
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path class="bg" d="M43.622 0H0V43.622H43.622V0Z"  fill="#000000" fill-opacity="0.5"/>
+                                    <path d="M31.8879 19.53C31.8879 25.834 31.8879 30.944 21.8109 30.944C11.7339 30.944 11.7339 25.834 11.7339 19.53C11.7339 13.226 16.2459 8.11597 21.8109 8.11597C27.3759 8.11597 31.8879 13.226 31.8879 19.53Z"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M26.8269 15.74C24.3629 18.248 21.8119 15.74 21.8119 15.74C19.3479 18.248 16.7969 15.74 16.7969 15.74"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M29.3338 22.318C26.8698 24.826 24.3188 22.318 24.3188 22.318C21.8548 24.826 19.3038 22.318 19.3038 22.318C16.8398 24.826 14.2888 22.318 14.2888 22.318"
+                                          stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                    <path d="M21.811 30.944V35.678" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                    <path d="M15.002 35.678H28.621" stroke="white" stroke-width="2"
+                                          stroke-miterlimit="10"/>
+                                </svg>
+                            </div>
+        
+                            <div class="section--pre pos_a">Расположение</div>
+                            <div class="section--header pos_a">Все нужное рядом</div>
+        
+                        </div>
+                    </div>
+                    <div class="switcher-w d_f ai_c jc_c">
+                        <div class="left active">НА КАРТЕ</div>
+                        <div class="switcher left"></div>
+                        <div class="right">ПАНОРАМА</div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div class="tomorrow-content purple">
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
-                <p>Tomorrow content</p>
+        <section id="uniqPage" class="h_100vh pos_r oh-wrap">
+            <div class="w_100 h_100 bgs_cov pos_a pl90 | cards card1" id="card1"
+                 style="background-image: url('/img/full/sec4.jpg'); background-position: center top;">
+                <div class="d_f jc_c h_100 f_c c_w pl80">
+                    <div class="page-title">Уникальность</div>
+                    <h1 class="page-header">Первый жилой дом <span>с коворкингом в Батуми</span></h1>
+                    <div class="page-desc">Лайфворкинг — новый для Батуми формат городского здания,
+                        <span>в котором расположены квартиры и полноценный коворкинг.</span>
+                        <span>Живи, работай, отдыхай в одном доме</span></div>
+                </div>
+                <div class="card--bottom card-bottom--wave">
+                    <div class="pl80 d_f ai_c h_100">
+        
+        
+                    </div>
+                </div>
+            </div>
+            <div class="w_100 h_100 bgs_cov pos_a pl90 | cards card2" id="card2">
+                <div class="d_f jc_c h_100 pl80">
+                    <div class="col-left width-45 d_f h_100 f_c pos_r">
+                        <h1 class="page-header">Дом, где весело
+                            <span>детям</span></h1>
+                        <div class="page-desc">Отвести ребёнка в детский сад без спешки: на территории дома предусмотрен детский
+                            сад. Ваш малыш сам проводит вас в место, где ему
+                            безопасно и весело.
+                        </div>
+                        <svg id="anim-kind" width="221" height="212" viewBox="0 0 221 212" fill="none"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path id="step00" class="hidden" d="
+                               M6 2H1V7H6V2Z
+                              M6 164H3.99998H2
+                              M44 35C44.5523 35 45 34.5523 45 34C45 33.4477 44.5523 33 44 33C43.4477 33 43 33.4477 43 34C43 34.5523 43.4477 35 44 35Z
+                              M87.9619 165.864L86.9619 166.864
+                              M3 164H2
+                              M2 164L2 166
+                              M3 166H2
+                              M83 67C84.3333 67 84.4286 69 87 69
+                              M87 2C85.6667 2 85.5714 1 83 1
+                              M219 164L219 165
+                              M1 166H-4.48221e-08" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+        
+                            <path id="step10" class="hidden" d="
+                               M86.962 46.2019H1V112.379H86.962V46.2019Z
+                               M86.962 46.2019H1V112.379H86.962V46.2019Z
+                               M85.3749 45.285L43.8079 2L2.24194 45.285
+                               M43.808 98.7329C54.9255 98.7329 63.938 89.7204 63.938 78.6029C63.938 67.4854 54.9255 58.4729 43.808 58.4729C32.6905 58.4729 23.678 67.4854 23.678 78.6029C23.678 89.7204 32.6905 98.7329 43.808 98.7329Z
+                               M86.9619 113.676V211.42
+                               M87.6669 143.763H2.2959
+                               M87.6669 169.551H2.2959
+                               M87.6669 195.34H2.2959
+                               M83.373 111.921C128.723 111.921 131.962 209.586 219.422 209.586
+                               M219.422 142.95C174.072 142.95 170.833 45.2849 83.373 45.2849
+                               M219.422 143.576V209.586
+                               M1 113.676V210.42" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+                    </div>
+                    <div class="col-right width-55 d_f jc_c h_100 f_c">
+                        <div class="swiper-container h_75 w_100">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/det1.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-2.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <svg id="leftArrow3" class="arrow leftarrow" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+        
+                            <svg id="rightArrow3" class="arrow rightarrow" width="44" height="44" viewBox="0 0 44 44"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card--bottom">
+                    <div class="pl80 d_f ai_c h_100">
+                        <div class="ico-svg">
+                            <svg width="27" height="28" viewBox="0 0 27 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 7.18896H1V14.189H11V7.18896Z" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M10.583 6.734L5.97995 1L1.37695 6.734" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M5.97994 12.9511C7.27339 12.9511 8.32194 11.9025 8.32194 10.6091C8.32194 9.31564 7.27339 8.26709 5.97994 8.26709C4.68649 8.26709 3.63794 9.31564 3.63794 10.6091C3.63794 11.9025 4.68649 12.9511 5.97994 12.9511Z"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M11 14.689V27.689" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M10.5 18.189H1.5" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M10.5 21.189H1.5" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M10.5 24.189H1.5" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M10.583 14.4851C15.859 14.4851 16.235 27.2431 26.41 27.2431" stroke="#362633"
+                                      stroke-miterlimit="10"/>
+                                <path d="M26.409 19.4919C21.133 19.4919 20.757 6.73389 10.582 6.73389" stroke="#362633"
+                                      stroke-miterlimit="10"/>
+                                <path d="M26 19.689V27.689" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M1 14.689V27.689" stroke="#362633" stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                        <div class="title">
+                            Детская инфраструктура
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w_100 h_100 bgs_cov pos_a pl90 | cards card3" id="card3">
+                <div class="d_f jc_c h_100 pl80">
+                    <div class="col-left width-45 d_f h_100 f_c pos_r">
+                        <h1 class="page-header">Спа и бассейн</h1>
+                        <div class="page-desc">Отвести ребёнка в детский сад без спешки: на территории дома предусмотрен детский сад.
+                            Ваш малыш сам проводит вас в место, где ему
+                            безопасно и весело</div>
+                        <svg id="anim-spa" width="230" height="191" viewBox="0 0 230 191" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.6">
+                                <path d="M51.994 127.066C61.943 132.717 71.498 124.023 71.498 114.025C71.498 104.027 62.643 97.5059 51.994 97.5059C41.345 97.5059 26.906 108.772 26.906 127.7C26.906 146.628 43.044 157.93 60.032 157.93C77.02 157.93 96.98 141.411 96.98 115.763C96.98 90.1149 76.595 68.8149 49.839 68.8149C23.083 68.8149 1 95.7669 1 125.762C1 155.757 21.81 189.23 60.881 189.23C77.444 189.23 90.609 182.275 90.609 182.275L135.489 142.459" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M33.83 72.173L136.901 1C136.901 1 204.002 1 196.286 74.711L182.343 91.42" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M172.156 84.03C183.983 84.03 186.775 118.922 186.775 118.922C186.775 118.922 224.976 112.989 228.631 124.503C232.286 136.016 195.81 147.385 195.81 147.385C195.81 147.385 214.545 180.742 204.977 187.858C195.409 194.974 172.156 164.976 172.156 164.976C172.156 164.976 148.904 194.974 139.335 187.858C129.767 180.742 148.502 147.385 148.502 147.385C148.502 147.385 112.027 136.016 115.681 124.503C119.336 112.99 157.537 118.922 157.537 118.922C157.537 118.922 160.329 84.03 172.156 84.03Z" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M172.156 153.503C179.853 153.503 186.092 147.116 186.092 139.238C186.092 131.36 179.853 124.973 172.156 124.973C164.459 124.973 158.22 131.36 158.22 139.238C158.22 147.116 164.459 153.503 172.156 153.503Z" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            </g>
+                        </svg>
+        
+                    </div>
+                    <div class="col-right width-55 d_f jc_c h_100 f_c">
+                        <div class="swiper-container h_75 w_100">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/spa1.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-2.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <svg id="leftArrow4" class="arrow leftarrow" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+        
+                            <svg id="rightArrow4" class="arrow rightarrow" width="44" height="44" viewBox="0 0 44 44"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card--bottom">
+                    <div class="pl80 d_f ai_c h_100">
+                        <div class="ico-svg">
+                            <svg width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.068 15.6541C8.252 16.3111 9.389 15.3001 9.389 14.1381C9.389 12.9761 8.335 12.2181 7.068 12.2181C5.801 12.2181 4.083 13.5281 4.083 15.7281C4.083 17.9281 6.003 19.2421 8.025 19.2421C10.047 19.2421 12.421 17.3221 12.421 14.3401C12.421 11.3581 9.995 8.88306 6.811 8.88306C3.627 8.88306 1 12.0161 1 15.5031C1 18.9901 3.476 22.8811 8.125 22.8811C10.096 22.8811 11.662 22.0721 11.662 22.0721L17.002 17.4441"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M4.90601 9.273L17.17 1C17.17 1 25.154 1 24.236 9.569L22.577 11.511"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M21.365 10.6521C22.772 10.6521 23.104 14.7081 23.104 14.7081C23.104 14.7081 27.649 14.0181 28.084 15.3571C28.519 16.6961 24.179 18.0171 24.179 18.0171C24.179 18.0171 26.408 21.8951 25.27 22.7221C24.132 23.5491 21.365 20.0621 21.365 20.0621C21.365 20.0621 18.598 23.5491 17.46 22.7221C16.322 21.8951 18.551 18.0171 18.551 18.0171C18.551 18.0171 14.211 16.6951 14.646 15.3571C15.081 14.0191 19.626 14.7081 19.626 14.7081C19.626 14.7081 19.958 10.6521 21.365 10.6521Z"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M21.365 18.7281C22.2807 18.7281 23.023 17.9858 23.023 17.0701C23.023 16.1544 22.2807 15.4121 21.365 15.4121C20.4493 15.4121 19.707 16.1544 19.707 17.0701C19.707 17.9858 20.4493 18.7281 21.365 18.7281Z"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                        <div class="title">Спа и бассейн</div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        
+        
+            <div class="w_100 h_100 bgs_cov pos_a pl90 | cards card4" id="card4">
+        
+        
+                <div class="d_f jc_c h_100 pl80">
+                    <div class="col-left width-45 d_f h_100 f_c pos_r">
+                        <h1 class="page-header">Тренажерный зал</h1>
+                        <div class="page-desc">Отвести ребёнка в детский сад без спешки: на территории дома предусмотрен детский сад.
+                            Ваш малыш сам проводит вас в место, где ему
+                            безопасно и весело
+                            <div class="btn-w">
+                                <a href="javascript:;" class="btn btn-disabled"><span>Скоро открытие</span></a>
+                            </div>
+                        </div>
+                        <svg id="anim-velo" width="185" height="218" viewBox="0 0 185 218" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.08099 77.7891H50.114" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M20.134 77.7891L32.313 121.353" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M182.682 214.573C182.682 214.573 171.229 129.818 62.293 116.201C6.08 109.174 -16.046 173.241 15.339 216.805" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M64.167 197.709C80.7245 197.709 94.147 184.287 94.147 167.729C94.147 151.172 80.7245 137.749 64.167 137.749C47.6095 137.749 34.187 151.172 34.187 167.729C34.187 184.287 47.6095 197.709 64.167 197.709Z" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M64.167 167.729L117.569 187.403C117.569 187.403 123.659 181.782 128.343 169.602" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M171.44 0.027832C171.44 0.027832 170.972 16.8918 159.261 20.1708C147.55 23.4498 129.749 27.6658 116.633 30.0078" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M141.77 24.6606L158.792 96.5257" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M182.682 214.573C182.682 214.573 186.43 139.623 169.097 96.5269H146.144C146.144 96.5269 137.244 122.29 116.632 131.659" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+        
+        
+                    </div>
+                    <div class="col-right width-55 d_f jc_c h_100 f_c">
+                        <div class="swiper-container h_75 w_100">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/gym1.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-2.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <svg id="leftArrow5" class="arrow leftarrow" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+        
+                            <svg id="rightArrow5" class="arrow rightarrow" width="44" height="44" viewBox="0 0 44 44"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+        
+        
+                <div class="card--bottom">
+                    <div class="pl80 d_f ai_c h_100">
+                        <div class="ico-svg">
+                            <svg width="23" height="27" viewBox="0 0 23 27" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.809082 10.3359H6.80908" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M2.93103 10.0708L4.34903 15.1448" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M21.863 26.3359C21.863 26.3359 20.529 16.4639 7.84103 14.8779C1.29403 14.0599 -1.54297 21.3359 2.11203 26.3359H21.863Z"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M8.05902 24.038C9.9876 24.038 11.551 22.4745 11.551 20.546C11.551 18.6174 9.9876 17.054 8.05902 17.054C6.13044 17.054 4.56702 18.6174 4.56702 20.546C4.56702 22.4745 6.13044 24.038 8.05902 24.038Z"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M8.05908 20.5459L14.2791 22.8379C14.2791 22.8379 14.9881 22.1829 15.5341 20.7649"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M20.5531 1.01392C20.5531 1.01392 20.4981 2.97792 19.1341 3.35992C17.7701 3.74192 15.6971 4.23292 14.1691 4.50592"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M17.098 3.88281L19.08 12.2528" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M21.863 26.0439C21.863 26.0439 22.299 17.3359 20.281 12.3359H17.608C17.608 12.3359 16.571 15.3159 14.171 16.4069"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                        <div class="title">Тренажерный зал</div>
+                    </div>
+                </div>
+            </div>
+        
+        
+            <div class="w_100 h_100 bgs_cov pos_a pl90 | cards card5">
+                <div class="d_f jc_c h_100 pl80">
+                    <div class="col-left width-45 d_f h_100 f_c pos_r">
+                        <h1 class="page-header">Паркинг</h1>
+                        <div class="page-desc">Отвести ребёнка в детский сад без спешки: на территории дома предусмотрен детский сад.
+                            Ваш малыш сам проводит вас в место, где ему
+                            безопасно и весело
+                            <div class="btn-w"><a href="javascript:;" class="btn"><span>Забронировать место</span></a></div>
+                        </div>
+                        <svg id="anim-auto" width="263" height="195" viewBox="0 0 263 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.6">
+                                <path d="M92.247 173.471C92.247 173.471 77.841 173.471 56.42 173.471C34.999 173.471 34.618 150.452 34.618 150.452V118.718C34.618 118.718 47.327 110.675 51.72 109.48C70.789 104.294 132.677 105.8 132.677 105.8" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M53.037 109.479C53.037 109.479 57.479 69.6642 84.572 66.2022C111.665 62.7402 131.96 62.7402 131.96 62.7402" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M44.236 113.314C44.236 113.314 93.446 116.407 93.446 129.101C93.446 141.796 93.446 141.796 93.446 141.796L36.389 133.718" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M131.266 179.071H93.447V159.267H131.266" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M34.617 151.964V190.676H76.638V173.172" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M261.532 194.977V43.123L133.067 1H130.712L1 43.123V194.977" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M169.285 173.471C169.285 173.471 186.078 173.471 207.5 173.471C228.922 173.471 227.915 150.452 227.915 150.452V118.718C227.915 118.718 215.899 110.675 211.506 109.48C192.437 104.294 132.204 105.8 132.204 105.8" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M210.882 109.479C210.882 109.479 206.44 69.6642 179.347 66.2022C152.254 62.7402 131.959 62.7402 131.959 62.7402" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M218.989 113.314C218.989 113.314 169.085 116.407 169.085 129.101C169.085 141.796 169.085 141.796 169.085 141.796L226.489 133.718" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M131.266 179.071H169.085V159.267H131.266" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M227.915 151.964V190.676H194.298V173.172" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            </g>
+                        </svg>
+        
+        
+        
+                    </div>
+                    <div class="col-right width-55 d_f jc_c h_100 f_c">
+                        <div class="swiper-container h_75 w_100">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/auto1.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-2.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <svg id="leftArrow6" class="arrow leftarrow" width="44" height="44" viewBox="0 0 44 44" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+        
+                            <svg id="rightArrow6" class="arrow rightarrow" width="44" height="44" viewBox="0 0 44 44"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"/>
+                                <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2"
+                                      stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="card--bottom">
+                    <div class="pl80 d_f ai_c h_100">
+                        <div class="ico-svg">
+                            <svg width="32" height="23" viewBox="0 0 32 23" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11 20.5C11 20.5 9.643 20.5 7.094 20.5C4.545 20.5 4.5 17.824 4.5 17.824V14.135C4.5 14.135 6.012 13.2 6.535 13.061C8.804 12.458 15.811 12.633 15.811 12.633"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M6.69202 13.0609C6.69202 13.0609 7.22102 8.43293 10.444 8.02993C13.668 7.62793 16.083 7.62793 16.083 7.62793"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M5.88297 13.5071C5.88297 13.5071 11.5 13.8661 11.5 15.3421C11.5 16.8181 11.5 16.8181 11.5 16.8181L4.94897 15.8791"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M16 21.5H11.5V18.5H16" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M4.5 18V22.5H9.5V20" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M31.5 23V5.348L16.214 0.5H15.934L0.5 5.348V23" stroke="#362633"
+                                      stroke-miterlimit="10"/>
+                                <path d="M21 20.5C21 20.5 22.522 20.5 25.071 20.5C27.62 20.5 27.5 17.824 27.5 17.824V14.135C27.5 14.135 26.07 13.2 25.548 13.061C23.279 12.458 16.231 12.633 16.231 12.633"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M25.473 13.0609C25.473 13.0609 24.944 8.43293 21.721 8.02993C18.497 7.62793 16.082 7.62793 16.082 7.62793"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M26.2 13.5071C26.2 13.5071 20.5 13.8661 20.5 15.3421C20.5 16.8181 20.5 16.8181 20.5 16.8181L27.092 15.8791"
+                                      stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M16 21.5H20.5V18.5H16" stroke="#362633" stroke-miterlimit="10"/>
+                                <path d="M27.5 18V22.5H23.5V20" stroke="#362633" stroke-miterlimit="10"/>
+                            </svg>
+                        </div>
+                        <div class="title">Паркинг</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="section5" class="h_100vh pos_r d_f">
+            <div class="col-left pos_r width-47 d_f f_c jc_c h_100 bg_brown">
+                <div class="pl170 c_w">
+                    <h1 class="page-header">Жизнь без забот</h1>
+                    <div class="page-desc">Мы позаботились о многих бытовых сервисах:
+                        в доме будет работать управляющая компания,
+                        консьерж-сервис, клининговая служба, видеонаблюдение, противопожарная система.
+                    </div>
+                </div>
+            </div>
+            <div class="col-right pos_r width-53 h_100">
+                <div class="w_100 d_f jc_c ai_c bg_brown bgs_cov | mask--brown"  style="background-image: url('../img/full/desk.jpg'); height: 55%">
+                    <svg id="anim-desk" width="205" height="236" viewBox="0 0 205 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M32.6675 225.616H31.3235V229H29.3915V220.6H31.3235V223.996H32.7155L34.9235 220.6H36.9755L34.2275 224.656L37.0595 229H34.8515L32.6675 225.616ZM43.143 229.144C42.271 229.144 41.483 228.956 40.779 228.58C40.083 228.204 39.535 227.688 39.135 227.032C38.743 226.368 38.547 225.624 38.547 224.8C38.547 223.976 38.743 223.236 39.135 222.58C39.535 221.916 40.083 221.396 40.779 221.02C41.483 220.644 42.271 220.456 43.143 220.456C44.015 220.456 44.799 220.644 45.495 221.02C46.191 221.396 46.739 221.916 47.139 222.58C47.539 223.236 47.739 223.976 47.739 224.8C47.739 225.624 47.539 226.368 47.139 227.032C46.739 227.688 46.191 228.204 45.495 228.58C44.799 228.956 44.015 229.144 43.143 229.144ZM43.143 227.488C43.639 227.488 44.087 227.376 44.487 227.152C44.887 226.92 45.199 226.6 45.423 226.192C45.655 225.784 45.771 225.32 45.771 224.8C45.771 224.28 45.655 223.816 45.423 223.408C45.199 223 44.887 222.684 44.487 222.46C44.087 222.228 43.639 222.112 43.143 222.112C42.647 222.112 42.199 222.228 41.799 222.46C41.399 222.684 41.083 223 40.851 223.408C40.627 223.816 40.515 224.28 40.515 224.8C40.515 225.32 40.627 225.784 40.851 226.192C41.083 226.6 41.399 226.92 41.799 227.152C42.199 227.376 42.647 227.488 43.143 227.488ZM58.1406 220.6V229H56.1966V225.556H52.3806V229H50.4366V220.6H52.3806V223.912H56.1966V220.6H58.1406ZM65.4172 229.144C64.5612 229.144 63.7852 228.96 63.0892 228.592C62.4012 228.216 61.8572 227.7 61.4572 227.044C61.0652 226.38 60.8692 225.632 60.8692 224.8C60.8692 223.968 61.0652 223.224 61.4572 222.568C61.8572 221.904 62.4012 221.388 63.0892 221.02C63.7852 220.644 64.5652 220.456 65.4292 220.456C66.1572 220.456 66.8132 220.584 67.3972 220.84C67.9892 221.096 68.4852 221.464 68.8852 221.944L67.6372 223.096C67.0692 222.44 66.3652 222.112 65.5252 222.112C65.0052 222.112 64.5412 222.228 64.1332 222.46C63.7252 222.684 63.4052 223 63.1732 223.408C62.9492 223.816 62.8372 224.28 62.8372 224.8C62.8372 225.32 62.9492 225.784 63.1732 226.192C63.4052 226.6 63.7252 226.92 64.1332 227.152C64.5412 227.376 65.0052 227.488 65.5252 227.488C66.3652 227.488 67.0692 227.156 67.6372 226.492L68.8852 227.644C68.4852 228.132 67.9892 228.504 67.3972 228.76C66.8052 229.016 66.1452 229.144 65.4172 229.144ZM75.4202 223.36C76.4442 223.36 77.2282 223.588 77.7722 224.044C78.3242 224.5 78.6002 225.176 78.6002 226.072C78.6002 227.024 78.2962 227.752 77.6882 228.256C77.0882 228.752 76.2402 229 75.1442 229H71.3522V220.6H73.2842V223.36H75.4202ZM75.0362 227.56C75.5402 227.56 75.9322 227.436 76.2122 227.188C76.5002 226.94 76.6442 226.58 76.6442 226.108C76.6442 225.236 76.1082 224.8 75.0362 224.8H73.2842V227.56H75.0362ZM87.7046 227.44V229H81.2006V220.6H87.5486V222.16H83.1326V223.984H87.0326V225.496H83.1326V227.44H87.7046ZM94.1109 220.6C94.8549 220.6 95.4989 220.724 96.0429 220.972C96.5949 221.22 97.0189 221.572 97.3149 222.028C97.6109 222.484 97.7589 223.024 97.7589 223.648C97.7589 224.264 97.6109 224.804 97.3149 225.268C97.0189 225.724 96.5949 226.076 96.0429 226.324C95.4989 226.564 94.8549 226.684 94.1109 226.684H92.4189V229H90.4749V220.6H94.1109ZM94.0029 225.1C94.5869 225.1 95.0309 224.976 95.3349 224.728C95.6389 224.472 95.7909 224.112 95.7909 223.648C95.7909 223.176 95.6389 222.816 95.3349 222.568C95.0309 222.312 94.5869 222.184 94.0029 222.184H92.4189V225.1H94.0029ZM107.674 225.616H106.45V229H104.542V225.616H103.294L101.41 229H99.1658L101.686 224.608L99.3218 220.6H101.374L103.258 223.996H104.542V220.6H106.45V223.996H107.698L109.594 220.6H111.646L109.294 224.608L111.802 229H109.558L107.674 225.616ZM113.525 224.872H116.921V226.372H113.525V224.872ZM123.793 229.144C122.937 229.144 122.161 228.96 121.465 228.592C120.777 228.216 120.233 227.7 119.833 227.044C119.441 226.38 119.245 225.632 119.245 224.8C119.245 223.968 119.441 223.224 119.833 222.568C120.233 221.904 120.777 221.388 121.465 221.02C122.161 220.644 122.941 220.456 123.805 220.456C124.533 220.456 125.189 220.584 125.773 220.84C126.365 221.096 126.861 221.464 127.261 221.944L126.013 223.096C125.445 222.44 124.741 222.112 123.901 222.112C123.381 222.112 122.917 222.228 122.509 222.46C122.101 222.684 121.781 223 121.549 223.408C121.325 223.816 121.213 224.28 121.213 224.8C121.213 225.32 121.325 225.784 121.549 226.192C121.781 226.6 122.101 226.92 122.509 227.152C122.917 227.376 123.381 227.488 123.901 227.488C124.741 227.488 125.445 227.156 126.013 226.492L127.261 227.644C126.861 228.132 126.365 228.504 125.773 228.76C125.181 229.016 124.521 229.144 123.793 229.144ZM136.232 227.44V229H129.728V220.6H136.076V222.16H131.66V223.984H135.56V225.496H131.66V227.44H136.232ZM142.638 220.6C143.382 220.6 144.026 220.724 144.57 220.972C145.122 221.22 145.546 221.572 145.842 222.028C146.138 222.484 146.286 223.024 146.286 223.648C146.286 224.264 146.138 224.804 145.842 225.268C145.546 225.724 145.122 226.076 144.57 226.324C144.026 226.564 143.382 226.684 142.638 226.684H140.946V229H139.002V220.6H142.638ZM142.53 225.1C143.114 225.1 143.558 224.976 143.862 224.728C144.166 224.472 144.318 224.112 144.318 223.648C144.318 223.176 144.166 222.816 143.862 222.568C143.558 222.312 143.114 222.184 142.53 222.184H140.946V225.1H142.53ZM154.589 224.62C155.101 224.772 155.493 225.02 155.765 225.364C156.037 225.708 156.173 226.132 156.173 226.636C156.173 227.38 155.889 227.96 155.321 228.376C154.761 228.792 153.957 229 152.909 229H148.769V220.6H152.681C153.657 220.6 154.417 220.788 154.961 221.164C155.505 221.54 155.777 222.076 155.777 222.772C155.777 223.188 155.673 223.556 155.465 223.876C155.257 224.188 154.965 224.436 154.589 224.62ZM150.701 224.08H152.513C152.937 224.08 153.257 223.996 153.473 223.828C153.689 223.652 153.797 223.396 153.797 223.06C153.797 222.732 153.685 222.48 153.461 222.304C153.245 222.128 152.929 222.04 152.513 222.04H150.701V224.08ZM152.837 227.56C153.749 227.56 154.205 227.2 154.205 226.48C154.205 225.784 153.749 225.436 152.837 225.436H150.701V227.56H152.837ZM158.91 220.6H160.842V226.072L164.85 220.6H166.674V229H164.754V223.54L160.746 229H158.91V220.6ZM173.937 229.144C173.081 229.144 172.305 228.96 171.609 228.592C170.921 228.216 170.377 227.7 169.977 227.044C169.585 226.38 169.389 225.632 169.389 224.8C169.389 223.968 169.585 223.224 169.977 222.568C170.377 221.904 170.921 221.388 171.609 221.02C172.305 220.644 173.085 220.456 173.949 220.456C174.677 220.456 175.333 220.584 175.917 220.84C176.509 221.096 177.005 221.464 177.405 221.944L176.157 223.096C175.589 222.44 174.885 222.112 174.045 222.112C173.525 222.112 173.061 222.228 172.653 222.46C172.245 222.684 171.925 223 171.693 223.408C171.469 223.816 171.357 224.28 171.357 224.8C171.357 225.32 171.469 225.784 171.693 226.192C171.925 226.6 172.245 226.92 172.653 227.152C173.061 227.376 173.525 227.488 174.045 227.488C174.885 227.488 175.589 227.156 176.157 226.492L177.405 227.644C177.005 228.132 176.509 228.504 175.917 228.76C175.325 229.016 174.665 229.144 173.937 229.144Z" fill="#D2CDCC"/>
+                        <rect x="1" y="1" width="203" height="201" stroke="#BAA9A8" stroke-width="2"/>
+                        <path d="M167.799 75.7246H103.549V116.237H167.799V75.7246Z" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M183 125.416H16.509" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M146.91 125.415H124.438L129.506 116.237H141.844L146.91 125.415Z" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M135.674 103.419C139.782 103.419 143.112 100.089 143.112 95.9807C143.112 91.873 139.782 88.543 135.674 88.543C131.566 88.543 128.236 91.873 128.236 95.9807C128.236 100.089 131.566 103.419 135.674 103.419Z" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M75.6226 71.272V74.6421C75.6226 80.6594 70.7447 85.5386 64.7261 85.5386C58.7088 85.5386 53.8296 80.6607 53.8296 74.6421V71.272" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M52.351 66.4172C52.351 59.582 57.8923 54.042 64.7261 54.042C71.5613 54.042 77.1013 59.582 77.1013 66.4172C77.1013 68.6036 75.6226 71.6901 75.6226 71.6901L73.4033 64.2928C73.4033 64.2928 70.6624 65.1221 64.7932 65.1221C58.924 65.1221 56.7351 62.6154 56.7351 62.6154L53.8296 72.4016C53.8309 72.4016 52.351 70.0645 52.351 66.4172Z" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M58.0656 83.251V88.5416L52.1192 93.9221L40.2504 98.9861C40.2504 98.9861 34.8699 101.202 34.8699 107.532C34.8699 113.862 34.8699 125.414 34.8699 125.414" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M58.0656 88.543L64.726 95.3477L58.0656 101.833" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M52.1191 93.9238L68.8937 116.237V125.416" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M71.4536 83.251V88.5416L77.4 93.9221L89.2688 98.9861C89.2688 98.9861 94.6493 101.202 94.6493 107.532C94.6493 113.862 94.6493 125.414 94.6493 125.414" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M71.4537 88.543L64.7932 95.3477L71.4537 101.833" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M77.4001 93.9238L64.7932 110.693" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M29.8033 125.416V202" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                        <path d="M172.715 125.416V202" stroke="#BAA9A8" stroke-width="2" stroke-miterlimit="10"/>
+                    </svg>
+        
+        
+        
+        
+                </div>
+                <div class="d_f" style="height: 45%">
+                    <div class="width-50 h_100  d_f jc_c ai_c bgs_cov | mask--orange" style="background-image: url('../img/full/cleaning.jpg');">
+                        <svg id="anim-cleaning" width="205" height="236" viewBox="0 0 205 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M72.8217 134.835L78.8245 126.78L78.9153 114.898L97.3125 87.1336C97.3125 87.1336 102.231 85.1591 102.522 90.9732" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M94.7431 103.374L106.834 84.0967C106.834 84.0967 112.694 81.9479 112.612 88.3943" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M102.993 104.347L114.869 85.3593C114.869 85.3593 121.132 82.3666 121.269 89.4236L109.309 107.922" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M118.9 93.089C118.9 93.089 125.421 90.7803 124.449 97.2152L110.945 120.804C110.945 120.804 114.202 124.572 117.287 121.931L120.616 117.452C120.616 117.452 123.665 114.558 126.88 117.174L128.795 118.823L110.338 139.422L100.151 140.148L94.0619 147.733" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M85.6684 104.707C85.6684 104.707 82.15 86.8113 72.8217 77.2987C72.8217 77.2987 80.6133 67.4433 103.678 66.1371C124.875 64.9374 133.217 54.7969 133.217 54.7969C133.217 54.7969 139.521 63.2091 142.639 84.7302C145.999 107.923 155 114.204 155 114.204C155 114.204 142.637 124.947 122.254 126.123" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M70.9279 86.811H51.125" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M64.6269 98.0029H75.6085" stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M16.6663 225.616H15.3223V229H13.3903V220.6H15.3223V223.996H16.7143L18.9223 220.6H20.9743L18.2263 224.656L21.0583 229H18.8503L16.6663 225.616ZM30.8679 220.6V229H28.9479V222.184H26.0679L26.0079 223.936C25.9679 225.128 25.8719 226.096 25.7199 226.84C25.5679 227.576 25.3119 228.144 24.9519 228.544C24.5999 228.936 24.1039 229.132 23.4639 229.132C23.1999 229.132 22.8799 229.088 22.5039 229L22.6239 227.356C22.7279 227.388 22.8439 227.404 22.9719 227.404C23.4359 227.404 23.7599 227.132 23.9439 226.588C24.1279 226.036 24.2439 225.176 24.2919 224.008L24.4119 220.6H30.8679ZM34.1659 220.6H36.0979V226.072L40.1059 220.6H41.9299V229H40.0099V223.54L36.0019 229H34.1659V220.6ZM52.9253 220.6V229H50.9813V225.556H47.1653V229H45.2213V220.6H47.1653V223.912H50.9813V220.6H52.9253ZM56.2299 220.6H58.1619V226.072L62.1699 220.6H63.9939V229H62.0739V223.54L58.0659 229H56.2299V220.6ZM74.9894 220.6V229H73.0454V225.556H69.2294V229H67.2854V220.6H69.2294V223.912H73.0454V220.6H74.9894ZM84.21 222.184H80.214L80.226 229H78.294V220.6H84.222L84.21 222.184ZM89.7598 229.144C88.8878 229.144 88.0998 228.956 87.3958 228.58C86.6998 228.204 86.1518 227.688 85.7518 227.032C85.3598 226.368 85.1638 225.624 85.1638 224.8C85.1638 223.976 85.3598 223.236 85.7518 222.58C86.1518 221.916 86.6998 221.396 87.3958 221.02C88.0998 220.644 88.8878 220.456 89.7598 220.456C90.6318 220.456 91.4158 220.644 92.1118 221.02C92.8078 221.396 93.3558 221.916 93.7558 222.58C94.1558 223.236 94.3558 223.976 94.3558 224.8C94.3558 225.624 94.1558 226.368 93.7558 227.032C93.3558 227.688 92.8078 228.204 92.1118 228.58C91.4158 228.956 90.6318 229.144 89.7598 229.144ZM89.7598 227.488C90.2558 227.488 90.7038 227.376 91.1038 227.152C91.5038 226.92 91.8158 226.6 92.0398 226.192C92.2718 225.784 92.3878 225.32 92.3878 224.8C92.3878 224.28 92.2718 223.816 92.0398 223.408C91.8158 223 91.5038 222.684 91.1038 222.46C90.7038 222.228 90.2558 222.112 89.7598 222.112C89.2638 222.112 88.8158 222.228 88.4158 222.46C88.0158 222.684 87.6998 223 87.4678 223.408C87.2438 223.816 87.1318 224.28 87.1318 224.8C87.1318 225.32 87.2438 225.784 87.4678 226.192C87.6998 226.6 88.0158 226.92 88.4158 227.152C88.8158 227.376 89.2638 227.488 89.7598 227.488ZM102.873 224.62C103.385 224.772 103.777 225.02 104.049 225.364C104.321 225.708 104.457 226.132 104.457 226.636C104.457 227.38 104.173 227.96 103.605 228.376C103.045 228.792 102.241 229 101.193 229H97.0534V220.6H100.965C101.941 220.6 102.701 220.788 103.245 221.164C103.789 221.54 104.061 222.076 104.061 222.772C104.061 223.188 103.957 223.556 103.749 223.876C103.541 224.188 103.249 224.436 102.873 224.62ZM98.9854 224.08H100.797C101.221 224.08 101.541 223.996 101.757 223.828C101.973 223.652 102.081 223.396 102.081 223.06C102.081 222.732 101.969 222.48 101.745 222.304C101.529 222.128 101.213 222.04 100.797 222.04H98.9854V224.08ZM101.121 227.56C102.033 227.56 102.489 227.2 102.489 226.48C102.489 225.784 102.033 225.436 101.121 225.436H98.9854V227.56H101.121ZM112.883 227.2H108.983L108.239 229H106.247L109.991 220.6H111.911L115.667 229H113.627L112.883 227.2ZM112.271 225.724L110.939 222.508L109.607 225.724H112.271ZM124.255 220.6V229H122.335V226.768H120.559L119.071 229H117.019L118.771 226.468C118.203 226.236 117.767 225.888 117.463 225.424C117.159 224.952 117.007 224.388 117.007 223.732C117.007 223.084 117.155 222.528 117.451 222.064C117.747 221.592 118.167 221.232 118.711 220.984C119.255 220.728 119.895 220.6 120.631 220.6H124.255ZM120.679 222.184C120.127 222.184 119.703 222.312 119.407 222.568C119.119 222.824 118.975 223.204 118.975 223.708C118.975 224.196 119.115 224.572 119.395 224.836C119.675 225.1 120.087 225.232 120.631 225.232H122.335V222.184H120.679ZM136.13 229.144C135.274 229.144 134.498 228.96 133.802 228.592C133.114 228.216 132.57 227.7 132.17 227.044C131.778 226.38 131.582 225.632 131.582 224.8C131.582 223.968 131.778 223.224 132.17 222.568C132.57 221.904 133.114 221.388 133.802 221.02C134.498 220.644 135.278 220.456 136.142 220.456C136.87 220.456 137.526 220.584 138.11 220.84C138.702 221.096 139.198 221.464 139.598 221.944L138.35 223.096C137.782 222.44 137.078 222.112 136.238 222.112C135.718 222.112 135.254 222.228 134.846 222.46C134.438 222.684 134.118 223 133.886 223.408C133.662 223.816 133.55 224.28 133.55 224.8C133.55 225.32 133.662 225.784 133.886 226.192C134.118 226.6 134.438 226.92 134.846 227.152C135.254 227.376 135.718 227.488 136.238 227.488C137.078 227.488 137.782 227.156 138.35 226.492L139.598 227.644C139.198 228.132 138.702 228.504 138.11 228.76C137.518 229.016 136.858 229.144 136.13 229.144ZM149.354 220.6V229H147.434V222.184H144.554L144.494 223.936C144.454 225.128 144.358 226.096 144.206 226.84C144.054 227.576 143.798 228.144 143.438 228.544C143.086 228.936 142.59 229.132 141.95 229.132C141.686 229.132 141.366 229.088 140.99 229L141.11 227.356C141.214 227.388 141.33 227.404 141.458 227.404C141.922 227.404 142.246 227.132 142.43 226.588C142.614 226.036 142.73 225.176 142.778 224.008L142.898 220.6H149.354ZM160.236 220.6L156.66 227.248C156.316 227.888 155.9 228.372 155.412 228.7C154.932 229.028 154.408 229.192 153.84 229.192C153.4 229.192 152.944 229.096 152.472 228.904L152.94 227.428C153.276 227.532 153.556 227.584 153.78 227.584C154.02 227.584 154.236 227.528 154.428 227.416C154.62 227.296 154.796 227.112 154.956 226.864L155.028 226.768L151.716 220.6H153.792L156.024 225.112L158.328 220.6H160.236ZM169.839 225.616H168.615V229H166.707V225.616H165.459L163.575 229H161.331L163.851 224.608L161.487 220.6H163.539L165.423 223.996H166.707V220.6H168.615V223.996H169.863L171.759 220.6H173.811L171.459 224.608L173.967 229H171.723L169.839 225.616ZM176.099 220.6H182.879V222.148H178.031V223.876H180.359C181.375 223.876 182.147 224.088 182.675 224.512C183.211 224.936 183.479 225.548 183.479 226.348C183.479 227.188 183.183 227.84 182.591 228.304C181.999 228.768 181.163 229 180.083 229H176.099V220.6ZM179.975 227.56C180.471 227.56 180.851 227.464 181.115 227.272C181.379 227.072 181.511 226.784 181.511 226.408C181.511 225.672 180.999 225.304 179.975 225.304H178.031V227.56H179.975ZM191.776 227.2H187.876L187.132 229H185.14L188.884 220.6H190.804L194.56 229H192.52L191.776 227.2ZM191.164 225.724L189.832 222.508L188.5 225.724H191.164Z" fill="white"/>
+                            <rect x="1" y="1" width="203" height="201" stroke="white" stroke-width="2"/>
+                        </svg>
+        
+                    </div>
+                    <div class="width-50 h_100  d_f jc_c ai_c bgs_cov | mask--gray" style="background-image: url('../img/full/video.jpg');">
+                        <svg id="anim-video" width="205" height="236" viewBox="0 0 205 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.2511 224.62C30.7631 224.772 31.1551 225.02 31.4271 225.364C31.6991 225.708 31.8351 226.132 31.8351 226.636C31.8351 227.38 31.5511 227.96 30.9831 228.376C30.4231 228.792 29.6191 229 28.5711 229H24.4311V220.6H28.3431C29.3191 220.6 30.0791 220.788 30.6231 221.164C31.1671 221.54 31.4391 222.076 31.4391 222.772C31.4391 223.188 31.3351 223.556 31.1271 223.876C30.9191 224.188 30.6271 224.436 30.2511 224.62ZM26.3631 224.08H28.1751C28.5991 224.08 28.9191 223.996 29.1351 223.828C29.3511 223.652 29.4591 223.396 29.4591 223.06C29.4591 222.732 29.3471 222.48 29.1231 222.304C28.9071 222.128 28.5911 222.04 28.1751 222.04H26.3631V224.08ZM28.4991 227.56C29.4111 227.56 29.8671 227.2 29.8671 226.48C29.8671 225.784 29.4111 225.436 28.4991 225.436H26.3631V227.56H28.4991ZM34.5725 220.6H36.5045V226.072L40.5125 220.6H42.3365V229H40.4165V223.54L36.4085 229H34.5725V220.6ZM54.2334 227.416V230.74H52.4334V229H46.5054V230.74H44.7054L44.7174 227.416H45.0534C45.5574 227.4 45.9134 227.032 46.1214 226.312C46.3294 225.592 46.4574 224.564 46.5054 223.228L46.6014 220.6H53.0574V227.416H54.2334ZM48.2214 223.408C48.1814 224.408 48.0974 225.248 47.9694 225.928C47.8414 226.6 47.6454 227.096 47.3814 227.416H51.1374V222.184H48.2574L48.2214 223.408ZM63.246 227.44V229H56.742V220.6H63.09V222.16H58.674V223.984H62.574V225.496H58.674V227.44H63.246ZM70.0008 229.144C69.1288 229.144 68.3408 228.956 67.6368 228.58C66.9408 228.204 66.3928 227.688 65.9928 227.032C65.6008 226.368 65.4048 225.624 65.4048 224.8C65.4048 223.976 65.6008 223.236 65.9928 222.58C66.3928 221.916 66.9408 221.396 67.6368 221.02C68.3408 220.644 69.1288 220.456 70.0008 220.456C70.8728 220.456 71.6568 220.644 72.3528 221.02C73.0488 221.396 73.5968 221.916 73.9968 222.58C74.3968 223.236 74.5968 223.976 74.5968 224.8C74.5968 225.624 74.3968 226.368 73.9968 227.032C73.5968 227.688 73.0488 228.204 72.3528 228.58C71.6568 228.956 70.8728 229.144 70.0008 229.144ZM70.0008 227.488C70.4968 227.488 70.9448 227.376 71.3448 227.152C71.7448 226.92 72.0568 226.6 72.2808 226.192C72.5128 225.784 72.6288 225.32 72.6288 224.8C72.6288 224.28 72.5128 223.816 72.2808 223.408C72.0568 223 71.7448 222.684 71.3448 222.46C70.9448 222.228 70.4968 222.112 70.0008 222.112C69.5048 222.112 69.0568 222.228 68.6568 222.46C68.2568 222.684 67.9408 223 67.7088 223.408C67.4848 223.816 67.3728 224.28 67.3728 224.8C67.3728 225.32 67.4848 225.784 67.7088 226.192C67.9408 226.6 68.2568 226.92 68.6568 227.152C69.0568 227.376 69.5048 227.488 70.0008 227.488ZM84.9984 220.6V229H83.0544V225.556H79.2384V229H77.2944V220.6H79.2384V223.912H83.0544V220.6H84.9984ZM93.991 227.2H90.091L89.347 229H87.355L91.099 220.6H93.019L96.775 229H94.735L93.991 227.2ZM93.379 225.724L92.047 222.508L90.715 225.724H93.379ZM99.0889 220.6H105.869V222.148H101.021V223.876H103.349C104.365 223.876 105.137 224.088 105.665 224.512C106.201 224.936 106.469 225.548 106.469 226.348C106.469 227.188 106.173 227.84 105.581 228.304C104.989 228.768 104.153 229 103.073 229H99.0889V220.6ZM102.965 227.56C103.461 227.56 103.841 227.464 104.105 227.272C104.369 227.072 104.501 226.784 104.501 226.408C104.501 225.672 103.989 225.304 102.965 225.304H101.021V227.56H102.965ZM116.437 220.6V229H114.517V222.184H111.637L111.577 223.936C111.537 225.128 111.441 226.096 111.289 226.84C111.137 227.576 110.881 228.144 110.521 228.544C110.169 228.936 109.673 229.132 109.033 229.132C108.769 229.132 108.449 229.088 108.073 229L108.193 227.356C108.297 227.388 108.413 227.404 108.541 227.404C109.005 227.404 109.329 227.132 109.513 226.588C109.697 226.036 109.813 225.176 109.861 224.008L109.981 220.6H116.437ZM127.151 220.456C127.991 220.456 128.747 220.644 129.419 221.02C130.099 221.396 130.631 221.916 131.015 222.58C131.399 223.236 131.591 223.976 131.591 224.8C131.591 225.624 131.399 226.368 131.015 227.032C130.631 227.688 130.099 228.204 129.419 228.58C128.747 228.956 127.991 229.144 127.151 229.144C126.399 229.144 125.711 228.996 125.087 228.7C124.463 228.396 123.947 227.976 123.539 227.44C123.139 226.896 122.883 226.276 122.771 225.58H121.667V229H119.735V220.6H121.667V223.9H122.795C122.923 223.228 123.187 222.632 123.587 222.112C123.995 221.584 124.507 221.176 125.123 220.888C125.739 220.6 126.415 220.456 127.151 220.456ZM127.151 227.488C127.615 227.488 128.035 227.376 128.411 227.152C128.787 226.928 129.083 226.612 129.299 226.204C129.515 225.796 129.623 225.328 129.623 224.8C129.623 224.272 129.515 223.804 129.299 223.396C129.083 222.988 128.787 222.672 128.411 222.448C128.035 222.224 127.615 222.112 127.151 222.112C126.687 222.112 126.267 222.224 125.891 222.448C125.515 222.672 125.219 222.988 125.003 223.396C124.787 223.804 124.679 224.272 124.679 224.8C124.679 225.328 124.787 225.796 125.003 226.204C125.219 226.612 125.515 226.928 125.891 227.152C126.267 227.376 126.687 227.488 127.151 227.488ZM142.736 227.416V230.74H140.936V229H135.008V230.74H133.208L133.22 227.416H133.556C134.06 227.4 134.416 227.032 134.624 226.312C134.832 225.592 134.96 224.564 135.008 223.228L135.104 220.6H141.56V227.416H142.736ZM136.724 223.408C136.684 224.408 136.6 225.248 136.472 225.928C136.344 226.6 136.148 227.096 135.884 227.416H139.64V222.184H136.76L136.724 223.408ZM151.748 227.44V229H145.244V220.6H151.592V222.16H147.176V223.984H151.076V225.496H147.176V227.44H151.748ZM162.223 220.6V229H160.279V225.556H156.463V229H154.519V220.6H156.463V223.912H160.279V220.6H162.223ZM165.527 220.6H167.459V226.072L171.467 220.6H173.291V229H171.371V223.54L167.363 229H165.527V220.6ZM183.087 227.44V229H176.583V220.6H182.931V222.16H178.515V223.984H182.415V225.496H178.515V227.44H183.087Z" fill="#493648"/>
+                            <rect x="1" y="1" width="203" height="201" stroke="#493648" stroke-width="2"/>
+                            <path d="M154 84.7566L147.708 92.3851L139.127 89.525L132.262 108.594L66.6614 88.7614L74.6711 61.4922L154 84.7566Z" stroke="#493648" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M144.504 91.3174L139.126 106.305L133.79 104.347" stroke="#493648" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M91.6436 95.9761C90.4228 99.3963 92.2048 103.158 95.6251 104.379C99.0453 105.599 102.807 103.817 104.028 100.397" stroke="#493648" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M95.625 104.378L69.1404 127.664" stroke="#493648" stroke-width="2" stroke-miterlimit="10"/>
+                            <path d="M69.1403 140.907C76.4539 140.907 82.3827 134.978 82.3827 127.664C82.3827 120.351 76.4539 114.422 69.1403 114.422C61.8268 114.422 55.898 120.351 55.898 127.664C55.898 134.978 61.8268 140.907 69.1403 140.907Z" stroke="#493648" stroke-width="2" stroke-miterlimit="10"/>
+                        </svg>
+        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w_100 h_100vh bgs_cov pl90 pos_r" id="section6">
+            <div class="d_f jc_c h_100 ">
+                <div class="col-left width-55 d_f h_100 f_c pos_r jc_c oh-wrap">
+        
+                        <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                            <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage"
+                                 style="background-image: url('/img/full/sec6.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                        </div>
+        
+                </div>
+                <div class="col-right width-45 d_f pt5vmax h_100 f_c pl30 pos_r">
+                    <h1 class="page-header">Варианты отделки:
+                        <span>выбирай и живи</span></h1>
+                    <div class="page-desc">На любом этапе строительства вы можете выбрать
+                        один из трёх вариантов отделки: чёрный каркас,
+                        белый каркас или «под ключ» с полной меблировкой.
+        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w_100 h_100vh bgs_cov pl90 pos_r section" id="section7">
+            <div class="d_f jc_c h_100 ">
+                <div class="col-left width-45 d_f h_100 f_c pos_r pt5vmax pl80">
+                    <h1 class="page-header">Удобная рассрочка</h1>
+                    <div class="d_f ai_c | rassrochka">
+                        <div class="num">0<sup>%</sup></div>
+                        <div class="srok">срок <span>рассрочки</span></div>
+                        <div class="num">36<sup>мес.</sup></div>
+                    </div>
+                    <div class="page-desc">Возможна покупка без первоначального
+                        взноса.
+                        Чем раньше выберите квартиру, тем меньше
+                        ежемесячный платёж.
+                        <div class="btn-w">
+                            <a href="#" class="btn btn-fill"><span>Сделать заявку</span></a>
+                            <a href="#" class="btn"><span>Кнопка</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-right width-55 d_f h_100 f_c pos_r oh-wrap">
+                    <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage"
+                             style="background-image: url('/img/full/sec7.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w_100 h_100vh bgs_cov pl90 pos_r" id="section8">
+            <div class="d_f jc_c h_100 ">
+                <div class="col-left width-55 d_f h_100 f_c pos_r jc_c oh-wrap">
+        
+                    <div class="w_100 h_100 pos_r to_ct | j_parallaxEl">
+                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage"
+                             style="background-image: url('/img/full/sec8.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                    </div>
+        
+                </div>
+                <div class="col-right width-45 d_f pt5vmax h_100 f_c pl30 pos_r">
+                    <h1 class="page-header">Живи комфортно</h1>
+                    <div class="page-desc">Мы применяем современные технологии
+                        строительства
+                        и качественные материалы,
+                        что обеспечивает безопасность,
+                        шумо- и гидроизоляцию на долгие годы.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w_100 h_100vh bgs_cov pl90 pos_r" id="section9">
+            <div class="d_f jc_c h_100 ">
+                <div class="col-left width-38 d_f h_100 f_c pos_r jc_c oh-wrap pl80 bg_lighgray">
+                    <h1 class="page-header">Гарантии <span>«под ключ»</span></h1>
+                    <img class="page-img" src="../img/dsgroup.png" width="195" height="86" alt="ds gruoup" />
+                    <div class="page-desc">Застройщик DS GROUP уже осуществил
+                        несколько масштабных проектов.
+                        Компания имеет собственное производство,
+                        что отражается на качестве работ, уже получены
+                        разрешенияна строительство обоих домов –
+                        всё это позволяет гарантировать,
+                        что вы получите
+                        ключи в срок.
+                        <div class="btn-w">
+                            <a href="#" class="btn"><span>Лицензии</span></a>
+                        </div>
+                    </div>
+        
+        
+                </div>
+                <div class="col-right width-62 d_f  h_100 f_c pos_r">
+                    <div class="w_100 h_100 pos_r to_ct">
+                        <div class="swiper-container h_100 w_100">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sec9.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-2.jpg"></div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="w_100 h_100 pos_r to_ct | ">
+                                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | swiper-lazy" data-background="/img/full/sl2-3.jpg"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-process-bottom d_f jc_sb">
+        
+                                <svg id="leftArrow9" width="20" height="37" viewBox="0 0 20 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19.2222 36.1377L1.99999 18.9155L19.2222 1.69321" stroke="#362633" stroke-width="2" stroke-miterlimit="10"/>
+                                </svg>
+                                <div class="slide-desc d_f f_c ai_c jc_c h_100">
+                                    <div class="title">Процесс строительства</div>
+                                    <ul>
+                                        <li class="active">Март, 2019</li>
+                                        <li>Апрель, 2019</li>
+                                        <li>Май, 2019</li>
+                                    </ul>
+                                </div>
+                                <svg id="rightArrow9" width="20" height="37" viewBox="0 0 20 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1.69336L18.2222 18.9156L1 36.1378" stroke="#362633" stroke-width="2" stroke-miterlimit="10"/>
+                                </svg>
+        
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="w_100 h_100vh bgs_cov pl90 pos_r" id="section9">
+            <div class="d_f jc_c h_100 ">
+                <div class="col-left width-60 d_f h_100 f_c pos_r jc_c oh-wrap ">
+                    <div class="w_100 h_100 pos_r to_ct | j_parallaxEl plan-img active" data-plan="1">
+                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage"
+                             style="background-image: url('/img/plans/plan1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                    </div>
+                    <div class="w_100 h_100 pos_r to_ct | j_parallaxEl plan-img" data-plan="2">
+                        <div class="w_100 h_100 sc_105 bgs_cov to_rb | j_topImage"
+                             style="background-image: url('/img/plans/plan1.jpg'); transform-origin: 60% 90%; transform: translate(0px, 0px);"></div>
+                    </div>
+                </div>
+                <div class="col-right width-40 d_f h_100 f_c pos_r">
+                    <div class="w_100 h_100 pos_r to_ct pt5vmax pl30">
+                        <div class="page-title">Квартиры</div>
+                        <h1 class="page-header">Удобство <span>во всем</span></h1>
+        
+                        <div class="page-desc">
+        
+                            <div class="apart-switcher-wrap">
+                                <ul>
+                                    <li class="active" data-plan="1">студия</li>
+                                    <li data-plan="2"><span>1</span>комната</li>
+                                    <li data-plan="3"><span>2</span>комната</li>
+                                    <li data-plan="4"><span>3</span>комната</li>
+                                    <li data-plan="5"><span>4</span>комната</li>
+                                </ul>
+                            </div>
+        
+                            <div class="plan-desc-w">
+                                <div class="plan-desc active" data-plan="1">
+                                    <div class="d_f ai_s | plan-nums">
+                                        <div class="pre">от <span></span></div>
+                                        <div class="num">51<sup>м<sup>2</sup></sup></div>
+                                        <div class="pre pre-w-line">от <span></span></div>
+                                        <div class="num">$480<sup>м<sup>2</sup></sup></div>
+                                    </div>
+        
+                                    <div class="plan-rooms">
+                                        <ul>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M29.295 10.7469C29.295 12.7319 27.686 14.3409 25.701 14.3409H4.73701C2.75201 14.3409 1.14301 12.7319 1.14301 10.7469V8.84986C1.14301 6.86486 2.75201 5.25586 4.73701 5.25586H25.701C27.686 5.25586 29.295 6.86486 29.295 8.84986V10.7469Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M24.503 14.3408V17.5808" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M5.93501 14.3408V17.5808" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M4.987 10.747V4.92896C4.987 2.94396 6.596 1.33496 8.581 1.33496H22.108C24.093 1.33496 25.702 2.94396 25.702 4.92896V10.747H4.987Z" fill="white" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M15.344 1.33496V10.747" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+                                                </div>
+                                                Гостиная 22,6<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="19" height="25" viewBox="0 0 19 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M18.321 1C18.321 1 13.407 2.436 13.407 6.14C13.407 10.147 13.407 17.63 13.407 17.63H18.321V1Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M1.26901 1.90234C1.26901 1.90234 1.26901 4.97734 1.26901 8.15734C1.26901 11.3373 2.20302 13.4153 5.06502 13.4153C8.17702 13.4153 8.86101 11.3363 8.86101 8.15734C8.86101 4.97834 8.86101 1.90234 8.86101 1.90234" stroke="#362633" stroke-miterlimit="10" stroke-linejoin="round"/>
+                                                        <path d="M3.81403 1.90234V7.65934" stroke="#362633" stroke-miterlimit="10" stroke-linejoin="round"/>
+                                                        <path d="M6.31601 1.90234V7.65934" stroke="#362633" stroke-miterlimit="10" stroke-linejoin="round"/>
+                                                        <path d="M5.065 13.415V24.746" stroke="#362633" stroke-miterlimit="10"/>
+                                                        <path d="M18.321 17.6309V24.8979" stroke="#362633" stroke-miterlimit="10"/>
+                                                    </svg>
+        
+                                                </div>
+                                                Кухня 10,0<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.812 6.93941C8.012 7.73941 6.716 7.73941 5.916 6.93941L3.914 4.9374C3.114 4.1374 3.114 2.84141 3.914 2.04141C4.714 1.24141 6.01 1.24141 6.81 2.04141L8.812 4.04341C9.612 4.84241 9.612 6.13941 8.812 6.93941Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M1 2.99609V17.5211" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M28.852 7.18945V17.5214" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.483 9.52148V15.4255C25.483 16.0875 24.947 16.6235 24.285 16.6235H8.412C7.75 16.6235 7.214 16.0875 7.214 15.4255V9.52148H25.483Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M7.214 9.52148H1.524" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.483 9.52148H28.852" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.483 14.8262H28.852" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M7.214 14.8262H1.524" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+                                                </div>
+                                                Спальня 14,2<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M25.087 11.0918V15.6118C25.087 17.6778 23.412 19.3528 21.346 19.3528H4.90201C2.83601 19.3528 1.16101 17.6778 1.16101 15.6118V11.0918H25.087Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M5.83801 19.3525V22.6255" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M20.411 19.3525V22.6255" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M7.70801 3.14268C7.70801 1.85168 6.66101 0.804688 5.37001 0.804688C4.07901 0.804688 3.03201 1.85168 3.03201 3.14268V11.0917" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M5.10303 3.14258H10.314" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+                                                </div>
+                                                Ванная 4,1<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M14.219 13.2305H2.10104C2.10104 13.2305 1.10004 13.1565 1.10004 12.2295" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 23.1631H2.62004" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M2.99104 13.2305C2.99104 13.2305 0.286041 18.9375 2.99104 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M6.83703 13.2305C6.83703 13.2305 4.13203 18.9375 6.83703 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M10.568 13.2305C10.568 13.2305 9.47604 18.6035 10.568 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 13.2305V22.7545" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 13.2305H26.337C26.337 13.2305 27.338 13.1565 27.338 12.2295" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 23.1631H25.819" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.448 13.2305C25.448 13.2305 28.153 18.9375 25.448 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M21.601 13.2305C21.601 13.2305 24.306 18.9375 21.601 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M17.871 13.2305C17.871 13.2305 18.963 18.6035 17.871 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M20.779 11.4197V1.66167V1.51367H7.66003V1.66167V11.4197" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 5.93066V11.4197" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M8.42004 5.93066H20.019" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+        
+                                                </div>
+                                                Балкон 2,2<sup>м<sup>2</sup></sup>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="plan-desc" data-plan="2">
+                                    <div class="d_f ai_s | plan-nums">
+                                        <div class="pre">от <span></span></div>
+                                        <div class="num">35<sup>м<sup>2</sup></sup></div>
+                                        <div class="pre pre-w-line">от <span></span></div>
+                                        <div class="num">$485<sup>м<sup>2</sup></sup></div>
+                                    </div>
+        
+                                    <div class="plan-rooms">
+                                        <ul>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="19" height="25" viewBox="0 0 19 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M18.321 1C18.321 1 13.407 2.436 13.407 6.14C13.407 10.147 13.407 17.63 13.407 17.63H18.321V1Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M1.26901 1.90234C1.26901 1.90234 1.26901 4.97734 1.26901 8.15734C1.26901 11.3373 2.20302 13.4153 5.06502 13.4153C8.17702 13.4153 8.86101 11.3363 8.86101 8.15734C8.86101 4.97834 8.86101 1.90234 8.86101 1.90234" stroke="#362633" stroke-miterlimit="10" stroke-linejoin="round"/>
+                                                        <path d="M3.81403 1.90234V7.65934" stroke="#362633" stroke-miterlimit="10" stroke-linejoin="round"/>
+                                                        <path d="M6.31601 1.90234V7.65934" stroke="#362633" stroke-miterlimit="10" stroke-linejoin="round"/>
+                                                        <path d="M5.065 13.415V24.746" stroke="#362633" stroke-miterlimit="10"/>
+                                                        <path d="M18.321 17.6309V24.8979" stroke="#362633" stroke-miterlimit="10"/>
+                                                    </svg>
+        
+                                                </div>
+                                                Кухня 10,0<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="30" height="18" viewBox="0 0 30 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.812 6.93941C8.012 7.73941 6.716 7.73941 5.916 6.93941L3.914 4.9374C3.114 4.1374 3.114 2.84141 3.914 2.04141C4.714 1.24141 6.01 1.24141 6.81 2.04141L8.812 4.04341C9.612 4.84241 9.612 6.13941 8.812 6.93941Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M1 2.99609V17.5211" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M28.852 7.18945V17.5214" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.483 9.52148V15.4255C25.483 16.0875 24.947 16.6235 24.285 16.6235H8.412C7.75 16.6235 7.214 16.0875 7.214 15.4255V9.52148H25.483Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M7.214 9.52148H1.524" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.483 9.52148H28.852" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.483 14.8262H28.852" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M7.214 14.8262H1.524" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+                                                </div>
+                                                Спальня 14,2<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="26" height="23" viewBox="0 0 26 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M25.087 11.0918V15.6118C25.087 17.6778 23.412 19.3528 21.346 19.3528H4.90201C2.83601 19.3528 1.16101 17.6778 1.16101 15.6118V11.0918H25.087Z" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M5.83801 19.3525V22.6255" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M20.411 19.3525V22.6255" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M7.70801 3.14268C7.70801 1.85168 6.66101 0.804688 5.37001 0.804688C4.07901 0.804688 3.03201 1.85168 3.03201 3.14268V11.0917" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M5.10303 3.14258H10.314" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+                                                </div>
+                                                Ванная 4,1<sup>м<sup>2</sup></sup>
+                                            </li>
+                                            <li>
+                                                <div class="ico-w">
+                                                    <svg width="28" height="24" viewBox="0 0 28 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M14.219 13.2305H2.10104C2.10104 13.2305 1.10004 13.1565 1.10004 12.2295" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 23.1631H2.62004" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M2.99104 13.2305C2.99104 13.2305 0.286041 18.9375 2.99104 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M6.83703 13.2305C6.83703 13.2305 4.13203 18.9375 6.83703 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M10.568 13.2305C10.568 13.2305 9.47604 18.6035 10.568 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 13.2305V22.7545" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 13.2305H26.337C26.337 13.2305 27.338 13.1565 27.338 12.2295" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 23.1631H25.819" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M25.448 13.2305C25.448 13.2305 28.153 18.9375 25.448 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M21.601 13.2305C21.601 13.2305 24.306 18.9375 21.601 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M17.871 13.2305C17.871 13.2305 18.963 18.6035 17.871 23.1625" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M20.779 11.4197V1.66167V1.51367H7.66003V1.66167V11.4197" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M14.219 5.93066V11.4197" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                        <path d="M8.42004 5.93066H20.019" stroke="#362633" stroke-width="1.1" stroke-miterlimit="10"/>
+                                                    </svg>
+        
+                                                </div>
+                                                Балкон 2,2<sup>м<sup>2</sup></sup>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+        
+        
+                            <div class="btn-w">
+                                <a href="#" class="btn"><span>Забронировать</span></a>
+                            </div>
+        
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
 
-        <footer class="hero-story hero second-hero hero5">
-            <h2>Contenu du footer</h2>
+
+
+
+        <footer id="footer" class="pl90">
+            <div class="pl80">
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+                <h2>Contenu du footer</h2>
+            </div>
         </footer>
 
 
-        <!-- Barba wrapper -->
-       <!-- <div id="barba-wrapper">
-            <div class="barba-container">
 
-                <div id="fullpage">
-
-                    &lt;!&ndash; SECTION 1️⃣ &ndash;&gt;
-                    <section id="section-1" class="section">
-                        &lt;!&ndash; circles &ndash;&gt;
-                        <svg id="circle-intro-1" class="circles circles-intro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        <svg id="circle-intro-2" class="circles circles-intro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        <svg id="circle-intro-3" class="circles circles-intro" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        &lt;!&ndash; content wrapper &ndash;&gt;
-                        <div class="wrappers wrapper-content">
-                            &lt;!&ndash; title &ndash;&gt;
-                            <h2 id="title-1" class="wrapper-content__title">Section 1</h2>
-                            &lt;!&ndash; paragraph &ndash;&gt;
-                            <div class="container-txt">
-                                <div class="container-txt__line">
-                                    <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">earum ratione, provident vel.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    &lt;!&ndash; SECTION 2️⃣ &ndash;&gt;
-                    <section id="section-2" class="section">
-                        &lt;!&ndash; circles &ndash;&gt;
-                        <svg id="circle-left" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        <svg id="circle-right" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        &lt;!&ndash; content wrapper &ndash;&gt;
-                        <div id="wrapper-content-2" class="wrappers wrapper-content">
-                            &lt;!&ndash; title &ndash;&gt;
-                            <h2 class="wrapper-content__title hover-2">Section 2</h2>
-                            &lt;!&ndash; paragraph &ndash;&gt;
-                            <div class="container-txt hover-2">
-                                <div class="container-txt__line">
-                                    <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">earum ratione, provident vel.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    &lt;!&ndash; SECTION 3️⃣ &ndash;&gt;
-                    <section id="section-3" class="section">
-                        &lt;!&ndash; circles &ndash;&gt;
-                        <svg id="circle-grow" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        &lt;!&ndash; content wrapper &ndash;&gt;
-                        <div id="wrapper-content-3"  class="wrappers wrapper-content">
-                            &lt;!&ndash; title &ndash;&gt;
-                            <h2 class="wrapper-content__title hover-3">Section 3</h2>
-                            &lt;!&ndash; paragraph &ndash;&gt;
-                            <div class="container-txt hover-3">
-                                <div class="container-txt__line">
-                                    <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">earum ratione, provident vel.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    &lt;!&ndash; SECTION 4️⃣ &ndash;&gt;
-                    <section id="section-4" class="section">
-                        &lt;!&ndash; circles &ndash;&gt;
-                        &lt;!&ndash;                         <svg id="circle-border" class="circles" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                                                    <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                                                </svg> &ndash;&gt;
-                        <svg class="circles piechart" viewBox="0 0 63.6619772368 63.6619772368">
-                            <circle id="circle-piechart" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
-                        </svg>
-                        &lt;!&ndash; content wrapper &ndash;&gt;
-                        <div id="wrapper-content-4" class="wrappers wrapper-content">
-                            &lt;!&ndash; title &ndash;&gt;
-                            <h2 class="wrapper-content__title">Section 4</h2>
-                            &lt;!&ndash; paragraph &ndash;&gt;
-                            <div class="container-txt">
-                                <div class="container-txt__line">
-                                    <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">adipisicing elit. Ab cumque, recusandae</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">earum ratione, provident vel.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    &lt;!&ndash; SECTION 5️⃣ &ndash;&gt;
-                    <section id="section-5" class="section">
-                        &lt;!&ndash; circles &ndash;&gt;
-                        <svg id="circle-radar-1" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        <svg id="circle-radar-2" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        <svg id="circle-radar-3" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        <svg id="circle-radar-4" class="circles circles-radar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 406 406">
-                            <circle id="circle-path" class="st0" cx="203" cy="203" r="202.5"/>
-                        </svg>
-                        &lt;!&ndash; content wrapper &ndash;&gt;
-                        <div id="wrapper-content-5" class="wrappers wrapper-content">
-                            &lt;!&ndash; title &ndash;&gt;
-                            <h2 class="wrapper-content__title">Section 5</h2>
-                            &lt;!&ndash; paragraph &ndash;&gt;
-                            <div class="container-txt">
-                                <div class="container-txt__line">
-                                    <span class="p-content">Lorem ipsum dolor sit amet, consectetur</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">adipisicing elit. <a href=#>Ab cumque</a>, recusandae</span>
-                                </div>
-
-                                <div class="container-txt__line">
-                                    <span class="p-content">earum ratione, provident vel.</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                </div>
-
-            </div> &lt;!&ndash; .barba-container &ndash;&gt;
-        </div>  #barba-wrapper -->
     </main><!-- #main -->
 </div><!-- #primary -->
 
 
-<script src="js/main.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../libs/gsap.min.js"></script>
+<script src="../libs/ScrollTrigger.min.js"></script>
+<script src="../libs/ScrollToPlugin.min.js"></script>
+<script src="../libs/CSSRulePlugin.min.js"></script>
+<script src="../libs/SplitText.min.js"></script>
+<script src="../libs/MorphSVGPlugin.js"></script>
+<script src="../libs/DrawSVGPlugin.min.js"></script>
+<script src="../libs/swiper-bundle.min.js"></script>
+<script src="../libs/scrollbar.min.js"></script>
+<script src="../js/main.js"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>-->
 </body>
 </html>
