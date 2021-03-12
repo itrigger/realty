@@ -1,0 +1,64 @@
+.logo-f{
+  width: 130px;
+  height: 130px;
+  background: url('../img/logo-f.svg') 0 0 no-repeat;
+}
+#footer{
+  background: #2D202C;
+  height: 313px;
+  .title{
+    color: #6C636C;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 6px;
+  }
+  .text{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #D2CDCC;
+    span{
+      display: block;
+    }
+  }
+  .line1{
+    padding-top: 57px;
+  }
+  .line2{
+    font-size: 12px;
+    line-height: 1.2;
+    color: rgba(#FFFFFF, 0.3);
+    margin-top: 50px;
+    span{
+      display: block;
+    }
+    &>div{
+      display: flex;
+      align-items: center;
+    }
+    .c1, .c2{
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  }
+  .social-btns{
+    margin-bottom: 0;
+    a{
+      display: block;
+      opacity: .3;
+      transition: 0.8s all;
+      &:hover{
+        opacity: 1;
+        transition: 0.8s all;
+      }
+    }
+  }
+}
+
+.logo-masshtab{
+  width: 137px;
+  height: 33px;
+  display: block;
+  background: url('../img/logo-masshtab.svg') 0 0 no-repeat;
+}

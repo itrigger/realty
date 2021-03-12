@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 
 <!-- Useful meta tags -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="robots" content="index, follow, noodp">
@@ -22,8 +22,22 @@
 <script src="../libs/preloadjs.min.js"></script>
 
 <script>
+    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+    let vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    // We listen to the resize event
+    window.addEventListener('resize', () => {
+        // We execute the same script as before
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+
+
     var queue = new createjs.LoadQueue(true);
     queue.loadFile({src:"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js", type:createjs.Types.JAVASCRIPT});
+    queue.loadFile({src:"https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/gsap.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/ScrollTrigger.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/ScrollToPlugin.min.js", type:createjs.Types.JAVASCRIPT});
@@ -32,8 +46,9 @@
     queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/libs/scrollbar.min.js", type:createjs.Types.JAVASCRIPT});
     queue.loadFile({src:"http://localhost:3000/js/main.js", type:createjs.Types.JAVASCRIPT});
-    queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.css", type:createjs.Types.CSS});
-    queue.loadFile({src:"http://localhost:3000/css/main.css", type:createjs.Types.CSS});
+    queue.loadFile({src:"https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css", type:createjs.Types.CSS});
+    //queue.loadFile({src:"http://localhost:3000/libs/swiper-bundle.min.css", type:createjs.Types.CSS});
+    //queue.loadFile({src:"http://localhost:3000/css/main.min.css", type:createjs.Types.CSS});
     queue.on("complete", handleComplete);
     queue.on("error", handleError);
 
@@ -57,9 +72,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+
 <link rel="stylesheet" href="../libs/swiper-bundle.min.css">
 <link href="../css/main.css" rel="stylesheet" />
 
 
 
-<title>Home</title>
+
+<title>Жилой комплекс LEON</title>

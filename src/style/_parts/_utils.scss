@@ -4,6 +4,10 @@
 .f_c{
   flex-direction: column;
 }
+
+.ta-c{
+  text-align: center;
+}
 .w_100{
   width: 100%;
 }
@@ -17,7 +21,8 @@
   height: 25%;
 }
 .h_100vh{
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
 }
 .pos_r{
   position: relative;
@@ -63,11 +68,9 @@
 
 
 
-
 .ml_a{
   margin-left: auto;
 }
-
 
 .left-col, .middle-col, .right-col, .full-col{
   height: 100vh;
@@ -75,6 +78,12 @@
 }
 .width-0{
   width: 0;
+}
+.width-18{
+  width: 18%;
+}
+.width-28{
+  width: 28%;
 }
 .width-33{
   width: 33.33%;
@@ -134,9 +143,11 @@
 .pl_250{
   padding-left: 250px;
 }
-.pt5vmax{
-  padding-top: 5vmax;
+.pt30{
+  padding-top: 30px;
 }
+.pt5vmax{ padding-top: 5vmax;}
+.pb5vmax{ padding-bottom: 5vmax;}
 .pt45p{
   padding-top: 45%;
 }
@@ -219,6 +230,23 @@
     color: #fff;
     &:hover{
       background: rgba($orange,0.8);
+      transition: 0.3s background-color;
+      &:before{
+        display: none;
+      }
+    }
+  }
+  &.btn-green{
+    background: #649B50;
+    border-color: #649B50;
+    color: #FFFFFF;
+    .ico{
+      width: 24px;
+      height: 24px;
+      background-size: contain;
+    }
+    &:hover{
+      background: rgba(#649B50,0.8);
       transition: 0.3s background-color;
       &:before{
         display: none;
