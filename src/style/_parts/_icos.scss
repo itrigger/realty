@@ -4,7 +4,9 @@
 .ico-left{
   margin-right: 10px;
 }
-
+.ico-right{
+  margin-left: 10px;
+}
 .ico-tel-w{
   width: 16px;
   height: 27px;
@@ -39,4 +41,10 @@
   width: 8px;
   height: 15px;
   background: url("../img/ico-fb-w-8-15.svg") 0 0 no-repeat;
+}
+
+.ico-arrowmenu{
+  width: 9px;
+  height: 14px;
+  background: url("../img/ico-arrowmenu.svg") 0 0 no-repeat;
 }

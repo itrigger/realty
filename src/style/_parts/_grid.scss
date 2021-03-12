@@ -64,10 +64,10 @@ h2 {
 }
 
 .mobile{
-  display: none !important;
+  display: none;
 }
 .desktop{
-  display: inherit !important;
+  display: inherit;
 }
 
 .hidden_params{
@@ -134,10 +134,10 @@ h2 {
 
 @media (min-width:481px) and (max-width:768px) {
   .mobile{
-    display: inherit !important;
+    display: inherit;
   }
   .desktop{
-    display: none !important;
+    display: none;
   }
 
   .row{
@@ -189,10 +189,10 @@ h2 {
   .xs-col-12{grid-column: span 12;}
   .xs-col-del{display: none;}
   .mobile{
-    display: inherit !important;
+    display: inherit;
   }
   .desktop{
-    display: none !important;
+    display: none;
   }
 } /*media max 480*/
 

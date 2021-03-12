@@ -1,11 +1,20 @@
 jQuery(document).ready(function ($) {
 
+
+
+
     gsap.registerPlugin(ScrollTrigger);
-    //gsap.registerPlugin(CSSRulePlugin);
-    //gsap.registerPlugin(MorphSVGPlugin);
     gsap.registerPlugin(DrawSVGPlugin);
 
+    function installMediaQueryWatcher(mediaQuery, layoutChangedCallback) {
+        var mql = window.matchMedia(mediaQuery);
+        mql.addListener(function (e) { return layoutChangedCallback(e.matches); });
+        layoutChangedCallback(mql.matches);
+    }
 
+
+
+/*
     const sections = document.querySelectorAll("section");
 
     function goToSection(section, anim) {
@@ -18,19 +27,99 @@ jQuery(document).ready(function ($) {
             anim.restart();
         }
     }
+*/
 
 
 
     /*my*/
 
-    gsap.from('.main-menu', {
-        duration: 1, x: '-100%', ease: 'expo',
-        onStart: () => {
-            if (!($('body').hasClass('leftMenuThin'))) {
-                $('.main-menu').addClass('active');
-            }
-        }
+    installMediaQueryWatcher("(max-width: 980px)", function(matches) {
+
+        if (matches) {
+
+           console.log('mobile sizes');
+
+           $(".card--bottom").on("click", function (){
+              let parent = $(this).parent();
+              if(!(parent.hasClass('card1'))){
+                  parent.toggleClass('active');
+                  $('html, body').animate({scrollTop: $(parent).offset().top - 65}, 1000);
+                  card2Swiper.update();
+                  card3Swiper.update();
+                  card4Swiper.update();
+                  card5Swiper.update();
+              }
+           });
+
+        } else {
+
+            gsap.from('.main-menu', {
+                duration: 1, x: '-100%', ease: 'expo',
+                onStart: () => {
+                    if (!($('body').hasClass('leftMenuThin'))) {
+                        $('.main-menu').addClass('active');
+                    }
+                }
+            });
+
+            let cardsAnim = gsap.to(".cards:not(:last-child)", {
+                yPercent: -100,
+                ease: "power1.inOut",
+                stagger: 0.5,
+                scrollTrigger: {
+                    trigger: "#uniqPage",
+                    start: "top top",
+                    end: "+=300%",
+                    scrub: true,
+                    pin: true
+                }
+            });
+
+            ScrollTrigger.create({
+                start: 'top -80',
+                end: 99999,
+                toggleClass: {className: 'visible', targets: '.top-menu'},
+            });
+
+            let shapes3 = "#anim-desk path, #anim-desk rect, #anim-cleaning path, #anim-cleaning rect, #anim-video path, #anim-video rect",
+                tl3 = gsap.timeline({
+                    repeat:1,
+                    yoyo:true,
+                    scrollTrigger:  {
+                        trigger: "#section5",
+                        start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                        end: "+=100%", // end after scrolling 500px beyond the start
+                        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+                    }
+                });
+
+            tl3.fromTo(shapes3, {drawSVG:"0 0"}, {duration: 2, drawSVG:"100%"});
+
+
+            $("#main-menu").hover(function () {
+                if ($('body').hasClass('leftMenuThin')) {
+                    menuItemTween.restart();
+                    //  menuLogoTween.restart();
+                    //menuBgTween.restart();
+                    //  menuLogo2Tween.reverse();
+                }
+                $(this).addClass("active");
+
+            }, function () {
+                if ($('body').hasClass('leftMenuThin')) {
+                    $(this).removeClass("active");
+                    menuItemTween.reverse().duration(0.3);
+                    //  menuLogoTween.reverse();
+                    // menuBgTween.reverse();
+                    //  menuLogo2Tween.restart();
+                }
+            });
+
+        } //desktop only
     });
+
+
 
     gsap.from('.arrow', {
         duration: 2,
@@ -57,47 +146,9 @@ jQuery(document).ready(function ($) {
         }
     });
 
-   /* let menuLogoTween = gsap.from(".logo", {
-        autoAlpha: 0,
-        x: -100,
-        duration: 1,
-        ease: Linear.easeNone,
-    });*/
-
-/*    let menuLogo2Tween = gsap.from(".logo-s", {
-        autoAlpha: 0,
-        y: -100,
-        duration: 0.75,
-        ease: Linear.easeNone,
-    });*/
-   // menuLogo2Tween.pause();
-
-  /*  let rule = CSSRulePlugin.getRule(".logo-w::after");
-    let menuBgTween = gsap.from(rule, {
-        backgroundPosition: "-100% 0px",
-        ease: Linear.easeNone,
-        duration: 1
-    });*/
 
 
-    $("#main-menu").hover(function () {
-        if ($('body').hasClass('leftMenuThin')) {
-            menuItemTween.restart();
-          //  menuLogoTween.restart();
-            //menuBgTween.restart();
-          //  menuLogo2Tween.reverse();
-        }
-        $(this).addClass("active");
 
-    }, function () {
-        if ($('body').hasClass('leftMenuThin')) {
-            $(this).removeClass("active");
-            menuItemTween.reverse().duration(0.3);
-          //  menuLogoTween.reverse();
-           // menuBgTween.reverse();
-          //  menuLogo2Tween.restart();
-        }
-    });
 
 
     ScrollTrigger.create({
@@ -121,11 +172,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    ScrollTrigger.create({
-        start: 'top -80',
-        end: 99999,
-        toggleClass: {className: 'visible', targets: '.top-menu'},
-    });
 
     gsap.fromTo('.j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
         scrollTrigger: {
@@ -332,7 +378,6 @@ jQuery(document).ready(function ($) {
             crossFade: true
         },
     })
-
     let card4Swiper = new Swiper('.card4 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -354,7 +399,6 @@ jQuery(document).ready(function ($) {
             crossFade: true
         },
     })
-
     let card5Swiper = new Swiper('.card5 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -376,7 +420,6 @@ jQuery(document).ready(function ($) {
             crossFade: true
         },
     });
-
     let sec9Swiper = new Swiper('#section9 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -491,20 +534,7 @@ jQuery(document).ready(function ($) {
 
 
 
-    let shapes3 = "#anim-desk path, #anim-desk rect, #anim-cleaning path, #anim-cleaning rect, #anim-video path, #anim-video rect",
-        tl3 = gsap.timeline({
-            repeat:1,
-            yoyo:true,
-            scrollTrigger:  {
-                trigger: "#section5",
-                start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                end: "+=100%", // end after scrolling 500px beyond the start
-                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 
-            }
-        });
-
-    tl3.fromTo(shapes3, {drawSVG:"0 0"}, {duration: 2, drawSVG:"100%"});
 
 /*    let shapes = "#anim-cleaning path, #anim-cleaning rect",
         tl = gsap.timeline({
@@ -537,6 +567,7 @@ jQuery(document).ready(function ($) {
     tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});*/
 
 
+/*
     let shapes4 = "#anim-kind path",
         tl4 = gsap.timeline({
             repeat:1,
@@ -551,21 +582,11 @@ jQuery(document).ready(function ($) {
         });
 
     tl4.to(shapes4, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+*/
 
 
 
-    let cardsAnim = gsap.to(".cards:not(:last-child)", {
-        yPercent: -100,
-        ease: "power1.inOut",
-        stagger: 0.5,
-        scrollTrigger: {
-            trigger: "#uniqPage",
-            start: "top top",
-            end: "+=300%",
-            scrub: true,
-            pin: true
-        }
-    });
+
 
     gsap.fromTo('#section6 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
         scrollTrigger: {

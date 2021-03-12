@@ -12,8 +12,8 @@
 @import "_parts/_leftside";
 @import "_parts/_page";
 @import "_parts/_footer";
+@import "_parts/_mobile";
 @import "_parts/_media";
-
 
 
 .slogan{
@@ -29,12 +29,5 @@ sup {
 .j_parallaxEl{
   transform: scale(1);
   opacity: 0.9;
-}
-
-
-
-footer{
-  background-color:  black;
-  color:  white;
 }
 
