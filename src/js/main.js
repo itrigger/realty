@@ -64,6 +64,14 @@ jQuery(document).ready(function ($) {
 
         } else {
 
+            $(window).on('load resize', function () {
+
+                    if ($(".rotationOverlay").length) {
+                        $(".rotationOverlay").remove();
+                    }
+
+            });
+
             if ($(".rotationOverlay").length) {
                 $(".rotationOverlay").remove();
             }
