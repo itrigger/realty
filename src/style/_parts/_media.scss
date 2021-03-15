@@ -43,10 +43,10 @@
     min-height: auto;
   }
 
-  .bgs_con, .bgs_cov{
+ /* .bgs_con, .bgs_cov{
     background-size: contain;
     background-position: 0 0;
-  }
+  }*/
 
 
   h1 span,
@@ -181,6 +181,35 @@
     }
   }
 
+  #section7{
+    &>.d_f{
+      flex-flow: column-reverse;
+    }
+    .col-right{
+      height: 50vh;
+      padding-left: 0;
+      padding-right: 0;
+      & *{
+        height: 350px;
+      }
+    }
+    .col-left{
+      padding: 20px 20px 0;
+      height: 50vh;
+    }
+  }
+  #section6{
+    .col-left{
+      padding: 0;
+      height: 50vh;
+      & *{
+        height: 350px;
+      }
+    }
+    .col-right{
+      height: 50vh;
+    }
+  }
   #uniqPage{
     .cards-desc{
       display: none;
@@ -407,5 +436,7 @@
       width: auto;
     }
   }
-
+  .rassrochka .num{
+    font-size: 4vmax;
+  }
 }

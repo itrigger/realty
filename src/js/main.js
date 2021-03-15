@@ -536,7 +536,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').addClass('active');
             panomapTween1.reverse();
             panomapTween2.restart();
-            Line();
+           // Line();
         } else {
             console.log('has not left');
             $(this).addClass('left');
@@ -544,7 +544,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').removeClass('active');
             panomapTween2.reverse();
             panomapTween1.restart();
-            Line();
+           // Line();
         }
     });
 
@@ -672,13 +672,11 @@ jQuery(document).ready(function ($) {
         let a = $(".dragger").find(".dragger__el"), t = $(".dragger__el").width(), o = $(".dragger").find(".dragger__trigger"),
             n = $(".dragger").find(".dragger__arrow");
         Draggable.create(n, {
-            type: "x", bounds: s, zIndexBoost: !1,
+            type: "x", bounds: ".dragger__trigger", zIndexBoost: !1,
             onPress: function () {
                 n.addClass("dragger__arrow_dragged")
             }, onDrag: function () {
-                console.log($(window).width());
-                console.log(t);
-                TweenLite.to(a, .3, {xPercent: -100 * (t- $(window).width()) / t * (this.x / this.maxX)})
+                TweenLite.to(a, .3, {xPercent: -100 * (t- $(window).width()-45) / t * (this.x / this.maxX)})
             }, onRelease: function () {
                 n.removeClass("dragger__arrow_dragged"), this.maxX - 10 <= this.endX && !n.hasClass("dragger__arrow_reversed") ? n.addClass("dragger__arrow_reversed") : this.endX <= 10 && n.hasClass("dragger__arrow_reversed") && n.removeClass("dragger__arrow_reversed")
             }
