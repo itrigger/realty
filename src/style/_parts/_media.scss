@@ -20,7 +20,7 @@
     font-size: 80%;
   }
   .btn{
-    width: 130px;
+    width: 140px;
     min-width: 130px;
     height: 33px;
     font-size: 10px;
@@ -210,6 +210,32 @@
       height: 50vh;
     }
   }
+  #section6 .col-right:after{
+    height: 52px;
+  }
+  #section7 .col-left:after{
+    height: 40px;
+  }
+  #section8{
+    .col-left{
+      padding: 0;
+      height: 50vh;
+    }
+    .col-right{
+      min-height: 40vh;
+    }
+  }
+  #section8 .col-right:after{
+    height: 54px;
+    background-position-x: -20px;
+  }
+
+  #section9{
+    .col-left{
+      padding: 5vmax 20px 20px;
+    }
+  }
+
   #uniqPage{
     .cards-desc{
       display: none;
@@ -439,4 +465,9 @@
   .rassrochka .num{
     font-size: 4vmax;
   }
+
+  .section--pre{
+    padding: 0 20px;
+  }
+  .se
 }

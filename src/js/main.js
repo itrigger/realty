@@ -29,7 +29,15 @@ jQuery(document).ready(function ($) {
         }
     */
 
-
+    let menuItemTween = gsap.from(".menu-item", {
+        autoAlpha: 0,
+        x: -100,
+        duration: .5,
+        stagger: { // wrap advanced options in an object
+            each: 0.1,
+            ease: Linear.easeNone,
+        }
+    });
     /*my*/
 
     installMediaQueryWatcher("(max-width: 980px)", function (matches) {
@@ -179,15 +187,7 @@ jQuery(document).ready(function ($) {
         {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
     );
 
-    let menuItemTween = gsap.from(".menu-item", {
-        autoAlpha: 0,
-        x: -100,
-        duration: .5,
-        stagger: { // wrap advanced options in an object
-            each: 0.1,
-            ease: Linear.easeNone,
-        }
-    });
+
 
 
     gsap.fromTo('.j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
@@ -668,20 +668,29 @@ jQuery(document).ready(function ($) {
 
 
     let s = $(".dragger");
+
     if(s.length)  {
-        let a = $(".dragger").find(".dragger__el"), t = $(".dragger__el").width(), o = $(".dragger").find(".dragger__trigger"),
-            n = $(".dragger").find(".dragger__arrow");
-        Draggable.create(n, {
-            type: "x", bounds: ".dragger__trigger", zIndexBoost: !1,
-            onPress: function () {
-                n.addClass("dragger__arrow_dragged")
-            }, onDrag: function () {
-                TweenLite.to(a, .3, {xPercent: -100 * (t- $(window).width()-45) / t * (this.x / this.maxX)})
-            }, onRelease: function () {
-                n.removeClass("dragger__arrow_dragged"), this.maxX - 10 <= this.endX && !n.hasClass("dragger__arrow_reversed") ? n.addClass("dragger__arrow_reversed") : this.endX <= 10 && n.hasClass("dragger__arrow_reversed") && n.removeClass("dragger__arrow_reversed")
-            }
-        })
-    }
+        s.each(function (){
+            let a = $(this).find(".dragger__el"), t = $(".dragger__el").width(), o = $(this).find(".dragger__trigger"),
+                n = $(this).find(".dragger__arrow");
+            Draggable.create(n, {
+                type: "x",
+                bounds: ".dragger__trigger",
+                zIndexBoost: !1,
+                onPress: function () {
+                    n.addClass("dragger__arrow_dragged")
+                },
+                onDrag: function () {
+                    TweenLite.to(a, .3, {xPercent: -100 * (t- $(window).width()-45) / t * (this.x / this.maxX)})
+                },
+                onRelease: function () {
+                    n.removeClass("dragger__arrow_dragged"), this.maxX - 10 <= this.endX && !n.hasClass("dragger__arrow_reversed") ? n.addClass("dragger__arrow_reversed") : this.endX <= 10 && n.hasClass("dragger__arrow_reversed") && n.removeClass("dragger__arrow_reversed")
+                }
+            })
+        });
+
+
+    }//if
 
 
 });

@@ -43,3 +43,82 @@
   top: 11px;
   z-index: 99;
 }
+
+.dragger_w{
+  width: 60px;
+  height: 60px;
+  background: #362633;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  &:before,
+  &:after
+  {
+    position: absolute;
+    display: block;
+    content: '';
+  }
+  &:before{
+    width: 8px;
+    height: 11px;
+    background: url('../img/dragge-la.svg');
+    left: 14px;
+    top: 10px;
+    transition: 1s all;
+    animation: 2s animArrowL infinite ease-in;
+  }
+  &:after{
+    width: 8px;
+    height: 11px;
+    background: url('../img/dragge-ra.svg');
+    right: 0;
+    top: 10px;
+    transition: 1s all;
+    animation: 2s animArrowR infinite ease-in;
+  }
+  .dragger-hand{
+    margin-top: 5px;
+    width: 23px;
+    height: 29px;
+    background: url('../img/dragger-hand.svg');
+  }
+}
+
+.dragger_c{
+  padding-right: 1rem;
+  padding-left: 1rem;
+  position: absolute;
+  top: auto;
+  bottom: 67px;
+  left: 0;
+  right: auto;
+  width: 100%;
+}
+
+@keyframes animArrowL {
+  0%{left: 14px;}
+  50%{left: 5px;}
+  100%{left: 14px;}
+}
+@keyframes animArrowR {
+  0%{right: 14px;}
+  50%{right: 5px;}
+  100%{right: 14px;}
+}
+.dragger__trigger{
+  position: relative;
+  &:before{
+    bottom: 30px;
+    left: 0;
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-image: linear-gradient(to right, white 22%, rgba(255, 255, 255, 0) 0%);
+    background-position: bottom;
+    background-size: 15px 3px;
+    background-repeat: repeat-x;
+  }
+}
