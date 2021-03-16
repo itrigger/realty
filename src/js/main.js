@@ -1,57 +1,80 @@
 jQuery(document).ready(function ($) {
 
 
-
-
     gsap.registerPlugin(ScrollTrigger);
     gsap.registerPlugin(DrawSVGPlugin);
+    gsap.registerPlugin(Draggable);
 
     function installMediaQueryWatcher(mediaQuery, layoutChangedCallback) {
         var mql = window.matchMedia(mediaQuery);
-        mql.addListener(function (e) { return layoutChangedCallback(e.matches); });
+        mql.addListener(function (e) {
+            return layoutChangedCallback(e.matches);
+        });
         layoutChangedCallback(mql.matches);
     }
 
 
+    /*
+        const sections = document.querySelectorAll("section");
 
-/*
-    const sections = document.querySelectorAll("section");
+        function goToSection(section, anim) {
+            gsap.to(window, {
+                scrollTo: {y: section, autoKill: false},
+                duration: 1
+            });
 
-    function goToSection(section, anim) {
-        gsap.to(window, {
-            scrollTo: {y: section, autoKill: false},
-            duration: 1
-        });
-
-        if (anim) {
-            anim.restart();
+            if (anim) {
+                anim.restart();
+            }
         }
-    }
-*/
-
+    */
 
 
     /*my*/
 
-    installMediaQueryWatcher("(max-width: 980px)", function(matches) {
+    installMediaQueryWatcher("(max-width: 980px)", function (matches) {
 
         if (matches) {
 
-           console.log('mobile sizes');
+            console.log('mobile sizes');
 
-           $(".card--bottom").on("click", function (){
-              let parent = $(this).parent();
-              if(!(parent.hasClass('card1'))){
-                  parent.toggleClass('active');
-                  $('html, body').animate({scrollTop: $(parent).offset().top - 65}, 1000);
-                  card2Swiper.update();
-                  card3Swiper.update();
-                  card4Swiper.update();
-                  card5Swiper.update();
-              }
-           });
+            $(".card--bottom").on("click", function () {
+                let parent = $(this).parent();
+                if (!(parent.hasClass('card1'))) {
+                    parent.toggleClass('active');
+                    $('html, body').animate({scrollTop: $(parent).offset().top - 65}, 1000);
+                    card2Swiper.update();
+                    card3Swiper.update();
+                    card4Swiper.update();
+                    card5Swiper.update();
+                }
+            });
+
+            $(window).on('load resize', function () {
+                if (window.matchMedia("(orientation: portrait)").matches) {
+                    if ($(".rotationOverlay").length) {
+                        $(".rotationOverlay").remove();
+                    }
+                }
+
+                if (window.matchMedia("(orientation: landscape)").matches) {
+                    $("body").append('<div class="mobile rotationOverlay" style="position: fixed; z-index: 10000; left: 0; right: 0; top: 0; bottom: 0; background: #2d202c; display: flex; align-items: center; justify-content: center;color: white;">Переверни телефон, пёс!</div>')
+                }
+            });
 
         } else {
+
+            $(window).on('load resize', function () {
+
+                    if ($(".rotationOverlay").length) {
+                        $(".rotationOverlay").remove();
+                    }
+
+            });
+
+            if ($(".rotationOverlay").length) {
+                $(".rotationOverlay").remove();
+            }
 
             gsap.from('.main-menu', {
                 duration: 1, x: '-100%', ease: 'expo',
@@ -83,9 +106,9 @@ jQuery(document).ready(function ($) {
 
             let shapes3 = "#anim-desk path, #anim-desk rect, #anim-cleaning path, #anim-cleaning rect, #anim-video path, #anim-video rect",
                 tl3 = gsap.timeline({
-                    repeat:1,
-                    yoyo:true,
-                    scrollTrigger:  {
+                    repeat: 1,
+                    yoyo: true,
+                    scrollTrigger: {
                         trigger: "#section5",
                         start: "-=50% top", // when the top of the trigger hits the top of the viewport
                         end: "+=100%", // end after scrolling 500px beyond the start
@@ -94,7 +117,7 @@ jQuery(document).ready(function ($) {
                     }
                 });
 
-            tl3.fromTo(shapes3, {drawSVG:"0 0"}, {duration: 2, drawSVG:"100%"});
+            tl3.fromTo(shapes3, {drawSVG: "0 0"}, {duration: 2, drawSVG: "100%"});
 
 
             $("#main-menu").hover(function () {
@@ -116,9 +139,29 @@ jQuery(document).ready(function ($) {
                 }
             });
 
+            ScrollTrigger.create({
+                start: 'top -80',
+                end: 99999,
+                onEnter: () => {
+                    $('body').addClass('leftMenuThin');
+                    $('.main-menu').removeClass('active');
+                    menuItemTween.reverse();
+                    // menuLogoTween.reverse();
+                    // menuBgTween.reverse();
+                    // menuLogo2Tween.play();
+                },
+                onLeaveBack: () => {
+                    $('body').removeClass('leftMenuThin');
+                    $('.main-menu').addClass('active');
+                    menuItemTween.play();
+                    // menuLogoTween.play();
+                    // menuBgTween.play();
+                    // menuLogo2Tween.reverse();
+                }
+            });
+
         } //desktop only
     });
-
 
 
     gsap.from('.arrow', {
@@ -143,32 +186,6 @@ jQuery(document).ready(function ($) {
         stagger: { // wrap advanced options in an object
             each: 0.1,
             ease: Linear.easeNone,
-        }
-    });
-
-
-
-
-
-
-    ScrollTrigger.create({
-        start: 'top -80',
-        end: 99999,
-        onEnter: () => {
-            $('body').addClass('leftMenuThin');
-            $('.main-menu').removeClass('active');
-            menuItemTween.reverse();
-           // menuLogoTween.reverse();
-           // menuBgTween.reverse();
-           // menuLogo2Tween.play();
-        },
-        onLeaveBack: () => {
-            $('body').removeClass('leftMenuThin');
-            $('.main-menu').addClass('active');
-            menuItemTween.play();
-           // menuLogoTween.play();
-           // menuBgTween.play();
-           // menuLogo2Tween.reverse();
         }
     });
 
@@ -271,9 +288,9 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-         autoplay: {
-             delay: 5000,
-         },
+        autoplay: {
+            delay: 5000,
+        },
         runCallbacksOnInit: true,
         on: {
             init: function () {
@@ -493,8 +510,8 @@ jQuery(document).ready(function ($) {
         scale: 1.12,
         duration: 0.75,
         ease: Linear.easeNone,
-        onComplete: ()=>{
-            Line();
+        onComplete: () => {
+           // Line();
             $("#svg-line").addClass('active');
         }
     });
@@ -504,7 +521,7 @@ jQuery(document).ready(function ($) {
         scale: 1.12,
         duration: 0.75,
         ease: Linear.easeNone,
-        onComplete: ()=>{
+        onComplete: () => {
             $("#svg-line").removeClass('active');
         }
     });
@@ -519,7 +536,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').addClass('active');
             panomapTween1.reverse();
             panomapTween2.restart();
-            Line();
+           // Line();
         } else {
             console.log('has not left');
             $(this).addClass('left');
@@ -527,65 +544,58 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').removeClass('active');
             panomapTween2.reverse();
             panomapTween1.restart();
-            Line();
+           // Line();
         }
     });
 
 
+    /*    let shapes = "#anim-cleaning path, #anim-cleaning rect",
+            tl = gsap.timeline({
+                repeat:1,
+                yoyo:true,
+                scrollTrigger:  {
+                    trigger: "#section5",
+                    start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                    end: "bottom bottom", // end after scrolling 500px beyond the start
+                    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+                }
+            });
+
+        tl.to(shapes, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+
+        let shapes2 = "#anim-video path, #anim-video rect",
+            tl2 = gsap.timeline({
+                repeat:1,
+                yoyo:true,
+                scrollTrigger:  {
+                    trigger: "#section5",
+                    start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                    end: "bottom bottom", // end after scrolling 500px beyond the start
+                    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+                }
+            });
+
+        tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});*/
 
 
+    /*
+        let shapes4 = "#anim-kind path",
+            tl4 = gsap.timeline({
+                repeat:1,
+                yoyo:true,
+                scrollTrigger:  {
+                    trigger: "#card2",
+                    start: "-=50% top", // when the top of the trigger hits the top of the viewport
+                    end: "bottom bottom", // end after scrolling 500px beyond the start
+                    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 
+                }
+            });
 
-/*    let shapes = "#anim-cleaning path, #anim-cleaning rect",
-        tl = gsap.timeline({
-            repeat:1,
-            yoyo:true,
-            scrollTrigger:  {
-                trigger: "#section5",
-                start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                end: "bottom bottom", // end after scrolling 500px beyond the start
-                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-
-            }
-        });
-
-    tl.to(shapes, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
-
-    let shapes2 = "#anim-video path, #anim-video rect",
-        tl2 = gsap.timeline({
-            repeat:1,
-            yoyo:true,
-            scrollTrigger:  {
-                trigger: "#section5",
-                start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                end: "bottom bottom", // end after scrolling 500px beyond the start
-                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-
-            }
-        });
-
-    tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});*/
-
-
-/*
-    let shapes4 = "#anim-kind path",
-        tl4 = gsap.timeline({
-            repeat:1,
-            yoyo:true,
-            scrollTrigger:  {
-                trigger: "#card2",
-                start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                end: "bottom bottom", // end after scrolling 500px beyond the start
-                scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-
-            }
-        });
-
-    tl4.to(shapes4, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
-*/
-
-
-
+        tl4.to(shapes4, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
+    */
 
 
     gsap.fromTo('#section6 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
@@ -622,20 +632,61 @@ jQuery(document).ready(function ($) {
     });
 
 
-    $(".apart-switcher-wrap li").click(function (){
-       let dataPlan = $(this).data("plan");
-       $(".plan-img").removeClass("active");
-       $(".plan-desc").removeClass("active");
-       $(".apart-switcher-wrap li").removeClass("active");
-       $(".plan-img[data-plan="+dataPlan+"]").addClass("active");
-       $(".plan-desc[data-plan="+dataPlan+"]").addClass("active");
-       $(this).addClass("active");
+    $(".apart-switcher-wrap li").click(function () {
+        let dataPlan = $(this).data("plan");
+        $(".plan-img").removeClass("active");
+        $(".plan-desc").removeClass("active");
+        $(".apart-switcher-wrap li").removeClass("active");
+        $(".plan-img[data-plan=" + dataPlan + "]").addClass("active");
+        $(".plan-desc[data-plan=" + dataPlan + "]").addClass("active");
+        $(this).addClass("active");
     });
+
+    $(".menu-trigger").on('click touch', function () {
+        gsap.to('#mobile-header', {
+            duration: 0.5,
+            y: "-=100%",
+            ease: Power0.easeInOut
+        });
+        menuItemTween.restart();
+        $('#main-menu').addClass("active");
+    });
+
+    let closeMobileMenu = () => {
+        gsap.to('#mobile-header', {
+            duration: 0.5,
+            y: "+=100%",
+            ease: Power0.easeInOut
+        });
+        menuItemTween.reverse();
+        $('#main-menu').removeClass("active");
+    }
+
+    $(".cls-btn, .layout").on('click touch', function () {
+        closeMobileMenu();
+    });
+
+
+    let s = $(".dragger");
+    if(s.length)  {
+        let a = $(".dragger").find(".dragger__el"), t = $(".dragger__el").width(), o = $(".dragger").find(".dragger__trigger"),
+            n = $(".dragger").find(".dragger__arrow");
+        Draggable.create(n, {
+            type: "x", bounds: ".dragger__trigger", zIndexBoost: !1,
+            onPress: function () {
+                n.addClass("dragger__arrow_dragged")
+            }, onDrag: function () {
+                TweenLite.to(a, .3, {xPercent: -100 * (t- $(window).width()-45) / t * (this.x / this.maxX)})
+            }, onRelease: function () {
+                n.removeClass("dragger__arrow_dragged"), this.maxX - 10 <= this.endX && !n.hasClass("dragger__arrow_reversed") ? n.addClass("dragger__arrow_reversed") : this.endX <= 10 && n.hasClass("dragger__arrow_reversed") && n.removeClass("dragger__arrow_reversed")
+            }
+        })
+    }
 
 
 });
 
-
+/*
 function Line() {
 
     let wrap = $('.panomap');
@@ -707,8 +758,8 @@ function Line() {
     line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
     line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
     line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
-}
+}*/
 
 $(window).on('load resize', function () {
-    Line();
+   // Line();
 });

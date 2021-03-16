@@ -1,4 +1,4 @@
-#mobile-header{
+.mobile-header{
   position: fixed;
   top: 0;
   width: 100%;
@@ -23,4 +23,23 @@
     color: #D2CDCC;
     font-size: 12px;
   }
+}
+.main-menu .layout{
+  left: 100%;
+  position: fixed;
+  transition: .3s all;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(#2D202C,.8);
+}
+.main-menu.active .layout{
+  left: 257px;
+  transition: .9s all;
+}
+.cls-btn{
+  position: absolute;
+  right: -60px;
+  top: 11px;
+  z-index: 99;
 }
