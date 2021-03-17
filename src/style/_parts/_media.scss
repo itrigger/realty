@@ -16,6 +16,10 @@
 }
 
 @media (max-width: 980px) {
+  .slide.slide2 .slider-square .title span{
+    right: -23px;
+    font-size: 19px;
+  }
   sup{
     font-size: 80%;
   }
@@ -38,9 +42,11 @@
   }
 
   .m--h_100vh{
-    height: 100vh;
-    height: calc(var(--vh, 1vh) * 100);
+    height: 100%;
     min-height: auto;
+    height: -moz-available;          /* WebKit игнор. */
+    height: -webkit-fill-available;  /* Mozilla игнор. */
+    height: stretch;
   }
 
  /* .bgs_con, .bgs_cov{
@@ -116,10 +122,10 @@
     font-size: 62px;
   }
   .slide.slide2 .slider-square .title{
-    font-size: 40px;
+    font-size: 36px;
   }
   .slide.slide3 .slider-square .title{
-    font-size: 38px;
+    font-size: 32px;
   }
   .slider-square .desc{
     font-size: 10px;
@@ -469,5 +475,5 @@
   .section--pre{
     padding: 0 20px;
   }
-  .se
+
 }
