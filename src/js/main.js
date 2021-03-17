@@ -671,16 +671,18 @@ jQuery(document).ready(function ($) {
 
     if(s.length)  {
         s.each(function (){
-            let a = $(this).find(".dragger__el"), t = $(".dragger__el").width(), o = $(this).find(".dragger__trigger"),
+            let a = $(this).find(".dragger__el"), t = $(this).find(".dragger__el").width(), o = $(this).find(".dragger__trigger"),
                 n = $(this).find(".dragger__arrow");
             Draggable.create(n, {
                 type: "x",
-                bounds: ".dragger__trigger",
+                bounds: o,
                 zIndexBoost: !1,
                 onPress: function () {
                     n.addClass("dragger__arrow_dragged")
                 },
                 onDrag: function () {
+                    console.log(t);
+                    console.log(this.maxX);
                     TweenLite.to(a, .3, {xPercent: -100 * (t- $(window).width()-45) / t * (this.x / this.maxX)})
                 },
                 onRelease: function () {

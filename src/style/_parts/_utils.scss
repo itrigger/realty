@@ -331,9 +331,19 @@ sup {
   opacity: 0.9;
 }
 
-.dragger__el{
-  width: 1351px;
-  height: 552px;
+
+.panomap1{
+  .dragger__el{
+    width: 1351px;
+    height: 552px;
+  }
+}
+
+.panomap2{
+  .dragger__el{
+    width: 703px;
+    height: 552px;
+  }
 }
 
 .dragger__trigger{
