@@ -51,10 +51,10 @@ jQuery(document).ready(function ($) {
                 if (!(parent.hasClass('card1'))) {
                     parent.toggleClass('active');
                     $('html, body').animate({scrollTop: $(parent).offset().top - 65}, 1000);
-                    card2Swiper.update();
+                    /*card2Swiper.update();
                     card3Swiper.update();
                     card4Swiper.update();
-                    card5Swiper.update();
+                    card5Swiper.update();*/
                 }
             });
 
@@ -125,7 +125,7 @@ jQuery(document).ready(function ($) {
                     }
                 });
 
-            tl3.fromTo(shapes3, {drawSVG: "0 0"}, {duration: 2, drawSVG: "100%"});
+            //tl3.fromTo(shapes3, {drawSVG: "0 0"}, {duration: 2, drawSVG: "100%"});
 
 
             $("#main-menu").hover(function () {
@@ -295,15 +295,15 @@ jQuery(document).ready(function ($) {
         on: {
             init: function () {
                 zoomImage(this.$el);
-                moveDownText(this.$el);
+                //moveDownText(this.$el);
             },
             slideNextTransitionStart: function () {
                 zoomImage(this.$el);
-                moveDownText(this.$el);
+                //moveDownText(this.$el);
             },
             slidePrevTransitionStart: function () {
                 zoomImage(this.$el);
-                moveDownText(this.$el);
+               // moveDownText(this.$el);
             }
         }
     })
@@ -353,7 +353,7 @@ jQuery(document).ready(function ($) {
     })
 
 
-    let card2Swiper = new Swiper('.card2 .swiper-container', {
+    /*let card2Swiper = new Swiper('.card2 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
         slidesOffsetAfter: 0,
@@ -373,29 +373,29 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-    })
-    let card3Swiper = new Swiper('.card3 .swiper-container', {
-        slidesPerView: 1,
-        spaceBetween: 0,
-        slidesOffsetAfter: 0,
-        slideToClickedSlide: true,
-        watchOverflow: true,
-        loop: true,
-        lazy: {
-            loadPrevNext: true
-        },
-        preloadImages: true,
-        speed: 1000,
-        navigation: {
-            nextEl: '#rightArrow4',
-            prevEl: '#leftArrow4',
-        },
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true
-        },
-    })
-    let card4Swiper = new Swiper('.card4 .swiper-container', {
+    })*/
+    // let card3Swiper = new Swiper('.card3 .swiper-container', {
+    //     slidesPerView: 1,
+    //     spaceBetween: 0,
+    //     slidesOffsetAfter: 0,
+    //     slideToClickedSlide: true,
+    //     watchOverflow: true,
+    //     loop: true,
+    //     lazy: {
+    //         loadPrevNext: true
+    //     },
+    //     preloadImages: true,
+    //     speed: 1000,
+    //     navigation: {
+    //         nextEl: '#rightArrow4',
+    //         prevEl: '#leftArrow4',
+    //     },
+    //     effect: 'fade',
+    //     fadeEffect: {
+    //         crossFade: true
+    //     },
+    // })
+    /*let card4Swiper = new Swiper('.card4 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
         slidesOffsetAfter: 0,
@@ -415,8 +415,8 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-    })
-    let card5Swiper = new Swiper('.card5 .swiper-container', {
+    })*/
+   /* let card5Swiper = new Swiper('.card5 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
         slidesOffsetAfter: 0,
@@ -436,7 +436,30 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
+    });*/
+
+    let coworkSwiper = new Swiper('.card1 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: true,
+        lazy: {
+            loadPrevNext: true
+        },
+        preloadImages: true,
+        speed: 1000,
+        navigation: {
+            nextEl: '#rightArrowCow',
+            prevEl: '#leftArrowCow',
+        },
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
     });
+
     let sec9Swiper = new Swiper('#section9 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -466,6 +489,30 @@ jQuery(document).ready(function ($) {
             slidePrevTransitionStart: function () {
                 $('#section9 .slide-desc ul li').removeClass('active');
                 $('#section9 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+            }
+        }
+    });
+
+    let sec10Swiper = new Swiper('#section10 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: false,
+        lazy: {
+            loadPrevNext: true
+        },
+        parallax: true,
+        preloadImages: true,
+        speed: 1000,
+        runCallbacksOnInit: true,
+        on: {
+            slideNextTransitionStart: function () {
+                $('#section10 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+            },
+            slidePrevTransitionStart: function () {
+
             }
         }
     });
@@ -511,7 +558,7 @@ jQuery(document).ready(function ($) {
         duration: 0.75,
         ease: Linear.easeNone,
         onComplete: () => {
-           // Line();
+            Line();
             $("#svg-line").addClass('active');
         }
     });
@@ -536,7 +583,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').addClass('active');
             panomapTween1.reverse();
             panomapTween2.restart();
-           // Line();
+            Line();
         } else {
             console.log('has not left');
             $(this).addClass('left');
@@ -544,7 +591,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').removeClass('active');
             panomapTween2.reverse();
             panomapTween1.restart();
-           // Line();
+            Line();
         }
     });
 
@@ -631,6 +678,17 @@ jQuery(document).ready(function ($) {
         delay: 1
     });
 
+    ScrollTrigger.create({
+        trigger: '#section10',
+        start: 'top +150',
+        end: 'bottom bottom',
+        onEnter: () => {
+            $('#section10 .btn').addClass('active');
+        },
+        onLeaveBack: () => {
+            $('#section10 .btn').removeClass('active');
+        }
+    });
 
     $(".apart-switcher-wrap li").click(function () {
         let dataPlan = $(this).data("plan");
@@ -697,7 +755,7 @@ jQuery(document).ready(function ($) {
 
 });
 
-/*
+
 function Line() {
 
     let wrap = $('.panomap');
@@ -769,8 +827,102 @@ function Line() {
     line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
     line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
     line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
-}*/
+}
 
 $(window).on('load resize', function () {
-   // Line();
+    Line();
 });
+
+
+/*
+* Убрал анимацию заголовков на главной
+* Убрал слайдеры с аккаордеона
+* Слайдер для коворкинга
+* Убрал анимацию СВГ
+*
+* */
+
+let aparts_array = [];
+let mySwiper;
+aparts_array = [
+    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="1"><img src="/img/plans/plan1.jpg" alt="plan 1" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="2"><img src="/img/plans/plan1.jpg" alt="plan 2" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="3"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+    {slug: 'room1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="1"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+    {slug: 'room1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="2"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+    {slug: 'room2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="1"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+    {slug: 'room2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="2"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+];
+$(document).ready(function () {
+    const apart_array_studio = []; //все слайды карусельки с акциями
+    /*карусель для модуля Новинки каталога на главной*/
+    if (aparts_array.length > 0) {
+        for (const [i, arr] of aparts_array.entries()) {
+            apart_array_studio.push(arr['html'])
+        }
+    }
+    mySwiper = new Swiper('#section10 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: false,
+        lazy: {
+            loadPrevNext: true
+        },
+        parallax: true,
+        preloadImages: true,
+        speed: 1000,
+        runCallbacksOnInit: true,
+        on: {
+            slideNextTransitionStart: function () {
+                $('#section10 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+            },
+            slidePrevTransitionStart: function () {
+            }
+        }
+    });
+
+
+    mySwiper.appendSlide(aparts_array);
+    mySwiper.lazy.load();
+
+
+    $(".tabs li").on("click", function () {
+        let tabId = $(this).parents(".tabs").attr("data-tabid");
+        let swiperName = eval($(this).parents(".tabs").attr("data-swiper"));
+        let slug = $(this).attr('data-slug').toString();
+        let array = apart_array_studio;
+
+        let temp_array = [];
+
+        if (array) {
+            if (slug === 'all') {
+                for (const [i, arr] of array.entries()) {
+                    temp_array.push(arr['html'])
+                }
+            } else if(slug === 'selected'){
+                for (const [i, arr] of array.entries()) {
+                    if (arr['slug'] === slug) {
+                        temp_array.push(arr['html'])
+                    }
+                }
+            } else {
+                for (const [i, arr] of array.entries()) {
+                    if (arr['slug'] === slug) {
+                        temp_array.push(arr['html'])
+                    }
+                }
+            }
+        }
+
+        $(this).parents(".tabs").find("li").removeClass("active");
+        $(this).addClass("active");
+        swiperName.removeAllSlides();
+        swiperName.appendSlide(temp_array);
+        swiperName.update();
+        swiperName.slideTo(0, 0);
+        swiperName.lazy.load();
+    });
+})

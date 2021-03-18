@@ -208,7 +208,7 @@
     transition: 1s all;
 
   }
-  &:hover{
+  &:hover, &.active{
     color: #fff;
     transition: 1s color;
     &:before{
@@ -216,6 +216,10 @@
       transition: 1s all;
       background-position: 100% 0%;
     }
+  }
+  &.active:hover{
+    transition: 1s all;
+    opacity: 0.8;
   }
   &.btn-disabled{
     color: #454545;
@@ -404,4 +408,30 @@ sup {
 .dragger{
   overflow: hidden!important;
   position: relative!important;
+}
+
+.my-swiper-thumbs{
+  position: absolute;
+  z-index: 5;
+  bottom: 25px;
+  right: 25px;
+  ul{
+    display: flex;
+  }
+  li{
+    margin-right: 20px;
+    &.active{
+      border-bottom: 2px solid green;
+    }
+  }
+}
+
+.aparts-pad{
+  padding: 25px;
+  .swiper-slide{
+    padding: 25px;
+    img{
+      max-width: 100%;
+    }
+  }
 }
