@@ -13,50 +13,66 @@ jQuery(document).ready(function ($) {
         layoutChangedCallback(mql.matches);
     }
 
-
-    /*
-        const sections = document.querySelectorAll("section");
-
-        function goToSection(section, anim) {
-            gsap.to(window, {
-                scrollTo: {y: section, autoKill: false},
-                duration: 1
-            });
-
-            if (anim) {
-                anim.restart();
-            }
-        }
-    */
-
     let menuItemTween = gsap.from(".menu-item", {
         autoAlpha: 0,
         x: -100,
         duration: .5,
-        stagger: { // wrap advanced options in an object
+        stagger: {
             each: 0.1,
             ease: Linear.easeNone,
         }
     });
-    /*my*/
+
 
     installMediaQueryWatcher("(max-width: 980px)", function (matches) {
 
         if (matches) {
 
-            console.log('mobile sizes');
-
-            $(".card--bottom").on("click", function () {
+     /*       $(".card--bottom").on("click", function () {
                 let parent = $(this).parent();
                 if (!(parent.hasClass('card1'))) {
-                    parent.toggleClass('active');
+                    //parent.toggleClass('active');
+                    parent.find('.cards-desc').slideToggle();
                     $('html, body').animate({scrollTop: $(parent).offset().top - 65}, 1000);
-                    /*card2Swiper.update();
+                    /!*card2Swiper.update();
                     card3Swiper.update();
                     card4Swiper.update();
-                    card5Swiper.update();*/
+                    card5Swiper.update();*!/
                 }
-            });
+            });*/
+
+
+            /**/
+            $(".card--bottom").click(playAnimation);
+
+            function playAnimation(event) {
+                event.preventDefault();
+
+                let $this = $(this).parent();
+                let $thisContent = $this.find(".cards-desc");
+                let parent = $(this).parent();
+
+                // close any open ones
+                TweenMax.to(".expanded .cards-desc", 0.2, { height: "0", ease: Sine.easeInOut });
+                TweenMax.to(".expanded", 0.2, {  ease: Sine.easeInOut });
+
+                $this.toggleClass("expanded");
+
+                if ($(parent).hasClass("expanded")) {
+                    var self = this;
+                    setTimeout(function() {
+                        TweenMax.to(window, 1, { scrollTo: $(parent).offset().top - 65 });
+                    }, 310);
+
+                    TweenMax.set($thisContent[0], { height: "auto" });
+                    TweenMax.from($thisContent[0], 0.2, { height: 0 });
+                }
+
+
+            }
+
+            /**/
+
 
             $(window).on('load resize', function () {
                 if (window.matchMedia("(orientation: portrait)").matches) {
@@ -288,9 +304,9 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-        autoplay: {
+       /* autoplay: {
             delay: 5000,
-        },
+        },*/
         runCallbacksOnInit: true,
         on: {
             init: function () {
@@ -493,7 +509,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    let sec10Swiper = new Swiper('#section10 .swiper-container', {
+   /* let sec10Swiper = new Swiper('#section10 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
         slidesOffsetAfter: 0,
@@ -515,7 +531,7 @@ jQuery(document).ready(function ($) {
 
             }
         }
-    });
+    });*/
 
     $('.map--legend li').hover(function () {
         let $dataPoint = $(this).attr('data-point');
@@ -690,15 +706,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $(".apart-switcher-wrap li").click(function () {
-        let dataPlan = $(this).data("plan");
-        $(".plan-img").removeClass("active");
-        $(".plan-desc").removeClass("active");
-        $(".apart-switcher-wrap li").removeClass("active");
-        $(".plan-img[data-plan=" + dataPlan + "]").addClass("active");
-        $(".plan-desc[data-plan=" + dataPlan + "]").addClass("active");
-        $(this).addClass("active");
-    });
+
 
     $(".menu-trigger").on('click touch', function () {
         gsap.to('#mobile-header', {
@@ -788,12 +796,12 @@ function Line() {
         item4X = item4.position().left + item4.width() / 2,
         item4Y = item4.position().top + item4.height() / 2;
 
-    let item5 = wrap.find('.map-point5'),
+/*    let item5 = wrap.find('.map-point5'),
         num5 = wrap.find('.map-logo'),
         num5X = num5.position().left + num5.width() / 2,
         num5Y = num5.position().top + num5.height() / 2,
         item5X = item5.position().left + item5.width() / 2,
-        item5Y = item5.position().top + item5.height() / 2;
+        item5Y = item5.position().top + item5.height() / 2;*/
 
     let item6 = wrap.find('.map-point6'),
         num6 = wrap.find('.map-logo'),
@@ -802,12 +810,12 @@ function Line() {
         item6X = item6.position().left + item6.width() / 2,
         item6Y = item6.position().top + item6.height() / 2;
 
-    let item7 = wrap.find('.map-point7'),
+  /*  let item7 = wrap.find('.map-point7'),
         num7 = wrap.find('.map-logo'),
         num7X = num7.position().left + num7.width() / 2,
         num7Y = num7.position().top + num7.height() / 2,
         item7X = item7.position().left + item7.width() / 2,
-        item7Y = item7.position().top + item7.height() / 2;
+        item7Y = item7.position().top + item7.height() / 2;*/
 
 
     let svg = $('#svg-line');
@@ -816,17 +824,17 @@ function Line() {
         line2 = svg.find('.line-2'),
         line3 = svg.find('.line-3'),
         line4 = svg.find('.line-4'),
-        line5 = svg.find('.line-5'),
-        line6 = svg.find('.line-6'),
-        line7 = svg.find('.line-7');
+        //line5 = svg.find('.line-5'),
+        line6 = svg.find('.line-6');
+        //line7 = svg.find('.line-7');
 
     line1.attr({'x1': num1X, 'y1': num1Y, 'x2': item1X, 'y2': item1Y});
     line2.attr({'x1': num2X, 'y1': num2Y, 'x2': item2X, 'y2': item2Y});
     line3.attr({'x1': num3X, 'y1': num3Y, 'x2': item3X, 'y2': item3Y});
     line4.attr({'x1': num4X, 'y1': num4Y, 'x2': item4X, 'y2': item4Y});
-    line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
+    //line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
     line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
-    line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
+    //line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
 }
 
 $(window).on('load resize', function () {
@@ -834,34 +842,28 @@ $(window).on('load resize', function () {
 });
 
 
-/*
-* Убрал анимацию заголовков на главной
-* Убрал слайдеры с аккаордеона
-* Слайдер для коворкинга
-* Убрал анимацию СВГ
-*
-* */
 
-let aparts_array = [];
-let mySwiper;
-aparts_array = [
-    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="1"><img src="/img/plans/plan1.jpg" alt="plan 1" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
-    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="2"><img src="/img/plans/plan1.jpg" alt="plan 2" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
-    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="3"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
-    {slug: 'room1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="1"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
-    {slug: 'room1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="2"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
-    {slug: 'room2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="1"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
-    {slug: 'room2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan="2"><img src="/img/plans/plan1.jpg" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>'},
+
+let apartSwiper;
+let aparts_array = [
+    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/studio1.png" alt="plan 1" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/studio1-mini.jpg" alt=""></li>'},
+    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/studio2.png" alt="plan 2" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/studio2-mini.jpg" alt=""></li>'},
+    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/1bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
+    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/1bed-2.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/1bed-2-mini.jpg" alt=""></li>'},
+    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="3"><img src="/img/plans/1bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
+    {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/2bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/2bed-1-mini.jpg" alt=""></li>'},
+    {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/2bed-2.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/2bed-2-mini.jpg" alt=""></li>'},
 ];
 $(document).ready(function () {
-    const apart_array_studio = []; //все слайды карусельки с акциями
-    /*карусель для модуля Новинки каталога на главной*/
+    const apart_array_studio = [];
     if (aparts_array.length > 0) {
         for (const [i, arr] of aparts_array.entries()) {
-            apart_array_studio.push(arr['html'])
+            if(arr['slug'] === 'studio'){
+                apart_array_studio.push(arr['html'])
+            }
         }
     }
-    mySwiper = new Swiper('#section10 .swiper-container', {
+    apartSwiper = new Swiper('#section10 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
         slidesOffsetAfter: 0,
@@ -877,52 +879,67 @@ $(document).ready(function () {
         runCallbacksOnInit: true,
         on: {
             slideNextTransitionStart: function () {
-                $('#section10 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').removeClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
             },
             slidePrevTransitionStart: function () {
+                $('#section10 .my-swiper-thumbs ul').find('li').removeClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
             }
         }
     });
 
 
-    mySwiper.appendSlide(aparts_array);
-    mySwiper.lazy.load();
+    apartSwiper.appendSlide(apart_array_studio);
+    apartSwiper.lazy.load();
 
+    $('.my-swiper-thumbs').on('click', 'li', function (){
+       let index = $(this).index()
+        apartSwiper.slideTo(index, 1000);
+    });
 
-    $(".tabs li").on("click", function () {
-        let tabId = $(this).parents(".tabs").attr("data-tabid");
-        let swiperName = eval($(this).parents(".tabs").attr("data-swiper"));
-        let slug = $(this).attr('data-slug').toString();
-        let array = apart_array_studio;
+    $(".apart-switcher-wrap li").on("click", function () {
 
+        let slug = $(this).data('slug').toString();
+        let array = aparts_array;
+        let $thumb = $('.my-swiper-thumbs ul');
         let temp_array = [];
+        let temp_thumbs = [];
 
         if (array) {
-            if (slug === 'all') {
-                for (const [i, arr] of array.entries()) {
-                    temp_array.push(arr['html'])
-                }
-            } else if(slug === 'selected'){
+            if (slug) {
                 for (const [i, arr] of array.entries()) {
                     if (arr['slug'] === slug) {
-                        temp_array.push(arr['html'])
-                    }
-                }
-            } else {
-                for (const [i, arr] of array.entries()) {
-                    if (arr['slug'] === slug) {
-                        temp_array.push(arr['html'])
+                        temp_array.push(arr['html']);
+                        temp_thumbs.push(arr['thumb']);
                     }
                 }
             }
         }
 
-        $(this).parents(".tabs").find("li").removeClass("active");
+        $(this).parents(".apart-switcher-wrap").find("li").removeClass("active");
         $(this).addClass("active");
-        swiperName.removeAllSlides();
-        swiperName.appendSlide(temp_array);
-        swiperName.update();
-        swiperName.slideTo(0, 0);
-        swiperName.lazy.load();
+        $(".plan-desc").removeClass("active");
+        $(".plan-desc[data-plan=" + slug + "]").addClass("active");
+
+        $thumb.html('');
+        $thumb.append(temp_thumbs);
+
+        apartSwiper.removeAllSlides();
+        apartSwiper.appendSlide(temp_array);
+        apartSwiper.update();
+        apartSwiper.slideTo(0, 0);
+        apartSwiper.lazy.load();
     });
 })
+
+/*
+$(".apart-switcher-wrap li").click(function () {
+    let dataPlan = $(this).data("plan");
+    $(".plan-img").removeClass("active");
+    $(".plan-desc").removeClass("active");
+    $(".apart-switcher-wrap li").removeClass("active");
+    $(".plan-img[data-plan=" + dataPlan + "]").addClass("active");
+    $(".plan-desc[data-plan=" + dataPlan + "]").addClass("active");
+    $(this).addClass("active");
+});*/
