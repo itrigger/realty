@@ -13,50 +13,66 @@ jQuery(document).ready(function ($) {
         layoutChangedCallback(mql.matches);
     }
 
-
-    /*
-        const sections = document.querySelectorAll("section");
-
-        function goToSection(section, anim) {
-            gsap.to(window, {
-                scrollTo: {y: section, autoKill: false},
-                duration: 1
-            });
-
-            if (anim) {
-                anim.restart();
-            }
-        }
-    */
-
     let menuItemTween = gsap.from(".menu-item", {
         autoAlpha: 0,
         x: -100,
         duration: .5,
-        stagger: { // wrap advanced options in an object
+        stagger: {
             each: 0.1,
             ease: Linear.easeNone,
         }
     });
-    /*my*/
+
 
     installMediaQueryWatcher("(max-width: 980px)", function (matches) {
 
         if (matches) {
 
-            console.log('mobile sizes');
-
-            $(".card--bottom").on("click", function () {
+     /*       $(".card--bottom").on("click", function () {
                 let parent = $(this).parent();
                 if (!(parent.hasClass('card1'))) {
-                    parent.toggleClass('active');
+                    //parent.toggleClass('active');
+                    parent.find('.cards-desc').slideToggle();
                     $('html, body').animate({scrollTop: $(parent).offset().top - 65}, 1000);
-                    /*card2Swiper.update();
+                    /!*card2Swiper.update();
                     card3Swiper.update();
                     card4Swiper.update();
-                    card5Swiper.update();*/
+                    card5Swiper.update();*!/
                 }
-            });
+            });*/
+
+
+            /**/
+            $(".card--bottom").click(playAnimation);
+
+            function playAnimation(event) {
+                event.preventDefault();
+
+                let $this = $(this).parent();
+                let $thisContent = $this.find(".cards-desc");
+                let parent = $(this).parent();
+
+                // close any open ones
+                TweenMax.to(".expanded .cards-desc", 0.2, { height: "0", ease: Sine.easeInOut });
+                TweenMax.to(".expanded", 0.2, {  ease: Sine.easeInOut });
+
+                $this.toggleClass("expanded");
+
+                if ($(parent).hasClass("expanded")) {
+                    var self = this;
+                    setTimeout(function() {
+                        TweenMax.to(window, 1, { scrollTo: $(parent).offset().top - 65 });
+                    }, 310);
+
+                    TweenMax.set($thisContent[0], { height: "auto" });
+                    TweenMax.from($thisContent[0], 0.2, { height: 0 });
+                }
+
+
+            }
+
+            /**/
+
 
             $(window).on('load resize', function () {
                 if (window.matchMedia("(orientation: portrait)").matches) {
@@ -288,9 +304,9 @@ jQuery(document).ready(function ($) {
         fadeEffect: {
             crossFade: true
         },
-        autoplay: {
+       /* autoplay: {
             delay: 5000,
-        },
+        },*/
         runCallbacksOnInit: true,
         on: {
             init: function () {
@@ -834,6 +850,7 @@ let aparts_array = [
     {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/studio2.png" alt="plan 2" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/studio2-mini.jpg" alt=""></li>'},
     {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/1bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
     {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/1bed-2.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/1bed-2-mini.jpg" alt=""></li>'},
+    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="3"><img src="/img/plans/1bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
     {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/2bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/2bed-1-mini.jpg" alt=""></li>'},
     {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/2bed-2.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/2bed-2-mini.jpg" alt=""></li>'},
 ];
@@ -862,10 +879,12 @@ $(document).ready(function () {
         runCallbacksOnInit: true,
         on: {
             slideNextTransitionStart: function () {
-                $('#section10 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').removeClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
             },
             slidePrevTransitionStart: function () {
-                $('#section10 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').removeClass('active');
+                $('#section10 .my-swiper-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
             }
         }
     });
@@ -874,9 +893,12 @@ $(document).ready(function () {
     apartSwiper.appendSlide(apart_array_studio);
     apartSwiper.lazy.load();
 
+    $('.my-swiper-thumbs').on('click', 'li', function (){
+       let index = $(this).index()
+        apartSwiper.slideTo(index, 1000);
+    });
 
     $(".apart-switcher-wrap li").on("click", function () {
-
 
         let slug = $(this).data('slug').toString();
         let array = aparts_array;

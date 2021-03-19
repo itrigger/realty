@@ -85,14 +85,14 @@ textarea.form-control{
 }
 
 .fancybox-close-small{
-  width: 43px;
-  height: 42px;
-  background: url('../img/fancy-close.svg') 0 0 no-repeat;
+  width: 43px !important;;
+  height: 42px !important;;
+  background: url('../img/fancy-close.svg') 0 0 no-repeat !important;
   svg{
-    display: none;
+    display: none !important;;
   }
 }
 .fancybox-slide--html .fancybox-close-small{
-  right: 20px;
-  top: 20px;
+  right: 20px !important;;
+  top: 20px !important;;
 }

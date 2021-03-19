@@ -420,6 +420,7 @@ sup {
   }
   li{
     margin-right: 20px;
+    cursor: pointer;
     &.active{
       border-bottom: 2px solid green;
     }
@@ -444,4 +445,47 @@ sup {
   position: absolute;
   left: 5%;
   bottom: 5%;
+}
+.eye-north{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 5%;
+  flex-direction: column;
+  align-items: center;
+  svg{
+    margin-bottom: 5px;
+  }
+  span{
+    color: #858585;
+    font-size: 12px;
+  }
+}
+.eye-west{
+  position: absolute;
+  left: 0;
+  transform: translateY(-50%) rotate(-90deg);
+  top: 50%;
+  svg{
+    margin-left: 5px;
+    transform: rotate(90deg);
+  }
+  span{
+    color: #858585;
+    font-size: 12px;
+  }
+}
+.eye-east{
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%) rotate(-90deg);
+  top: 50%;
+  svg{
+    margin-left: 5px;
+    transform: rotate(90deg);
+  }
+  span{
+    color: #858585;
+    font-size: 12px;
+  }
 }
