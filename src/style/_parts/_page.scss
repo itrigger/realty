@@ -471,10 +471,14 @@ body.leftMenuThin{
 .cards:nth-last-of-type(5) {
   height: calc(100vh - 13.6rem);
   z-index: 5;
+
 }
 
 .cards .swiper-container{
   max-width: 640px;
+}
+.card1{
+  background-color: #000;
 }
 
 .card2{

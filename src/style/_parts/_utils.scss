@@ -428,10 +428,20 @@ sup {
 
 .aparts-pad{
   padding: 25px;
+  background: url('../img/pat--leftmenu-wave.svg') repeat #F1F1F1;
   .swiper-slide{
     padding: 25px;
     img{
       max-width: 100%;
     }
   }
+}
+
+.roza{
+  width: 94px;
+  height: 97px;
+  background: url('../img/roza.svg') 0 0 no-repeat;
+  position: absolute;
+  left: 5%;
+  bottom: 5%;
 }
