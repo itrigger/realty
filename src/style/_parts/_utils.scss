@@ -218,8 +218,14 @@
     }
   }
   &.active:hover{
-    transition: 1s all;
-    opacity: 0.8;
+    /*transition: 1s all;
+    opacity: 0.8;*/
+    color: #E24B33;
+    &:before{
+      top: 76px;
+      transition: 1s all;
+      background-position: 0% 0%;
+    }
   }
   &.btn-disabled{
     color: #454545;
@@ -336,14 +342,14 @@ sup {
 }
 
 
-.panomap1{
+.panomap2{
   .dragger__el{
     width: 1351px;
     height: 552px;
   }
 }
 
-.panomap2{
+.panomap1{
   .dragger__el{
     width: 703px;
     height: 552px;
@@ -450,7 +456,7 @@ sup {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 5%;
+  top: 50px;
   flex-direction: column;
   align-items: center;
   svg{

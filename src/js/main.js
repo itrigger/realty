@@ -86,6 +86,11 @@ jQuery(document).ready(function ($) {
                 }
             });
 
+            $(window).on('load resize', function () {
+                Line("loc-mobile");
+            });
+
+
         } else {
 
             $(window).on('load resize', function () {
@@ -574,7 +579,7 @@ jQuery(document).ready(function ($) {
         duration: 0.75,
         ease: Linear.easeNone,
         onComplete: () => {
-            Line();
+            Line('.loc-desktop');
             $("#svg-line").addClass('active');
         }
     });
@@ -599,7 +604,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').addClass('active');
             panomapTween1.reverse();
             panomapTween2.restart();
-            Line();
+            Line('.loc-desktop');
         } else {
             console.log('has not left');
             $(this).addClass('left');
@@ -607,7 +612,7 @@ jQuery(document).ready(function ($) {
             $('.panomap2, .switcher-w .right').removeClass('active');
             panomapTween2.reverse();
             panomapTween1.restart();
-            Line();
+            Line('.loc-desktop');
         }
     });
 
@@ -764,9 +769,11 @@ jQuery(document).ready(function ($) {
 });
 
 
-function Line() {
+function Line(target) {
 
-    let wrap = $('.panomap');
+    let wrap = $(`${target} .panomap`);
+
+    console.log(target);
 
     let item1 = wrap.find('.map-point1'),
         num1 = wrap.find('.map-logo'),
@@ -810,23 +817,23 @@ function Line() {
         item6X = item6.position().left + item6.width() / 2,
         item6Y = item6.position().top + item6.height() / 2;
 
-  /*  let item7 = wrap.find('.map-point7'),
+    let item7 = wrap.find('.map-point7'),
         num7 = wrap.find('.map-logo'),
         num7X = num7.position().left + num7.width() / 2,
         num7Y = num7.position().top + num7.height() / 2,
         item7X = item7.position().left + item7.width() / 2,
-        item7Y = item7.position().top + item7.height() / 2;*/
+        item7Y = item7.position().top + item7.height() / 2;
 
 
-    let svg = $('#svg-line');
+    let svg = $(`${target} .svg-line`);
 
     let line1 = svg.find('.line-1'),
         line2 = svg.find('.line-2'),
         line3 = svg.find('.line-3'),
         line4 = svg.find('.line-4'),
         //line5 = svg.find('.line-5'),
-        line6 = svg.find('.line-6');
-        //line7 = svg.find('.line-7');
+        line6 = svg.find('.line-6'),
+        line7 = svg.find('.line-7');
 
     line1.attr({'x1': num1X, 'y1': num1Y, 'x2': item1X, 'y2': item1Y});
     line2.attr({'x1': num2X, 'y1': num2Y, 'x2': item2X, 'y2': item2Y});
@@ -834,26 +841,22 @@ function Line() {
     line4.attr({'x1': num4X, 'y1': num4Y, 'x2': item4X, 'y2': item4Y});
     //line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
     line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
-    //line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
+    line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
 }
 
-$(window).on('load resize', function () {
-    Line();
-});
 
 
 
 
 let apartSwiper;
 let aparts_array = [
-    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/studio1.png" alt="plan 1" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/studio1-mini.jpg" alt=""></li>'},
-    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/studio2.png" alt="plan 2" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/studio2-mini.jpg" alt=""></li>'},
-    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/1bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
-    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/1bed-2.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/1bed-2-mini.jpg" alt=""></li>'},
-    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="3"><img src="/img/plans/1bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
-    {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><img src="/img/plans/2bed-1.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li class="active"><img src="../img/plans/2bed-1-mini.jpg" alt=""></li>'},
-    {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="2"><img src="/img/plans/2bed-2.png" alt="plan 3" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></div>', thumb:'<li><img src="../img/plans/2bed-2-mini.jpg" alt=""></li>'},
+    {slug: 'studio',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/studio.svg" data-fancybox data-width="420" data-height="1140"><img src="/img/plans/studio.svg" alt="studio" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>', thumb:'<li class="active"><img src="../img/plans/studio1-mini.jpg" alt=""></li>'},
+    {slug: 'bed1',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/1bed.svg" data-fancybox data-width="738" data-height="1148"><img src="/img/plans/1bed.svg" alt="1 bed" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>', thumb:'<li class="active"><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'},
+    {slug: 'bed2',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/2bed.svg" data-fancybox data-width="1138" data-height="1344"><img src="/img/plans/2bed.svg" alt="2 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>', thumb:'<li class="active"><img src="../img/plans/2bed-1-mini.jpg" alt=""></li>'},
+    {slug: 'bed3',html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>', thumb:'<li class="active"><img src="../img/plans/2bed-2-mini.jpg" alt=""></li>'},
 ];
+
+
 $(document).ready(function () {
     const apart_array_studio = [];
     if (aparts_array.length > 0) {
@@ -931,6 +934,43 @@ $(document).ready(function () {
         apartSwiper.slideTo(0, 0);
         apartSwiper.lazy.load();
     });
+
+
+
+
+    let remontSwiper = new Swiper('#section6 .swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 0,
+        slidesOffsetAfter: 0,
+        slideToClickedSlide: true,
+        watchOverflow: true,
+        loop: false,
+        lazy: {
+            loadPrevNext: true
+        },
+        parallax: true,
+        preloadImages: true,
+        speed: 1000,
+        runCallbacksOnInit: true,
+        on: {
+            slideNextTransitionStart: function () {
+                $('#section6 .remont-thumbs ul').find('li').removeClass('active');
+                $('#section6 .remont-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
+            },
+            slidePrevTransitionStart: function () {
+                $('#section6 .remont-thumbs ul').find('li').removeClass('active');
+                $('#section6 .remont-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
+            }
+        }
+    });
+
+    $('.remont-thumbs li').on('click', function (){
+        let index = $(this).index()
+        remontSwiper.slideTo(index, 1000);
+    });
+
+
+
 })
 
 /*
@@ -943,3 +983,25 @@ $(".apart-switcher-wrap li").click(function () {
     $(".plan-desc[data-plan=" + dataPlan + "]").addClass("active");
     $(this).addClass("active");
 });*/
+
+/*
+* ToDo:
+*  +++1. Добавить слайд на первый экран. Слайд с морем убрать??
+*  +++2. Проверить все фотки и заменить их на фотки хорошего качества
+*  +++3. Доделать выбор отделок. Мобильный вид. Поставить фотку чистовой отделки (кровать, кухня студия)
+*  +++4. Сделать иконку Плюса на планировки и возможность открыть на весь экран и скролить
+*  +++5. В мобильной версии планировки поджать
+*  +++6. На карту добавить объектов (в телеге координаты)
+*  7. В мобильной версии сделать драггер для картинки с двумя домами
+*  +++8. Добавить планировки
+*  +++9. Поправить название сторон в адаптиве планировок
+*  +++10. Масштабирование картинок на адаптиве
+*
+*  -1. Кнопка ватсап на покупаемрадиодетали HEADER
+*
+*
+*  1. Нужны фото процесса строительства
+*
+*/
+
+
