@@ -159,7 +159,7 @@ body.leftMenuThin{
   50%{transform: scale(1.12)}
   80%{transform: scale(1)}
 }
-#svg-line {
+.svg-line {
   position: absolute;
   left: 0;
   right: 0;
@@ -893,4 +893,39 @@ body.leftMenuThin{
 }
 .fancybox-image, .fancybox-spaceball{
 
+}
+
+#uniqPage{
+  .gallery{
+     a{
+       display: flex;
+       position: relative;
+       &:after {
+         content: '+';
+         font-size: 88px;
+         position: absolute;
+         width: 140px;
+         height: 140px;
+         border-radius: 50%;
+         opacity: 0;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: #fff;
+         background: #E24B33;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%) scale(1);
+         transition: .5s all;
+         z-index: 2;
+       }
+       &:hover{
+         &:after{
+           opacity: .8;
+           transform: translate(-50%, -50%) scale(1.15);
+           transition: .5s all;
+         }
+       }
+     }
+  }
 }

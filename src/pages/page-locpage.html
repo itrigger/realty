@@ -18,8 +18,8 @@
                                   class="line line-3 map-point3-line"/>
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
                                   class="line line-4 map-point4-line"/>
-                            <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
-                                  class="line line-5 map-point5-line"/>
+                            <!--<line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                  class="line line-5 map-point5-line"/>-->
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
                                   class="line line-6 map-point6-line"/>
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
@@ -552,11 +552,11 @@
     </div>
     <div class="loc-mobile">
         <div class="oh-wrap d_f w_100 pl90 pos_r">
-            <div class="pos_r w_100" style="padding-top: 100%">
+            <div class="pos_r w_100 | loc-mobile--wrap" style="padding-top: 120%">
 
-                <div class="panomap panomap1 w_100 h_100 active">
+                <div class="panomap panomap1 w_100 h_100 active" style="margin-top: -5px;">
                     <div class="w_100 h_100 bgs_con pos_r"
-                         style="background-image: url('../img/full/mob-map3.jpg'); background-position: center bottom;">
+                         style="background-image: url('../img/full/mob-map3.jpg'); background-position: center center;">
                         <svg class="svg-line">
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
                                   class="line line-1 map-point1-line"/>
@@ -566,8 +566,8 @@
                                   class="line line-3 map-point3-line"/>
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
                                   class="line line-4 map-point4-line"/>
-                            <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
-                                  class="line line-5 map-point5-line"/>
+                        <!--    <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                  class="line line-5 map-point5-line"/>-->
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
                                   class="line line-6 map-point6-line"/>
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
@@ -666,13 +666,141 @@
 
 
                     </div>
-                </div>
-                <div class="panomap panomap2 w_100">
+                    <div class="map--legend">
+                                    <ul>
+                                        <li data-point=".map-point1">
+                                            <div class="title">Lech and Maria Kachinsky park</div>
+                                            <div class="desc-w d_f ">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
 
-                    <div class="pos_r dragger o_h" style="padding-top: 600px">
+                                                </div>
+                                                <div class="time">15</div>
+                                                <div class="desc">минут<br/> пешком</div>
+                                            </div>
+                                        </li>
+                                        <li data-point=".map-point2">
+                                            <div class="title">Ресторан Ar Daidardo</div>
+                                            <div class="desc-w d_f">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </li>
+                                        <li data-point=".map-point3">
+                                            <div class="title">ТЦ MetroCity</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">10</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </li>
+                                        <li data-point=".map-point4">
+                                            <div class="title">Супермаркет Zgapari</div>
+                                            <div class="desc-w d_f">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </li>
+                                        <li data-point=".map-point6">
+                                            <div class="title">Аэропорт</div>
+                                            <div class="desc-w d_f">
+                                                <div class="ico-w">
+                                                    <svg width="26" height="19" viewBox="0 0 26 19" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M25.91 3.90405V5.31405C25.91 5.31405 25.55 5.89405 23.93 6.00405L23.07 4.34405L23 3.90405H25.91Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M12.937 16.148H6.37399V18.058H2.83199V15.106C2.83199 15.106 1.85999 13.995 1.85999 10.8C1.85999 7.605 7.31199 0 7.31199 0H12.938H12.973H18.599C18.599 0 24.051 7.605 24.051 10.8C24.051 13.995 23.079 15.106 23.079 15.106V18.058H19.537V16.148H12.974H12.937ZM16.827 10.051H8.80499V11.946H16.827V10.051V10.051ZM20.508 8.96C19.683 8.96 19.015 9.629 19.015 10.453C19.015 11.277 19.684 11.946 20.508 11.946C21.333 11.946 22.001 11.277 22.001 10.453C22.001 9.629 21.333 8.96 20.508 8.96ZM12.972 6.286C16.861 6.286 19.917 5.696 19.917 5.696C19.604 4.515 17.833 1.529 17.833 1.529H12.971H12.936H8.07599C8.07599 1.529 6.30499 4.516 5.99199 5.696C5.99199 5.696 9.04799 6.286 12.937 6.286H12.972ZM3.90799 10.453C3.90799 11.278 4.57699 11.946 5.40099 11.946C6.22499 11.946 6.89399 11.277 6.89399 10.453C6.89399 9.629 6.22599 8.96 5.40199 8.96C4.57799 8.96 3.90799 9.628 3.90799 10.453Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M2.91 3.90405L2.89 4.01405L1.87 5.99405C0.34 5.86405 0 5.31405 0 5.31405V3.90405H2.91Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">5</div>
+                                                <div class="desc">минут <br>на машине</div>
+                                            </div>
+                                        </li>
+                                        <li data-point=".map-point7">
+                                            <div class="title">Университетская больница</div>
+                                            <div class="desc-w d_f ai_c">
+                                                <div class="ico-w">
+                                                    <svg width="14" height="24" viewBox="0 0 14 24" fill="none"
+                                                         xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M8.63496 4.162C9.78426 4.162 10.716 3.2303 10.716 2.081C10.716 0.931696 9.78426 0 8.63496 0C7.48565 0 6.55396 0.931696 6.55396 2.081C6.55396 3.2303 7.48565 4.162 8.63496 4.162Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M5.84 17.557L3.52 23.347L1.25 22.437L3.97 15.667L5.84 17.557Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M10.57 16.9371V23.3371H8.13V17.8971L7.04 16.7371L7.09 16.6871L4.5 14.0771L5.63 8.42706L4.1 9.22706L2.15 12.8371L0 11.6771L2.3 7.41706L6.25 5.34706L6.27 5.23706L6.4 5.26706L6.43 5.24706L6.44 5.26706L9.99 5.97706L9.89 6.50706L9.63 7.77706L9.64 7.78706L9.07 10.6871L9.06 10.6771L8.3 14.4971L10.57 16.9371Z"
+                                                              fill="#A59B9A"/>
+                                                        <path d="M13.35 11.587L11.6 13.287L10.34 11.997L10.91 9.08704L13.35 11.587Z"
+                                                              fill="#A59B9A"/>
+                                                    </svg>
+
+                                                </div>
+                                                <div class="time">10</div>
+                                                <div class="desc">минут <br>пешком</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                    </div>
+                </div>
+                <div class="panomap panomap2 w_100" style="margin-top: -50px;">
+
+                    <div class="pos_r dragger o_h" style="padding-top: 120%">
                         <div class="w_200 h_100 pos_a dragger__el">
                             <div class="w_100 h_100 pos_a bgs_con"
-                                 style="background-image: url('../img/full/mob-pano1.jpg'); background-position: center bottom;"></div>
+                                 style="background-image: url('../img/full/pano.jpg'); background-position: center bottom;"></div>
                         </div>
                         <div class="container w_100 pos_alb dragger_c">
                             <div class="flex_jsb flex_ac w_100 pos_r" style="height: 60px">

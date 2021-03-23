@@ -22,7 +22,7 @@ jQuery(document).ready(function ($) {
             ease: Linear.easeNone,
         }
     });
-
+    let loc = '.loc-mobile';
 
     installMediaQueryWatcher("(max-width: 980px)", function (matches) {
 
@@ -40,7 +40,7 @@ jQuery(document).ready(function ($) {
                     card5Swiper.update();*!/
                 }
             });*/
-
+            loc = '.loc-mobile';
 
             /**/
             $(".card--bottom").click(playAnimation);
@@ -68,11 +68,11 @@ jQuery(document).ready(function ($) {
                     TweenMax.from($thisContent[0], 0.2, { height: 0 });
                 }
 
-
             }
 
             /**/
 
+            console.log('mobile');
 
             $(window).on('load resize', function () {
                 if (window.matchMedia("(orientation: portrait)").matches) {
@@ -84,21 +84,20 @@ jQuery(document).ready(function ($) {
                 if (window.matchMedia("(orientation: landscape)").matches) {
                     $("body").append('<div class="mobile rotationOverlay" style="position: fixed; z-index: 10000; left: 0; right: 0; top: 0; bottom: 0; background: #2d202c; display: flex; align-items: center; justify-content: center;color: white;">Переверни телефон, пёс!</div>')
                 }
-            });
 
-            $(window).on('load resize', function () {
-                Line("loc-mobile");
+                Line(loc);
+
             });
 
 
         } else {
-
+            loc = '.loc-desktop';
             $(window).on('load resize', function () {
 
                     if ($(".rotationOverlay").length) {
                         $(".rotationOverlay").remove();
                     }
-
+                Line(loc);
             });
 
             if ($(".rotationOverlay").length) {
@@ -552,7 +551,7 @@ jQuery(document).ready(function ($) {
 
     $('.map-point').hover(function () {
         let $dataPoint = $(this).attr('data-point');
-        console.log($dataPoint);
+       // console.log($dataPoint);
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.map--legend').find('li[data-point="' + $dataPoint + '"]').addClass('active');
         $('.panomap').find($linePoint).addClass('active');
@@ -579,8 +578,8 @@ jQuery(document).ready(function ($) {
         duration: 0.75,
         ease: Linear.easeNone,
         onComplete: () => {
-            Line('.loc-desktop');
-            $("#svg-line").addClass('active');
+            Line(loc);
+            $(`${loc} .svg-line`).addClass('active');
         }
     });
     panomapTween1.play();
@@ -590,7 +589,7 @@ jQuery(document).ready(function ($) {
         duration: 0.75,
         ease: Linear.easeNone,
         onComplete: () => {
-            $("#svg-line").removeClass('active');
+            $(`${loc} .svg-line`).removeClass('active');
         }
     });
     panomapTween2.pause();
@@ -598,21 +597,25 @@ jQuery(document).ready(function ($) {
     $('.switcher').click(function (e) {
         e.preventDefault();
         if ($(this).hasClass('left')) {
-            console.log('has left');
+            if(loc === '.loc-mobile') {
+                //$('.loc-mobile--wrap').css("paddingTop","100%")
+            }
             $(this).removeClass('left');
             $('.panomap1, .switcher-w .left').removeClass('active');
             $('.panomap2, .switcher-w .right').addClass('active');
             panomapTween1.reverse();
             panomapTween2.restart();
-            Line('.loc-desktop');
+            Line(loc);
         } else {
-            console.log('has not left');
+            if(loc === '.loc-mobile') {
+               // $('.loc-mobile--wrap').css("paddingTop","100%")
+            }
             $(this).addClass('left');
             $('.panomap1, .switcher-w .left').addClass('active');
             $('.panomap2, .switcher-w .right').removeClass('active');
             panomapTween2.reverse();
             panomapTween1.restart();
-            Line('.loc-desktop');
+            Line(loc);
         }
     });
 
@@ -996,7 +999,8 @@ $(".apart-switcher-wrap li").click(function () {
 *  +++8. Добавить планировки
 *  +++9. Поправить название сторон в адаптиве планировок
 *  +++10. Масштабирование картинок на адаптиве
-*
+*  11. В мобильной версии поменять анимацию уников
+*  12. В мобильную версию добавить объекты на панораму
 *  -1. Кнопка ватсап на покупаемрадиодетали HEADER
 *
 *
