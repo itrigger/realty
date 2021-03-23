@@ -138,9 +138,9 @@
   .m--h_100vh {
     height: 100%;
     min-height: auto;
-    height: -moz-available; /* WebKit игнор. */
-    height: -webkit-fill-available; /* Mozilla игнор. */
-    height: stretch;
+   /* height: -moz-available; !* WebKit игнор. *!
+    height: -webkit-fill-available; !* Mozilla игнор. *!
+    height: stretch;*/
   }
 
 
@@ -181,7 +181,7 @@
   }
   .slider-square {
     top: auto;
-    bottom: 5%;
+    bottom: 10%;
   }
   .pl170 {
     padding-left: 0;
@@ -337,6 +337,9 @@
       height: auto;
       padding-bottom: 150px;
     }
+    .btn-w{
+      margin-top: 2rem;
+    }
   }
   #section6 .col-right:after {
     height: 52px;
@@ -425,6 +428,7 @@
       .col-right {
         padding: 0;
         height: 100vw;
+        overflow: hidden;
       }
     }
 
@@ -445,6 +449,18 @@
     margin-right: -20px;
     width: calc(100% + 40px);
   }
+  #uniqPage .cards-desc{
+    height: auto;
+  }
+  #uniqPage .cards .col-right{
+    padding-bottom: 0;
+    height: auto;
+  }
+  #uniqPage .cards .col-right img{
+    height: auto;
+    width: auto;
+  }
+
   #section5 {
     .col-left {
       padding-top: 40px;
@@ -622,7 +638,7 @@
   }
   .fancy-form.fancybox-content {
     h2 {
-      font-size: 4vmax;
+      font-size: 24px;
     }
 
     input[type=submit],
@@ -674,10 +690,10 @@
     padding-right: 0;
   }
   .eye-west {
-    left: -40px;
+    left: -30px;
   }
   .eye-east {
-    right: -50px;
+    right: -30px;
   }
   .remont-thumbs {
     margin-top: 5px;
