@@ -888,8 +888,10 @@ body.leftMenuThin{
 .fancybox-slide--image{
 
 }
-.fancybox-slide--image .fancybox-content{
+//.fancybox-slide--image .fancybox-content{
+.fancybox-is-open .fancybox-bg{
   background: url(../img/pat--leftmenu-wave.svg) repeat #F1F1F1 !important;
+  opacity: 1 !important;
 }
 .fancybox-image, .fancybox-spaceball{
 
