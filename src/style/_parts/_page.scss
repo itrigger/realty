@@ -403,6 +403,8 @@ body.leftMenuThin{
   font-size: calc(max(14px, 0.85vmax));
   line-height: calc(max(18px, 1.15vmax));
   max-width: 80%;
+  position: relative;
+  z-index: 2;
   span{
     display: block;
   }
@@ -489,6 +491,9 @@ body.leftMenuThin{
 }
 .card1{
   background-color: #E9EAEE;
+  .page-title{
+    margin-top: 21vh;
+  }
 }
 
 .card2{
@@ -662,18 +667,23 @@ body.leftMenuThin{
 }
   #leftArrow9{
     position: relative;
-    margin-left: 26px;
-    margin-top: 23px;
+    padding-left: 26px;
+    padding-top: 23px;
     cursor: pointer;
+    width: 66px;
+    height: 75px;
     &.swiper-button-disabled{
       opacity: .4;
     }
   }
   #rightArrow9{
     position: relative;
-    margin-right: 26px;
-    margin-top: 23px;
+    padding-left: 26px;
+    padding-top: 23px;
     cursor: pointer;
+    width: 66px;
+    height: 75px;
+
     &.swiper-button-disabled{
       opacity: .4;
     }

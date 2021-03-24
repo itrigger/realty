@@ -42,6 +42,9 @@ jQuery(document).ready(function ($) {
             });*/
             loc = '.loc-mobile';
 
+
+
+
             /**/
             $(".card--bottom").click(playAnimation);
 
@@ -72,7 +75,7 @@ jQuery(document).ready(function ($) {
 
             /**/
 
-            console.log('mobile');
+
 
             $(window).on('load resize', function () {
                 if (window.matchMedia("(orientation: portrait)").matches) {
@@ -330,9 +333,11 @@ jQuery(document).ready(function ($) {
 
     $(".a_scrollto").click(function (e) {
         e.preventDefault();
+
         let $anchor = $(this).attr('href');
         let offset = $($anchor).offset().top;
         TweenLite.to(window, 1, {scrollTo: {y: offset}});
+        closeMobileMenu();
     })
 
     let locationSwiper = new Swiper('#section2 .swiper-container', {
@@ -491,14 +496,14 @@ jQuery(document).ready(function ($) {
             loadPrevNext: true
         },
         preloadImages: true,
-        speed: 1000,
+        speed: 300,
         navigation: {
             nextEl: '#rightArrow9',
             prevEl: '#leftArrow9',
         },
         effect: 'fade',
         fadeEffect: {
-            crossFade: true
+            crossFade: false
         },
         runCallbacksOnInit: true,
         on: {
