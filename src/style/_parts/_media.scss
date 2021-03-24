@@ -177,7 +177,7 @@
   .slide .j_parlxContent {
     padding-left: 20px;
     padding-right: 30px;
-    background-color: rgba(#000, 0.4);
+
   }
   .slider-square {
     top: auto;
@@ -200,8 +200,8 @@
     display: none;
   }
   .slide .j_parlxContent .desc {
-    font-size: 3vmax;
-    line-height: 1.2;
+    font-size: 2.4vmax;
+    line-height: 1.3;
   }
   .slider-square {
     width: 130px;
@@ -450,10 +450,10 @@
     width: calc(100% + 40px);
   }
   #uniqPage .cards-desc{
-    height: auto;
+    //height: auto;
   }
   #uniqPage .cards .col-right{
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
     height: auto;
   }
   #uniqPage .cards .col-right img{

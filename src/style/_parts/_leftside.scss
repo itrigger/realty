@@ -134,7 +134,15 @@
     }
   }
 }
-
+.leftside-tel{
+  margin-top: auto;
+  border-top: 1px solid rgba(#fff,.3);
+  border-bottom: 1px solid rgba(#fff,.3);
+  padding: 15px 0;
+  font-size: 16px;
+  font-weight: 600;
+  width: calc(100% - 50px);
+}
 .leftmenu--footer{
   padding-bottom: 37px;
   margin-top: auto;
@@ -151,5 +159,22 @@
     width: 16px;
     height: 16px;
     margin: 0 5px;
+  }
+}
+
+@media (max-width: 980px){
+  .main-menu{
+    align-items: flex-start;
+  }
+  .menu-items,
+  .leftside-tel,
+  .leftmenu--footer
+  {
+    margin-left: 25px;
+  }
+
+  .leftmenu--footer{
+    margin-top: 20px;
+    padding-bottom: 67px;
   }
 }
