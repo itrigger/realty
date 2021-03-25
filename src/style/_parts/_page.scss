@@ -943,6 +943,7 @@ body.leftMenuThin{
          transform: translate(-50%, -50%) scale(1);
          transition: .5s all;
          z-index: 2;
+         pointer-events: none;
        }
        &:hover{
          &:after{

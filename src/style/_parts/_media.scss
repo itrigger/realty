@@ -181,7 +181,7 @@
   }
   .slider-square {
     top: auto;
-    bottom: 10%;
+    bottom: 15%;
   }
   .pl170 {
     padding-left: 0;
@@ -369,10 +369,10 @@
   }
 
   #uniqPage {
-    .cards-desc {
+    .cards-wrapper {
       height: 0;
       overflow: hidden;
-      transition: 0.3s all;
+     // transition: 0.3s all;
 
       svg {
 
@@ -428,7 +428,7 @@
       .col-right {
         padding: 0;
         height: 100vw;
-        overflow: hidden;
+        //overflow: hidden;
       }
     }
 
@@ -441,6 +441,12 @@
       }
     }
   }
+
+  #uniqPage .card-ex.expanded .card--bottom:after{
+    transform: rotate(270deg);
+    transform-origin: 50% 50%;
+  }
+
   .cards:after {
     display: none;
   }
@@ -789,7 +795,7 @@
   #section2 {
     .right-col {
       .w_200 {
-        width: 125%;
+        width: 130%;
       }
 
       .h_75 {
