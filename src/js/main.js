@@ -1003,12 +1003,23 @@ $(document).ready(function () {
         remontSwiper.slideTo(index, 1000);
     });
 
-    $('[data-fancybox="images"]').fancybox({
+    $('[data-fancybox="images"], [data-fancybox="images2"]').fancybox({
         buttons: ["close"],
         loop: true,
+        baseTpl:
+            '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+            '<div class="fancybox-bg"></div>' +
+            '<div class="fancybox-inner">' +
+            '<div class="fancybox-infobar"><span data-fancybox-index></span>&nbsp;/&nbsp;<span data-fancybox-count></span></div>' +
+            '<div class="fancybox-toolbar">{{buttons}}</div>' +
+            '<div class="fancybox-navigation imgs">{{arrows}}</div>' +
+            '<div class="fancybox-stage"></div>' +
+            '<div class="fancybox-caption"><div class=""fancybox-caption__body"></div></div>' +
+            '</div>' +
+            '</div>',
         btnTpl: {
             close:
-                '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">' +
+                '<button data-fancybox-close class="fancybox-button imgs fancybox-button--close" title="{{CLOSE}}">' +
                 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.6L6.6 5.2 5.2 6.6l5.4 5.4-5.4 5.4 1.4 1.4 5.4-5.4 5.4 5.4 1.4-1.4-5.4-5.4 5.4-5.4-1.4-1.4-5.4 5.4z"/></svg>' +
                 "</button>",
             arrowLeft:
@@ -1023,26 +1034,7 @@ $(document).ready(function () {
                 '                        </svg>',
         },
     });
-    $('[data-fancybox="images2"]').fancybox({
-        buttons: ["close"],
-        loop: true,
-        btnTpl: {
-            close:
-                '<button data-fancybox-close class="fancybox-button fancybox-button--close" title="{{CLOSE}}">' +
-                '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 10.6L6.6 5.2 5.2 6.6l5.4 5.4-5.4 5.4 1.4 1.4 5.4-5.4 5.4 5.4 1.4-1.4-5.4-5.4 5.4-5.4-1.4-1.4-5.4 5.4z"/></svg>' +
-                "</button>",
-            arrowLeft:
-                '<svg data-fancybox-prev class="arrow leftarrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: rotate(180deg) skew(360deg, 0deg);" tabIndex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-21291e7fc212c387">\n' +
-                '                            <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"></path>\n' +
-                '                            <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"></path>\n' +
-                '                        </svg>',
-            arrowRight:
-                '<svg data-fancybox-next class="arrow rightarrow" width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: translate(0px, 0px);" tabIndex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-4a39e10e7104eaa853">\n' +
-                '                            <path d="M43.999 0H0V43.999H43.999V0Z" fill="#362633"></path>\n' +
-                '                            <path d="M20.563 15.444L26.522 21.403L20.563 27.362" stroke="#D2CDCC" stroke-width="2" stroke-miterlimit="10"></path>\n' +
-                '                        </svg>',
-        },
-    });
+
 
 })
 
