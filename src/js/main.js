@@ -1003,7 +1003,7 @@ $(document).ready(function () {
         remontSwiper.slideTo(index, 1000);
     });
 
-    $('[data-fancybox="images"], [data-fancybox="images2"]').fancybox({
+    $('[data-fancybox="images"], [data-fancybox="images2"], [data-fancybox="images3"]').fancybox({
         buttons: ["close"],
         loop: true,
         baseTpl:

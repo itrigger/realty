@@ -388,7 +388,7 @@ body.leftMenuThin{
   font-weight: 800;
 }
 .page-img{
-  margin: 2.5vmax 0;
+  margin: 2.5vmax 0 1vmax;
 }
 .page-title{
   color: #E24B33;
@@ -662,17 +662,18 @@ body.leftMenuThin{
   height: 80px;
   position: absolute;
   z-index: 99;
-  bottom: 0;
+  top: 0;
   width: 100%;
   left: 0;
 }
   #leftArrow9{
     position: relative;
     padding-left: 26px;
-    padding-top: 23px;
+    padding-top: 16px;
     cursor: pointer;
     width: 66px;
     height: 75px;
+    transform: rotate(180deg);
     &.swiper-button-disabled{
       opacity: .4;
     }
@@ -680,11 +681,11 @@ body.leftMenuThin{
   #rightArrow9{
     position: relative;
     padding-left: 26px;
-    padding-top: 23px;
+    padding-top: 16px;
     cursor: pointer;
     width: 66px;
     height: 75px;
-
+    transform: rotate(180deg);
     &.swiper-button-disabled{
       opacity: .4;
     }
