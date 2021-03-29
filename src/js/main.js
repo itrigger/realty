@@ -765,7 +765,9 @@ if (s.length) {
     s.each(function () {
         let a = $(this).find(".dragger__el"), t = $(this).find(".dragger__el").width(),
             o = $(this).find(".dragger__trigger"),
-            n = $(this).find(".dragger__arrow");
+            n = $(this).find(".dragger__arrow"),
+            diff = 45;
+        $(this).hasClass('towers_d') ? diff = 1 : diff = 50;
         Draggable.create(n, {
             type: "x",
             bounds: o,
@@ -776,7 +778,7 @@ if (s.length) {
             onDrag: function () {
                 console.log(t);
                 console.log(this.maxX);
-                TweenLite.to(a, .3, {xPercent: -100 * (t - $(window).width() - 45) / t * (this.x / this.maxX)})
+                TweenLite.to(a, .3, {xPercent: -100 * (t - $(window).width() - diff) / t * (this.x / this.maxX)})
             },
             onRelease: function () {
                 n.removeClass("dragger__arrow_dragged"), this.maxX - 10 <= this.endX && !n.hasClass("dragger__arrow_reversed") ? n.addClass("dragger__arrow_reversed") : this.endX <= 10 && n.hasClass("dragger__arrow_reversed") && n.removeClass("dragger__arrow_reversed")
@@ -988,12 +990,15 @@ $(document).ready(function () {
         runCallbacksOnInit: true,
         on: {
             slideNextTransitionStart: function () {
-                $('#section6 .remont-thumbs ul').find('li').removeClass('active');
+                $('#section6 .remont-thumbs ul, #section6 .remont-bottoms ul').find('li').removeClass('active');
                 $('#section6 .remont-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
+                $('#section6 .remont-bottoms ul').find('li').eq(this.activeIndex).addClass('active');
+
             },
             slidePrevTransitionStart: function () {
-                $('#section6 .remont-thumbs ul').find('li').removeClass('active');
+                $('#section6 .remont-thumbs ul, #section6 .remont-bottoms ul').find('li').removeClass('active');
                 $('#section6 .remont-thumbs ul').find('li').eq(this.activeIndex).addClass('active');
+                $('#section6 .remont-bottoms ul').find('li').eq(this.activeIndex).addClass('active');
             }
         }
     });

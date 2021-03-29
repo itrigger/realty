@@ -814,6 +814,9 @@
       display: none;
     }
   }
+  .fancybox-content.popup{
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
@@ -859,7 +862,10 @@
     height: 25px;
   }
   .slide3 .j_topImage {
-    background-position: 15% bottom !important;
+    background-position: 28% bottom !important;
+  }
+  .slide .j_parlxContent .desc span{
+    display: inline;
   }
 }
 

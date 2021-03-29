@@ -960,12 +960,18 @@ body.leftMenuThin{
 
 #section6{
   .col-right{
-    .card-bottom{
+    .remont-bottoms{
       margin-top: 40px;
       color: #000;
       a{
         color: #000;
         text-decoration: underline;
+      }
+      li{
+        display: none;
+        &.active{
+          display: block;
+        }
       }
     }
   }
