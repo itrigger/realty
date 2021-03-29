@@ -326,20 +326,27 @@
   #section6 {
     .col-left {
       padding: 0;
-      height: 50vh;
+      height: 30vh;
 
       & * {
-        height: 50vh;
+        height: 30vh;
       }
     }
 
     .col-right {
       height: auto;
-      padding-bottom: 150px;
+      padding-bottom: 100px;
+      .remont-bottoms{
+        margin-top: 22px;
+      }
+      &:after{
+        bottom: 20px;
+      }
     }
     .btn-w{
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
+
   }
   #section6 .col-right:after {
     height: 52px;
