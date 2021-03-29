@@ -634,3 +634,40 @@ table {
     font-size: 12px;
   }
 }
+
+.tabs{
+  .tabs_header{
+    display: flex;
+    .tab_trigger{
+      padding: 12px 15px;
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-weight: 800;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: $orange;
+      line-height: 1.2;
+      span{
+        border-bottom: 1px dashed rgba($orange,0.5);
+      }
+      &.active{
+        cursor: default;
+        background: $orange;
+        color: #fff;
+
+      }
+    }
+  }
+  .tabs_content{
+    .tab-content{
+      display: none;
+      &.active{
+        display: block;
+      }
+    }
+  }
+}
