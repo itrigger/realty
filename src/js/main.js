@@ -221,13 +221,14 @@ gsap.from('.arrow', {
     }
 });
 
-gsap.fromTo('.j_parallaxEl',
+/*gsap.fromTo('.j_parallaxEl',
     {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
     {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
-);
+);*/
 
 
-gsap.fromTo('.j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+
+gsap.fromTo('.j_parallaxEl', {duration: 2, opacity: 1, scale: 1.12, ease: 'expo'}, {
     scrollTrigger: {
         trigger: '#landing-page',
         start: "top top", // when the top of the trigger hits the top of the viewport
@@ -235,18 +236,16 @@ gsap.fromTo('.j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, 
         scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 
     },
-    scale: 1.12,
+    scale: 1,
     delay: 1
 })
 
+
 function zoomImage(sliderDOM) {
     const slideActive = sliderDOM.find('.swiper-slide-active, .swiper-slide-duplicate-active');
-    const imageSlide = slideActive.find('.j_parallaxEl');
+    const imageSlide = slideActive.find('.j_topImage');
 
-    gsap.fromTo(imageSlide,
-        {duration: 2, opacity: 0.9, scale: 1.12, ease: 'expo'},
-        {duration: 2, opacity: 1, scale: 1, ease: 'expo'}
-    );
+    gsap.to(imageSlide, {duration: 2, scale: 1, ease: 'expo'});
 }
 
 function moveDownText(sliderDOM) {
@@ -688,36 +687,36 @@ $('.switcher').click(function (e) {
 */
 
 
-gsap.fromTo('#section6 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+gsap.fromTo('#section6 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1.12, ease: 'expo'}, {
     scrollTrigger: {
         trigger: '#section6',
         start: "-=70%", // when the top of the trigger hits the top of the viewport
         end: "+=130%", // end after scrolling 500px beyond the start
         scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
     },
-    scale: 1.12,
+    scale: 1,
     delay: 1
 });
 
-gsap.fromTo('#section7 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+gsap.fromTo('#section7 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1.12, ease: 'expo'}, {
     scrollTrigger: {
         trigger: '#section7',
         start: "-=70%", // when the top of the trigger hits the top of the viewport
         end: "+=130%", // end after scrolling 500px beyond the start
         scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
     },
-    scale: 1.12,
+    scale: 1,
     delay: 1
 });
 
-gsap.fromTo('#section8 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1, ease: 'expo'}, {
+gsap.fromTo('#section8 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1.12, ease: 'expo'}, {
     scrollTrigger: {
         trigger: '#section8',
         start: "-=70%", // when the top of the trigger hits the top of the viewport
         end: "+=130%", // end after scrolling 500px beyond the start
         scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
     },
-    scale: 1.12,
+    scale: 1,
     delay: 1
 });
 
@@ -776,8 +775,8 @@ if (s.length) {
                 n.addClass("dragger__arrow_dragged")
             },
             onDrag: function () {
-                console.log(t);
-                console.log(this.maxX);
+               // console.log(t);
+               // console.log(this.maxX);
                 TweenLite.to(a, .3, {xPercent: -100 * (t - $(window).width() - diff) / t * (this.x / this.maxX)})
             },
             onRelease: function () {
@@ -798,7 +797,7 @@ function Line(target) {
 
     let wrap = $(`${target} .panomap`);
 
-    console.log(target);
+   // console.log(target);
 
     let item1 = wrap.find('.map-point1'),
         num1 = wrap.find('.map-logo'),
@@ -1076,3 +1075,9 @@ $(".apart-switcher-wrap li").click(function () {
 */
 
 
+// We listen to the resize event
+window.addEventListener('resize', () => {
+    // We execute the same script as before
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+});

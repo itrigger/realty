@@ -12,6 +12,11 @@
   }
 }
 
+#panelWrap{
+  .j_parallaxEl{
+    transform: scale(1) !important;
+  }
+}
 .main-btn-next{
   position: absolute;
   bottom: 40px;
@@ -492,7 +497,7 @@ body.leftMenuThin{
 .card1{
   background-color: #E9EAEE;
   .page-title{
-    margin-top: 21vh;
+    margin-top: 25vh;
   }
 }
 
