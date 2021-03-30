@@ -80,7 +80,16 @@
   &.slide4{
     .slider-square{
       .title{
-        font-size: 28px;
+        font-size: 43px;
+        span{
+          position: absolute;
+          right: -27px;
+          top: 2px;
+          font-size: 23px;
+        }
+      }
+      .desc{
+        margin-top: 15px;
       }
     }
 

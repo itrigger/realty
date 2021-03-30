@@ -38,9 +38,7 @@
   .form input[type=submit] {
     max-width: 170px;
   }
-  .slide.slide4 .slider-square .title {
-    font-size: 20px;
-  }
+
   .pl170 {
     padding-left: 110px;
   }
@@ -217,7 +215,7 @@
   .slide.slide2 .slider-square .title {
     font-size: 36px;
   }
-  .slide.slide3 .slider-square .title {
+  .slide.slide3 .slider-square .title, .slide.slide4 .slider-square .title {
     font-size: 26px;
 
     b {
