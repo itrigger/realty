@@ -205,6 +205,54 @@ jQuery(document).ready(function ($) {
                 }
             });
 
+
+            let shapes0 = "#anim-desk path, #anim-desk rect",
+                tl0_sh = gsap.timeline({
+                    repeat: 0,
+                    yoyo: true,
+                    scrollTrigger: {
+                        trigger: "#section5",
+                        start: "-=100% top", // when the top of the trigger hits the top of the viewport
+                        end: "+=50% bottom", // end after scrolling 500px beyond the start
+                        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+                    }
+                });
+
+            tl0_sh.fromTo(shapes0, {drawSVG: "0 0"}, {duration: 2, drawSVG: "100%"});
+
+
+            let shapes = "#anim-cleaning path, #anim-cleaning rect",
+                tl_sh = gsap.timeline({
+                    repeat: 0,
+                    yoyo: true,
+                    scrollTrigger: {
+                        trigger: "#section5",
+                        start: "-=15% top", // when the top of the trigger hits the top of the viewport
+                        end: "+=50% bottom", // end after scrolling 500px beyond the start
+                        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+                    }
+                });
+
+            tl_sh.fromTo(shapes, {drawSVG: "0 0"}, {duration: 2, drawSVG: "100%"});
+
+            let shapes2 = "#anim-video path, #anim-video rect",
+                tl2_sh = gsap.timeline({
+                    repeat: 0,
+                    yoyo: true,
+                    scrollTrigger: {
+                        trigger: "#section5",
+                        start: "-=15% top", // when the top of the trigger hits the top of the viewport
+                        end: "+=50% bottom", // end after scrolling 500px beyond the start
+                        scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+
+                    }
+                });
+
+            tl2_sh.fromTo(shapes2, {drawSVG: "0 0"}, {duration: 2, drawSVG: "100%"});
+
+
+
+
         } //desktop only
     });
 
@@ -633,56 +681,6 @@ jQuery(document).ready(function ($) {
             Line(loc);
         }
     });
-
-
-    /*    let shapes = "#anim-cleaning path, #anim-cleaning rect",
-            tl = gsap.timeline({
-                repeat:1,
-                yoyo:true,
-                scrollTrigger:  {
-                    trigger: "#section5",
-                    start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                    end: "bottom bottom", // end after scrolling 500px beyond the start
-                    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-
-                }
-            });
-
-        tl.to(shapes, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
-
-        let shapes2 = "#anim-video path, #anim-video rect",
-            tl2 = gsap.timeline({
-                repeat:1,
-                yoyo:true,
-                scrollTrigger:  {
-                    trigger: "#section5",
-                    start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                    end: "bottom bottom", // end after scrolling 500px beyond the start
-                    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-
-                }
-            });
-
-        tl2.to(shapes2, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});*/
-
-
-    /*
-        let shapes4 = "#anim-kind path",
-            tl4 = gsap.timeline({
-                repeat:1,
-                yoyo:true,
-                scrollTrigger:  {
-                    trigger: "#card2",
-                    start: "-=50% top", // when the top of the trigger hits the top of the viewport
-                    end: "bottom bottom", // end after scrolling 500px beyond the start
-                    scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
-
-                }
-            });
-
-        tl4.to(shapes4, {drawSVG:"0 0"}, {duration: 1, drawSVG:"100%"});
-    */
-
 
     gsap.fromTo('#section6 .j_parallaxEl', {duration: 2, opacity: 1, scale: 1.12, ease: 'expo'}, {
         scrollTrigger: {
