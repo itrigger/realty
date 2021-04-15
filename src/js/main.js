@@ -875,23 +875,23 @@ let apartSwiper;
 let aparts_array = [
     {
         slug: 'studio',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/studio.svg" data-fancybox data-width="420" data-height="1140"><img src="/img/plans/studio.svg" alt="studio" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../img/plans/studio1-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/studio.svg" data-fancybox data-width="420" data-height="1140"><img src="/wp-content/themes/twentytwentyone/img/plans/studio.svg" alt="studio" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/studio1-mini.jpg" alt=""></li>'
     },
     {
         slug: 'bed1',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/1bed.svg" data-fancybox data-width="738" data-height="1148"><img src="/img/plans/1bed.svg" alt="1 bed" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../img/plans/1bed-1-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/1bed.svg" data-fancybox data-width="738" data-height="1148"><img src="/wp-content/themes/twentytwentyone/img/plans/1bed.svg" alt="1 bed" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/1bed-1-mini.jpg" alt=""></li>'
     },
     {
         slug: 'bed2',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/2bed.svg" data-fancybox data-width="1138" data-height="1344"><img src="/img/plans/2bed.svg" alt="2 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../img/plans/2bed-1-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/2bed.svg" data-fancybox data-width="1138" data-height="1344"><img src="/wp-content/themes/twentytwentyone/img/plans/2bed.svg" alt="2 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/2bed-1-mini.jpg" alt=""></li>'
     },
     {
         slug: 'bed3',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../img/plans/2bed-2-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/wp-content/themes/twentytwentyone/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/2bed-2-mini.jpg" alt=""></li>'
     },
 ];
 
