@@ -80,14 +80,24 @@ jQuery(document).ready(function ($) {
                     o = t.querySelector(".cards-desc .col-left").offsetHeight + t.querySelector(".cards-desc .col-right").offsetHeight;
 
                 a.addEventListener("click", function () {
-                    e.classList.contains("expanded") ? (e.classList.remove("expanded"), TweenLite.to(t, .5, {
-                        height: 0,
-                        ease: Sine.easeInOut
-                    })) : (e.classList.add("expanded"), TweenLite.to(t, .5, {height: o, ease: Sine.easeInOut}))
+                    if(e.classList.contains("expanded")){
+                        e.classList.remove("expanded");
+                        TweenLite.to(t, .5, {
+                            height: 0,
+                            ease: Sine.easeInOut
+                        });
+                    } else {
+                        e.classList.add("expanded");
+                        let parent = $(this).parent();
+
+                        var self = this;
+                        setTimeout(function() {
+                            TweenMax.to(window, 1, { scrollTo: $(parent).offset().top - 65 });
+                        }, 310);
+                        TweenLite.to(t, .5, {height: o, ease: Sine.easeInOut})
+                    }
                 })
             })
-
-
             /**/
 
 
@@ -550,14 +560,15 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: false,
+        initialSlide: 8,
         lazy: {
             loadPrevNext: true
         },
         preloadImages: true,
         speed: 300,
         navigation: {
-            nextEl: '#rightArrow9',
-            prevEl: '#leftArrow9',
+            prevEl: '#rightArrow9',
+            nextEl: '#leftArrow9',
         },
         effect: 'fade',
         fadeEffect: {
@@ -875,23 +886,23 @@ let apartSwiper;
 let aparts_array = [
     {
         slug: 'studio',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/studio.svg" data-fancybox data-width="420" data-height="1140"><img src="/wp-content/themes/twentytwentyone/img/plans/studio.svg" alt="studio" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/studio1-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/studio.svg" data-fancybox data-width="420" data-height="1140"><img src="/wp-content/themes/leon/img/plans/studio.svg" alt="studio" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/studio1-mini.jpg" alt=""></li>'
     },
     {
         slug: 'bed1',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/1bed.svg" data-fancybox data-width="738" data-height="1148"><img src="/wp-content/themes/twentytwentyone/img/plans/1bed.svg" alt="1 bed" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/1bed-1-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/1bed.svg" data-fancybox data-width="738" data-height="1148"><img src="/wp-content/themes/leon/img/plans/1bed.svg" alt="1 bed" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/1bed-1-mini.jpg" alt=""></li>'
     },
     {
         slug: 'bed2',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/2bed.svg" data-fancybox data-width="1138" data-height="1344"><img src="/wp-content/themes/twentytwentyone/img/plans/2bed.svg" alt="2 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/2bed-1-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/2bed.svg" data-fancybox data-width="1138" data-height="1344"><img src="/wp-content/themes/leon/img/plans/2bed.svg" alt="2 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/2bed-1-mini.jpg" alt=""></li>'
     },
     {
         slug: 'bed3',
-        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/twentytwentyone/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/wp-content/themes/twentytwentyone/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
-        thumb: '<li class="active"><img src="../wp-content/themes/twentytwentyone/img/plans/2bed-2-mini.jpg" alt=""></li>'
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/wp-content/themes/leon/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/2bed-2-mini.jpg" alt=""></li>'
     },
 ];
 
@@ -1012,6 +1023,10 @@ $(document).ready(function () {
     $('[data-fancybox="images"], [data-fancybox="images2"], [data-fancybox="images3"]').fancybox({
         buttons: ["close"],
         loop: true,
+        touch: {
+            vertical: true, // Allow to drag content vertically
+            momentum: true // Continue movement after releasing mouse/touch when panning
+        },
         baseTpl:
             '<div class="fancybox-container" role="dialog" tabindex="-1">' +
             '<div class="fancybox-bg"></div>' +
@@ -1040,6 +1055,21 @@ $(document).ready(function () {
                 '                        </svg>',
         },
     });
+
+
+    $('body').on('click', '.sendFormToWt', function (e){
+        e.preventDefault();
+        let msg = '';
+        msg += $(this).parent().parent().find('input[name=your-name]').val() + ' ';
+        msg += $(this).parent().parent().find('input[name=your-email]').val() + ' ';
+        msg += $(this).parent().parent().find('input[name=your-tel]').val() + ' ';
+        msg += $(this).parent().parent().find('textarea[name=textarea-660]').val();
+        console.log(msg);
+        let phone = "77775850776";
+        let message = "Здравствуйте! Свяжитесь, пожалуйста, со мной: " + msg;
+        let link = 'https://wa.me/' + encodeURIComponent(phone) + '?text=' + encodeURIComponent(message);
+        window.open(link, '_blank');
+    })
 
 
 })

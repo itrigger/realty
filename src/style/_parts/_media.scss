@@ -916,6 +916,23 @@
   .slide .j_parlxContent .desc span{
     display: inline;
   }
+  .arrow{
+    width: 54px;
+    height: 54px;
+  }
+  #leftArrow, #leftArrow2, .leftarrow{
+    top: calc(50% - 53px);
+  }
+  #rightArrow, #rightArrow2, .rightarrow{
+    top: calc(50% + 4px);
+  }
+  #uniqPage .cards{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .cards .col-left{
+    padding-top: 1vmax;
+  }
 }
 
 @media (max-width: 374px) {

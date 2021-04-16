@@ -100,7 +100,7 @@ textarea.form-control{
 .fancybox-navigation.imgs {
   z-index: 99995;
   position: absolute;
-  left: 0;
+  width: 60px;
   top: 0;
   right: 0;
   bottom: 0;
@@ -109,4 +109,34 @@ textarea.form-control{
   width: 64px !important;
   height: 64px !important;
   background: #362633 !important;
+}
+
+.custom-form .wpcf7 form.invalid .wpcf7-response-output,
+.custom-form .wpcf7 form.unaccepted .wpcf7-response-output{
+  color: #fff;
+  font-size: 12px;
+  padding: 5px;
+}
+.custom-form .wpcf7 form .wpcf7-response-output{
+  margin: 10px 0 0;
+  max-width: 550px;
+}
+.custom-form .wpcf7 form.sent .wpcf7-response-output{
+  color: #fff;
+  font-size: 12px;
+  padding: 5px;
+}
+.custom-form .wpcf7 .ajax-loader{
+  position: absolute;
+  right: 0;
+}
+.custom-form .wpcf7-not-valid-tip{
+  font-size: 11px;
+  display: none !important;
+}
+.custom-form .wpcf7-submit{
+  margin-right: 15px;
+}
+.custom-form .form-control.wpcf7-not-valid{
+  background: rgba(181,63,0,0.5);
 }
