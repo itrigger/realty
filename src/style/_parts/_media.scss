@@ -600,13 +600,15 @@
       padding-left: 20px;
       padding-right: 20px;
       align-items: flex-start;
-
-      .c1, .c3, .c5 {
+      flex-wrap: wrap;
+      .c3, .c5 {
         display: none;
       }
-
+      .c1, .c2, .c4{
+        flex-basis: 50%;
+      }
       .c4 {
-        padding-left: 20px;
+        //padding-left: 20px;
       }
     }
 
