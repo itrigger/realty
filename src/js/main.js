@@ -587,51 +587,34 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    /* let sec10Swiper = new Swiper('#section10 .swiper-container', {
-         slidesPerView: 1,
-         spaceBetween: 0,
-         slidesOffsetAfter: 0,
-         slideToClickedSlide: true,
-         watchOverflow: true,
-         loop: false,
-         lazy: {
-             loadPrevNext: true
-         },
-         parallax: true,
-         preloadImages: true,
-         speed: 1000,
-         runCallbacksOnInit: true,
-         on: {
-             slideNextTransitionStart: function () {
-                 $('#section10 .slide-desc ul').find('li').eq(this.activeIndex).addClass('active');
-             },
-             slidePrevTransitionStart: function () {
-
-             }
-         }
-     });*/
-
     $('.map--legend li').hover(function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find(".map--legend li").removeClass('active');
+        $('.panomap').find(".map-point").removeClass('active');
         $('.panomap').find($dataPoint).addClass('active');
         $('.panomap').find($linePoint).addClass('active');
     }, function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find(".map--legend li").removeClass('active');
+        $('.panomap').find(".map-point").removeClass('active');
         $('.panomap').find($dataPoint).removeClass('active');
         $('.panomap').find($linePoint).removeClass('active');
     });
 
     $('.map-point').hover(function () {
         let $dataPoint = $(this).attr('data-point');
-        // console.log($dataPoint);
         let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find(".map--legend li").removeClass('active');
+        $('.panomap').find(".map-point").removeClass('active');
         $('.map--legend').find('li[data-point="' + $dataPoint + '"]').addClass('active');
         $('.panomap').find($linePoint).addClass('active');
     }, function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
+        $('.panomap').find(".map--legend li").removeClass('active');
+        $('.panomap').find(".map-point").removeClass('active');
         $('.panomap').find($linePoint).removeClass('active');
         $('.map--legend').find('li[data-point="' + $dataPoint + '"]').removeClass('active');
     });

@@ -22,12 +22,12 @@
                                   class="line line-5 map-point5-line"/>-->
                             <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
                                   class="line line-6 map-point6-line"/>
-                            <line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
-                                  class="line line-7 map-point7-line"/>
+                            <!--<line x1="0" y1="0" x2="100" y2="0" stroke-width="2"
+                                  class="line line-7 map-point7-line"/>-->
                         </svg>
                         <div class="map-logo pos_r" style="left:73%;top:35%;"></div>
 
-                        <div class="map-point map-point1 pos_a" style="left: 39.5%;top: 64%;"
+                        <div class="map-point map-point1 pos_a active" style="left: 39.5%;top: 64%;"
                              data-point=".map-point1">
                             <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,8 @@
                             </svg>
                         </div>
 
-                        <div class="map-point map-point2 pos_a" style="left: 58%; top: 14%;" data-point=".map-point2">
+                        <div class="map-point map-point2 pos_a" style="left: 69%;
+    top: 36%;" data-point=".map-point2">
                             <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
@@ -97,22 +98,17 @@
                             <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
                                 <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
-                                <path d="M37.0181 23.059C38.4771 22.51 39.2151 20.882 38.6661 19.422C38.1171 17.962 36.4891 17.225 35.0291 17.774L28.4931 20.233L20.5141 15.694L16.2031 17.316L21.8441 22.814L15.5861 25.169L11.8621 23.077L7.13306 24.856L14.5581 31.509L37.0181 23.059Z"
+                                <path d="M21.8111 35.022C29.1073 35.022 35.0221 29.1072 35.0221 21.811C35.0221 14.5147 29.1073 8.59998 21.8111 8.59998C14.5149 8.59998 8.6001 14.5147 8.6001 21.811C8.6001 29.1072 14.5149 35.022 21.8111 35.022Z"
                                       stroke="white" stroke-width="2" stroke-miterlimit="10"/>
+                                <path d="M23.3931 16.15V20.229H27.4721V23.391H23.3931V27.47H20.2311V23.391H16.1521V20.229H20.2311V16.15H23.3931ZM25.3931 14.15H23.3931H20.2311H18.2311V16.15V18.229H16.1521H14.1521V20.229V23.391V25.391H16.1521H18.2311V27.47V29.47H20.2311H23.3931H25.3931V27.47V25.391H27.4721H29.4721V23.391V20.229V18.229H27.4721H25.3931V16.15V14.15Z"
+                                      fill="white"/>
                             </svg>
                         </div>
 
 
                         <div class="map-point map-point7 pos_a" style="right: 1%; top: 36%; left: auto;"
                              data-point=".map-point7">
-                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path class="bg" d="M43.622 0H0V43.622H43.622V0Z" fill="#BAA9A8"/>
-                                <path d="M21.8111 35.022C29.1073 35.022 35.0221 29.1072 35.0221 21.811C35.0221 14.5147 29.1073 8.59998 21.8111 8.59998C14.5149 8.59998 8.6001 14.5147 8.6001 21.811C8.6001 29.1072 14.5149 35.022 21.8111 35.022Z"
-                                      stroke="white" stroke-width="2" stroke-miterlimit="10"/>
-                                <path d="M23.3931 16.15V20.229H27.4721V23.391H23.3931V27.47H20.2311V23.391H16.1521V20.229H20.2311V16.15H23.3931ZM25.3931 14.15H23.3931H20.2311H18.2311V16.15V18.229H16.1521H14.1521V20.229V23.391V25.391H16.1521H18.2311V27.47V29.47H20.2311H23.3931H25.3931V27.47V25.391H27.4721H29.4721V23.391V20.229V18.229H27.4721H25.3931V16.15V14.15Z"
-                                      fill="white"/>
-                            </svg>
+
                         </div>
 
                         <div class="section--pre pos_a">Расположение</div>
@@ -123,7 +119,7 @@
                                 <div class="j-filter-scrollbar-wrapper">
                                     <div class="scrollbar-inner">
                                         <ul>
-                                            <li data-point=".map-point1">
+                                            <li data-point=".map-point1" class="active">
                                                 <div class="title">Lech and Maria Kachinsky park</div>
                                                 <div class="desc-w d_f ">
                                                     <div class="ico-w">
@@ -227,8 +223,8 @@
                                                      <div class="desc">минут <br>пешком</div>
                                                  </div>
                                              </li>-->
-                                            <li data-point=".map-point6">
-                                                <div class="title">Аэропорт</div>
+                                           <!-- <li data-point=".map-point6">
+                                                <div class="title">Детская больница</div>
                                                 <div class="desc-w d_f">
                                                     <div class="ico-w">
                                                         <svg width="26" height="19" viewBox="0 0 26 19" fill="none"
@@ -245,7 +241,7 @@
                                                     <div class="time">5</div>
                                                     <div class="desc">минут <br>на машине</div>
                                                 </div>
-                                            </li>
+                                            </li>-->
                                             <li data-point=".map-point7">
                                                 <div class="title">Университетская больница</div>
                                                 <div class="desc-w d_f ai_c">
