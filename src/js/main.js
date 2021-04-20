@@ -589,34 +589,62 @@ jQuery(document).ready(function ($) {
 
     $('.map--legend li').hover(function () {
         let $dataPoint = $(this).attr('data-point');
+
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.panomap').find(".map--legend li").removeClass('active');
+        $(this).addClass("active");
+
+        $('.panomap').find(".svg-line line").removeClass('active');
         $('.panomap').find(".map-point").removeClass('active');
         $('.panomap').find($dataPoint).addClass('active');
         $('.panomap').find($linePoint).addClass('active');
     }, function () {
-        let $dataPoint = $(this).attr('data-point');
+       /* let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.panomap').find(".map--legend li").removeClass('active');
         $('.panomap').find(".map-point").removeClass('active');
         $('.panomap').find($dataPoint).removeClass('active');
-        $('.panomap').find($linePoint).removeClass('active');
+        $('.panomap').find($linePoint).removeClass('active');*/
     });
 
     $('.map-point').hover(function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
+        let mapLegendTop = $('.panomap').find(".map--legend").offset().top;
+        let containerHeight = $('.panomap').find(".map--legend").height();
+        let itemHeight = $('.panomap').find($dataPoint).height();
+        let topPos =  $('.panomap').find($dataPoint).offset().top - mapLegendTop;
+        // Itemtop+itemHeight > containerHeight = itemBottomOffset
+        console.log(mapLegendTop)
+        console.log(containerHeight)
+        console.log(itemHeight)
+        console.log(topPos)
+        if(topPos > containerHeight){
+            console.log("1__"+topPos)
+            $('.map--legend .scroll-content').animate({
+                scrollTop:topPos
+            },300)
+        } else {
+            console.log("2__"+topPos)
+            $('.map--legend .scroll-content').animate({
+                scrollTop:topPos
+            },300)
+        }
+
+
         $('.panomap').find(".map--legend li").removeClass('active');
         $('.panomap').find(".map-point").removeClass('active');
+        $('.panomap').find(".svg-line line").removeClass('active');
         $('.map--legend').find('li[data-point="' + $dataPoint + '"]').addClass('active');
+        $('.panomap').find($dataPoint).addClass('active');
         $('.panomap').find($linePoint).addClass('active');
     }, function () {
-        let $dataPoint = $(this).attr('data-point');
+       /* let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
         $('.panomap').find(".map--legend li").removeClass('active');
         $('.panomap').find(".map-point").removeClass('active');
         $('.panomap').find($linePoint).removeClass('active');
-        $('.map--legend').find('li[data-point="' + $dataPoint + '"]').removeClass('active');
+        $('.map--legend').find('li[data-point="' + $dataPoint + '"]').removeClass('active');*/
     });
 
 
@@ -823,12 +851,12 @@ function Line(target) {
         item4X = item4.position().left + item4.width() / 2,
         item4Y = item4.position().top + item4.height() / 2;
 
-    /*    let item5 = wrap.find('.map-point5'),
+        let item5 = wrap.find('.map-point5'),
             num5 = wrap.find('.map-logo'),
             num5X = num5.position().left + num5.width() / 2,
             num5Y = num5.position().top + num5.height() / 2,
             item5X = item5.position().left + item5.width() / 2,
-            item5Y = item5.position().top + item5.height() / 2;*/
+            item5Y = item5.position().top + item5.height() / 2;
 
     let item6 = wrap.find('.map-point6'),
         num6 = wrap.find('.map-logo'),
@@ -851,7 +879,7 @@ function Line(target) {
         line2 = svg.find('.line-2'),
         line3 = svg.find('.line-3'),
         line4 = svg.find('.line-4'),
-        //line5 = svg.find('.line-5'),
+        line5 = svg.find('.line-5'),
         line6 = svg.find('.line-6'),
         line7 = svg.find('.line-7');
 
@@ -859,7 +887,7 @@ function Line(target) {
     line2.attr({'x1': num2X, 'y1': num2Y, 'x2': item2X, 'y2': item2Y});
     line3.attr({'x1': num3X, 'y1': num3Y, 'x2': item3X, 'y2': item3Y});
     line4.attr({'x1': num4X, 'y1': num4Y, 'x2': item4X, 'y2': item4Y});
-    //line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
+    line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
     line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
     line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
 }
@@ -1048,12 +1076,11 @@ $(document).ready(function () {
         msg += $(this).parent().parent().find('input[name=your-tel]').val() + ' ';
         msg += $(this).parent().parent().find('textarea[name=textarea-660]').val();
         console.log(msg);
-        let phone = "77775850776";
+        let phone = "995555100606";
         let message = "Здравствуйте! Свяжитесь, пожалуйста, со мной: " + msg;
         let link = 'https://wa.me/' + encodeURIComponent(phone) + '?text=' + encodeURIComponent(message);
         window.open(link, '_blank');
     })
-
 
 })
 
