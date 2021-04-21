@@ -106,7 +106,12 @@
     display: none;
   }
 }
-
+.slider-square.mobile{
+  display: none;
+}
+.slider-square.desktop{
+  display: flex;
+}
 @media (max-width: 980px) {
   .slide.slide2 .slider-square .title span {
     right: -23px;
@@ -115,6 +120,15 @@
   sup {
     font-size: 80%;
   }
+
+  .slider-square.mobile{
+    display: flex;
+    margin-top: 25px;
+  }
+  .slider-square.desktop{
+    display: none;
+  }
+
   .btn {
     width: auto;
     min-width: 130px;
@@ -174,7 +188,7 @@
   }
   .slide .j_parlxContent {
     padding-left: 20px;
-    padding-right: 30px;
+    padding-right: 50px;
 
   }
   .slider-square {
@@ -233,7 +247,7 @@
       font-size: 60%;
     }
   }
-  .slider-square .desc {
+  .slider-square .ss-desc {
     font-size: 10px;
     line-height: 1.4;
   }
@@ -656,6 +670,10 @@
       font-size: 24px;
       line-height: 1;
     }
+    h3{
+      font-size: 20px;
+      line-height: 1;
+    }
 
     input[type=submit],
     .btn {
@@ -940,5 +958,18 @@
 @media (max-width: 374px) {
   .plan-rooms ul li {
     flex-basis: 100%;
+  }
+}
+
+@media (max-height: 768px) and (min-width: 980px){
+  .card1 .page-title{
+    margin-top: 3vmax;
+  }
+  #section6 .btn-w{
+    margin-top: 2rem;
+  }
+  .page-header{
+    font-size: 7vh;
+    line-height: 7vh;
   }
 }

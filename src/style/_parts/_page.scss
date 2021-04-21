@@ -922,6 +922,22 @@ body.leftMenuThin{
       }
     }
   }
+  .page-desc{
+    display: none;
+    &.active{
+      display: inherit;
+    }
+  }
+  .num .key{
+    color: #808080;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top: 15px;
+    letter-spacing: 1px;
+  }
+  .page-title ul li{
+    cursor: pointer;
+  }
 }
 
 .fancybox-slide--image{

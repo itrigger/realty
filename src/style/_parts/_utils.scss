@@ -686,3 +686,26 @@ table {
     }
   }
 }
+
+.mCSB_dragger_bar{
+  background-color: #BAA9A8;
+  &:hover{
+    background-color: #BAA9A8;
+  }
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+  background-color: #BAA9A8 !important;
+  width: 8px !important;
+  border-radius: 0 !important;
+}
+.mCSB_scrollTools{
+  width: 8px !important;
+}
+.mCSB_inside>.mCSB_container{
+  margin-right: 8px !important;
+}
+.mCSB_scrollTools .mCSB_draggerRail{
+  width: 8px !important;
+  background-color: #fff !important;
+}

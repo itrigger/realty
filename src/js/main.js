@@ -649,14 +649,20 @@ jQuery(document).ready(function ($) {
 
 
     const filterScroll = function () {
+        $('.j-filter-scrollbar-wrapper .scrollbar-inner').mCustomScrollbar({
+
+        });
+    };
+  /*  const filterScroll = function () {
         $('.j-filter-scrollbar-wrapper .scrollbar-inner').scrollbar({
             //autoScrollSize:!1,
             autoUpdate: true,
             disableBodyScroll: false
         });
-    };
+    };*/
     /*запускаем кастом скролл при загрузке документа*/
     filterScroll();
+
 
     let panomapTween1 = gsap.from(".panomap1", {
         scale: 1.12,
@@ -813,6 +819,17 @@ jQuery(document).ready(function ($) {
         $(this).parent().parent().find(".tab-content").eq(index).addClass("active");
     });
 
+
+    /*tab for apartments*/
+    $('#section10 .page-title li').click(function(){
+        let index = $(this).index();
+        $('#section10 .page-title li').removeClass('active');
+        $(this).addClass('active');
+        $('#section10 .page-desc').removeClass('active');
+        $('#section10 .page-desc').eq(index).addClass('active');
+        $('#section10 .page-desc').eq(index).find(".apart-switcher-wrap li:first-child").click()
+    })
+
 })
 ;
 
@@ -912,6 +929,31 @@ let aparts_array = [
     },
     {
         slug: 'bed3',
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/wp-content/themes/leon/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/2bed-2-mini.jpg" alt=""></li>'
+    },
+    {
+        slug: 'studioA',
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/studio.svg" data-fancybox data-width="420" data-height="1140"><img src="/wp-content/themes/leon/img/plans/studio.svg" alt="studio" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/studio1-mini.jpg" alt=""></li>'
+    },
+    {
+        slug: 'bed1A',
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/1bed.svg" data-fancybox data-width="738" data-height="1148"><img src="/wp-content/themes/leon/img/plans/1bed.svg" alt="1 bed" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/1bed-1-mini.jpg" alt=""></li>'
+    },
+    {
+        slug: 'bed2A',
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/2bed.svg" data-fancybox data-width="1138" data-height="1344"><img src="/wp-content/themes/leon/img/plans/2bed.svg" alt="2 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/2bed-1-mini.jpg" alt=""></li>'
+    },
+    {
+        slug: 'bed3A',
+        html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/wp-content/themes/leon/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
+        thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/2bed-2-mini.jpg" alt=""></li>'
+    },
+    {
+        slug: 'pentA',
         html: '<div class="swiper-slide h_100  d_f ai_c jc_c" data-plan-pic="1"><a href="/wp-content/themes/leon/img/plans/3bed.svg" data-fancybox data-width="475" data-height="1231"><img src="/wp-content/themes/leon/img/plans/3bed.svg" alt="3 beds" data-swiper-parallax-y="0" data-swiper-parallax-scale="1.2"/></a></div>',
         thumb: '<li class="active"><img src="../wp-content/themes/leon/img/plans/2bed-2-mini.jpg" alt=""></li>'
     },
@@ -1074,10 +1116,10 @@ $(document).ready(function () {
         msg += $(this).parent().parent().find('input[name=your-name]').val() + ' ';
         msg += $(this).parent().parent().find('input[name=your-email]').val() + ' ';
         msg += $(this).parent().parent().find('input[name=your-tel]').val() + ' ';
-        msg += $(this).parent().parent().find('textarea[name=textarea-660]').val();
+        msg += $(this).parent().parent().find('textarea[name=textarea-660]').val() ? $(this).parent().parent().find('textarea[name=textarea-660]').val() : '';
         console.log(msg);
         let phone = "995555100606";
-        let message = "Здравствуйте! Свяжитесь, пожалуйста, со мной: " + msg;
+        let message = "Здравствуйте. Меня заинтересовал Ваш проект, хочу узнать больше: " + msg;
         let link = 'https://wa.me/' + encodeURIComponent(phone) + '?text=' + encodeURIComponent(message);
         window.open(link, '_blank');
     })
