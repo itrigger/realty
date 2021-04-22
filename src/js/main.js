@@ -610,27 +610,13 @@ jQuery(document).ready(function ($) {
     $('.map-point').hover(function () {
         let $dataPoint = $(this).attr('data-point');
         let $linePoint = $(this).attr('data-point') + '-line';
-        let mapLegendTop = $('.panomap').find(".map--legend").offset().top;
-        let containerHeight = $('.panomap').find(".map--legend").height();
-        let itemHeight = $('.panomap').find($dataPoint).height();
-        let topPos =  $('.panomap').find($dataPoint).offset().top - mapLegendTop;
-        // Itemtop+itemHeight > containerHeight = itemBottomOffset
-        console.log(mapLegendTop)
-        console.log(containerHeight)
-        console.log(itemHeight)
-        console.log(topPos)
-        if(topPos > containerHeight){
-            console.log("1__"+topPos)
-            $('.map--legend .scroll-content').animate({
-                scrollTop:topPos
-            },300)
-        } else {
-            console.log("2__"+topPos)
-            $('.map--legend .scroll-content').animate({
-                scrollTop:topPos
-            },300)
-        }
+        let indexx = $('.panomap').find($dataPoint).index()
 
+        if(indexx > 4){
+            $('.j-filter-scrollbar-wrapper .scrollbar-inner').mCustomScrollbar("scrollTo",'bottom');
+        } else {
+            $('.j-filter-scrollbar-wrapper .scrollbar-inner').mCustomScrollbar("scrollTo",'top');
+        }
 
         $('.panomap').find(".map--legend li").removeClass('active');
         $('.panomap').find(".map-point").removeClass('active');
@@ -638,19 +624,15 @@ jQuery(document).ready(function ($) {
         $('.map--legend').find('li[data-point="' + $dataPoint + '"]').addClass('active');
         $('.panomap').find($dataPoint).addClass('active');
         $('.panomap').find($linePoint).addClass('active');
+
     }, function () {
-       /* let $dataPoint = $(this).attr('data-point');
-        let $linePoint = $(this).attr('data-point') + '-line';
-        $('.panomap').find(".map--legend li").removeClass('active');
-        $('.panomap').find(".map-point").removeClass('active');
-        $('.panomap').find($linePoint).removeClass('active');
-        $('.map--legend').find('li[data-point="' + $dataPoint + '"]').removeClass('active');*/
+
     });
 
 
     const filterScroll = function () {
         $('.j-filter-scrollbar-wrapper .scrollbar-inner').mCustomScrollbar({
-
+            scrollInertia: 100
         });
     };
   /*  const filterScroll = function () {

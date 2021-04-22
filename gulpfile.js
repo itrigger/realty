@@ -81,7 +81,42 @@ var gulp = require('gulp'),                                 // подключа�
     rename = require('gulp-rename'),
     babel = require('gulp-babel'),
     webpack = require('webpack-stream'),
-    terser = require('gulp-terser');
+    terser = require('gulp-terser'),
+    postcss = require('gulp-postcss'),
+    rtl = require('@mjhenkes/postcss-rtl');
+
+const options =
+{
+    'autoRename': false,
+    'autoRenameStrict': false,
+    'clean': true,
+    'greedy': false,
+    'processUrls': false,
+    'stringMap': [
+    {
+        'name'    : 'left-right',
+        'priority': 100,
+        'search'  : ['left', 'Left', 'LEFT'],
+        'replace' : ['right', 'Right', 'RIGHT'],
+        'options' : {
+            'scope' : '*',
+            'ignoreCase' : false
+        }
+    },
+    {
+        'name'    : 'ltr-rtl',
+        'priority': 100,
+        'search'  : ['ltr', 'Ltr', 'LTR'],
+        'replace' : ['rtl', 'Rtl', 'RTL'],
+        'options' :	{
+            'scope' : '*',
+            'ignoreCase' : false
+        }
+    }
+],
+    'useCalc': false
+
+}
 
 /* задачи */
 
@@ -99,6 +134,8 @@ gulp.task('html:build', function () {
         .pipe(gulp.dest(path.build.html))           // выкладывание готовых файлов
         .pipe(webserver.reload({ stream: true }));  // перезагрузка сервера
 });
+
+
 
 // pwa
 gulp.task('pwa:build', function () {
@@ -120,11 +157,30 @@ gulp.task('css:build', function () {
             overrideBrowserslist: autoprefixerList
         }))
         .pipe(gulp.dest(path.build.css))
+        .pipe(rename('main-rtl.css'))
+        .pipe(postcss([ rtl(options) ]))
+        .pipe(gulp.dest(path.build.css))
         .pipe(rename({ suffix: '.min' }))
         .pipe(cleanCSS())                           // минимизируем CSS
         .pipe(gulp.dest(path.build.css))            // выгружаем в build
         .pipe(webserver.reload({ stream: true }));  // перезагрузим сервер
 });
+//сборка стилей RTL
+/*gulp.task('rtl:build', function (){
+    return gulp.src( path.src.style )
+        .pipe(plumber())                // для отслеживания ошибок
+        .pipe(sass())                   // scss -> css
+        .pipe(autoprefixer({            // добавим префиксы
+            overrideBrowserslist: autoprefixerList
+        }))
+        .pipe( postcss( [ rtl( options ) ]) )
+        .pipe(gulp.dest(path.build.css))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(cleanCSS())
+        .pipe(gulp.dest(path.build.css))
+        .pipe(webserver.reload({ stream: true }));
+});*/
+
 
 // сбор js
 gulp.task('js:build', function () {
