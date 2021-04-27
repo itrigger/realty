@@ -1101,22 +1101,14 @@ $(document).ready(function () {
         msg += $(this).parent().parent().find('textarea[name=textarea-660]').val() ? $(this).parent().parent().find('textarea[name=textarea-660]').val() : '';
         console.log(msg);
         let phone = "995555100606";
-        //let message = "Здравствуйте. Меня заинтересовал Ваш проект, хочу узнать больше: " + msg;
-        let message = "שלום, הפרויקט שלכם נשמע מעניין. אפשר לקבל עוד פרטים? : " + msg;
+        let message = "Здравствуйте. Меня заинтересовал Ваш проект, хочу узнать больше: " + msg;
+        //let message = "שלום, הפרויקט שלכם נשמע מעניין. אפשר לקבל עוד פרטים? : " + msg;
         let link = 'https://wa.me/' + encodeURIComponent(phone) + '?text=' + encodeURIComponent(message);
         window.open(link, '_blank');
     })
 
 })
 
-
-/*
-* ToDo:
-
-*  -1. Кнопка ватсап на покупаемрадиодетали HEADER
-
-*
-*/
 
 
 // We listen to the resize event
