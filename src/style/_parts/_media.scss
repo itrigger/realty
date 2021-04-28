@@ -562,10 +562,14 @@
   }
 
   .plan-nums .num {
-    font-size: 30px;
+    font-size: 27px;
+  }
+  .plan-nums .pre-w-line{
+    padding-left: 48px;
   }
   .plan-nums .pre-w-line:before {
     height: 25px;
+    left: 22px;
   }
   .plan-rooms ul li {
     display: flex;
