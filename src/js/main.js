@@ -820,7 +820,6 @@ function Line(target) {
 
     let wrap = $(`${target} .panomap`);
 
-    // console.log(target);
 
     let item1 = wrap.find('.map-point1'),
         num1 = wrap.find('.map-logo'),
@@ -850,12 +849,12 @@ function Line(target) {
         item4X = item4.position().left + item4.width() / 2,
         item4Y = item4.position().top + item4.height() / 2;
 
-        let item5 = wrap.find('.map-point5'),
-            num5 = wrap.find('.map-logo'),
-            num5X = num5.position().left + num5.width() / 2,
-            num5Y = num5.position().top + num5.height() / 2,
-            item5X = item5.position().left + item5.width() / 2,
-            item5Y = item5.position().top + item5.height() / 2;
+    let item5 = wrap.find('.map-point5'),
+        num5 = wrap.find('.map-logo'),
+        num5X = num5.position().left + num5.width() / 2,
+        num5Y = num5.position().top + num5.height() / 2,
+        item5X = item5.position().left + item5.width() / 2,
+        item5Y = item5.position().top + item5.height() / 2;
 
     let item6 = wrap.find('.map-point6'),
         num6 = wrap.find('.map-logo'),
@@ -871,6 +870,12 @@ function Line(target) {
         item7X = item7.position().left + item7.width() / 2,
         item7Y = item7.position().top + item7.height() / 2;
 
+    let item8 = wrap.find('.map-point8'),
+        num8 = wrap.find('.map-logo'),
+        num8X = num8.position().left + num8.width() / 2,
+        num8Y = num8.position().top + num8.height() / 2,
+        item8X = item8.position().left + item8.width() / 2,
+        item8Y = item8.position().top + item8.height() / 2;
 
     let svg = $(`${target} .svg-line`);
 
@@ -880,7 +885,8 @@ function Line(target) {
         line4 = svg.find('.line-4'),
         line5 = svg.find('.line-5'),
         line6 = svg.find('.line-6'),
-        line7 = svg.find('.line-7');
+        line7 = svg.find('.line-7'),
+        line8 = svg.find('.line-8');
 
     line1.attr({'x1': num1X, 'y1': num1Y, 'x2': item1X, 'y2': item1Y});
     line2.attr({'x1': num2X, 'y1': num2Y, 'x2': item2X, 'y2': item2Y});
@@ -889,6 +895,7 @@ function Line(target) {
     line5.attr({'x1': num5X, 'y1': num5Y, 'x2': item5X, 'y2': item5Y});
     line6.attr({'x1': num6X, 'y1': num6Y, 'x2': item6X, 'y2': item6Y});
     line7.attr({'x1': num7X, 'y1': num7Y, 'x2': item7X, 'y2': item7Y});
+    line8.attr({'x1': num8X, 'y1': num8Y, 'x2': item8X, 'y2': item8Y});
 }
 
 
@@ -1101,7 +1108,8 @@ $(document).ready(function () {
         msg += $(this).parent().parent().find('textarea[name=textarea-660]').val() ? $(this).parent().parent().find('textarea[name=textarea-660]').val() : '';
         console.log(msg);
         let phone = "995555100606";
-        let message = "Здравствуйте. Меня заинтересовал Ваш проект, хочу узнать больше: " + msg;
+        let message = "Hello. I am interested in your project, I want to know more: " + msg;
+       // let message = "Здравствуйте. Меня заинтересовал Ваш проект, хочу узнать больше: " + msg;
         //let message = "שלום, הפרויקט שלכם נשמע מעניין. אפשר לקבל עוד פרטים? : " + msg;
         let link = 'https://wa.me/' + encodeURIComponent(phone) + '?text=' + encodeURIComponent(message);
         window.open(link, '_blank');
