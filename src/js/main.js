@@ -553,6 +553,9 @@ jQuery(document).ready(function ($) {
         },
     });
 
+
+    let const_initial = $('#section9 .slide-desc ul li').length - 1;
+
     let sec9Swiper = new Swiper('#section9 .swiper-container', {
         slidesPerView: 1,
         spaceBetween: 0,
@@ -560,7 +563,7 @@ jQuery(document).ready(function ($) {
         slideToClickedSlide: true,
         watchOverflow: true,
         loop: false,
-        initialSlide: 8,
+        initialSlide: const_initial,
         lazy: {
             loadPrevNext: true
         },
